@@ -1,7 +1,7 @@
-# Silicon Engineering site starter
+# SiliconEng company site
 
-A responsive static company site inspired by the clean navigation, technology overview, and contact sections on Varadis. The page is original and uses a custom chip illustration; it has no build step.
+A responsive static site for SiliconEng's integrated circuit development and post-silicon engineering services. Firebase Hosting publishes the `public/` directory; the page has no build step.
 
-Firebase Hosting publishes the `public/` directory. Preview locally with `firebase emulators:start --only hosting` and deploy with `firebase deploy --only hosting`.
+Preview locally with `firebase emulators:start --only hosting` and deploy with `firebase deploy --only hosting`.
 
-Before launch, confirm the company's public name and services, replace the placeholder contact address in `public/index.html`, and update the page description and title. The current Silicon Engineering name and service descriptions are starter copy based on this project name and should be checked with the client.
+The logo and microprocessor image are served from `public/img/`. Contact details and service copy came from the supplied company information; confirm the final copy with SiliconEng before launch.
