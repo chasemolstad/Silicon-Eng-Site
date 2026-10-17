@@ -1,18 +1,25 @@
 {
   "hosting": {
-    "public": ".",
+    "public": "public",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ],
-    "headers": [
-      {
-        "source": "**/*.@(css|js|svg|png|jpg|jpeg|webp|ico)",
-        "headers": [
-          { "key": "Cache-Control", "value": "public,max-age=3600" }
-        ]
-      }
     ]
+  },
+  "firestore": {
+    "database": "(default)",
+    "location": "nam5",
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "auth": {
+    "providers": {
+      "emailPassword": true,
+      "googleSignIn": {
+        "oAuthBrandDisplayName": "silicon-eng",
+        "supportEmail": "support@silicon-eng.firebaseapp.com"
+      }
+    }
   }
 }
