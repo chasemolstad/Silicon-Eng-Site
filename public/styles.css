@@ -15,16 +15,16 @@ body { min-width: 320px; margin: 0; background: var(--paper); color: var(--ink);
 a { color: inherit; }
 .site-header { height: 90px; padding: 0 7.5%; display: flex; align-items: center; justify-content: space-between; background: var(--white); border-bottom: 1px solid #e8edef; }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
-.brand-logo { position: relative; display: block; width: 48px; height: 48px; overflow: hidden; border-radius: 50%; background: white; }
-.brand-logo img { position: absolute; width: 161px; height: auto; max-width: none; left: calc(50% - 80.5px); top: -2.5px; }
+.brand-logo { display: block; flex: none; width: 48px; height: 48px; }
+.brand-logo img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .brand-name { font-size: 18px; line-height: 1; letter-spacing: -.06em; font-weight: 700; }
 .brand-name span { color: var(--blue); }
 .main-nav { display: flex; align-items: center; gap: clamp(20px, 3.3vw, 48px); font-size: 11px; font-weight: 500; }
 .main-nav a { text-decoration: none; transition: color .2s; }
 .main-nav a:hover, .text-link:hover, .footer-email:hover { color: var(--blue); }
 .nav-contact { display: inline-flex; align-items: center; gap: 15px; padding: 12px 15px; border: 1px solid var(--line); }
-.hero { min-height: 635px; padding: 72px 7.5% 60px; position: relative; overflow: hidden; display: flex; align-items: center; background: var(--paper); }
-.hero-copy { position: relative; z-index: 1; width: 52%; padding-bottom: 25px; }
+.hero { min-height: 660px; padding: 72px 7.5% 76px; position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); align-items: center; column-gap: 6%; background: var(--paper); }
+.hero-copy { position: relative; z-index: 1; width: auto; padding-bottom: 0; }
 .eyebrow, .section-kicker, .hero-index, .hero-footnote, .card-number, .footer-note, .copyright, .platform-list > div > span { font-family: var(--mono); text-transform: uppercase; letter-spacing: .1em; }
 .eyebrow { display: flex; align-items: center; gap: 11px; color: var(--blue); font-size: 9px; font-weight: 500; }
 .eyebrow-line { width: 25px; height: 1px; background: var(--blue); }
@@ -38,8 +38,8 @@ h1 span, .intro h2 span, .platform-copy h2 span { color: var(--blue); }
 .button span { font-size: 16px; }
 .hero-footnote { margin: 31px 0 0; display: flex; align-items: center; gap: 9px; color: #859199; font-size: 7px; }
 .hero-footnote i { width: 4px; height: 4px; border-radius: 50%; background: var(--blue); }
-.hero-product { position: absolute; width: min(46vw, 600px); height: min(39vw, 445px); right: 7.5%; top: 50%; transform: translateY(-50%); margin: 0; overflow: hidden; background: #e7e9ee; }
-.hero-product img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-product { position: relative; justify-self: end; width: min(100%, 420px); aspect-ratio: 1165 / 1641; margin: 0; overflow: hidden; background: #e7e9ee; }
+.hero-product img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .hero-product figcaption { position: absolute; inset: auto 0 0; display: flex; justify-content: space-between; padding: 14px 17px; color: white; background: linear-gradient(transparent, #101a2eaa); font: 7px var(--mono); letter-spacing: .1em; }
 .hero-index { position: absolute; bottom: 24px; left: 7.5%; display: flex; align-items: center; gap: 11px; color: #65737d; font-size: 8px; }
 .hero-index i { width: 3px; height: 3px; background: var(--blue); border-radius: 50%; }
@@ -125,9 +125,8 @@ h1 span, .intro h2 span, .platform-copy h2 span { color: var(--blue); }
 
 @media (max-width: 900px) {
   .site-header { padding: 0 5%; }
-  .hero { min-height: 590px; padding-left: 5%; padding-right: 5%; }
-  .hero-copy { width: 55%; }
-  .hero-product { right: 5%; width: 47vw; height: 40vw; }
+  .hero { min-height: 590px; padding-left: 5%; padding-right: 5%; grid-template-columns: minmax(0, 1.1fr) minmax(0, .8fr); column-gap: 5%; }
+  .hero-product { width: min(100%, 360px); }
   .hero-index { left: 5%; }
   .section-wrap { padding-left: 7%; padding-right: 7%; }
   .intro { grid-template-columns: 1fr; gap: 23px; }
@@ -138,18 +137,17 @@ h1 span, .intro h2 span, .platform-copy h2 span { color: var(--blue); }
 @media (max-width: 640px) {
   .site-header { height: 72px; padding: 0 5%; }
   .brand-logo { width: 40px; height: 40px; }
-  .brand-logo img { width: 134px; left: calc(50% - 67px); top: -2px; }
   .brand-name { font-size: 16px; }
   .main-nav { gap: 13px; font-size: 9px; }
   .main-nav a:nth-child(2), .main-nav a:nth-child(3) { display: none; }
   .nav-contact { gap: 8px; padding: 9px 10px; }
-  .hero { min-height: 760px; padding: 60px 6% 50px; align-items: flex-start; }
+  .hero { min-height: 0; padding: 55px 6% 65px; display: flex; flex-direction: column; align-items: stretch; gap: 28px; }
   .hero-copy { width: 100%; padding: 0; }
   h1 { font-size: clamp(52px, 12vw, 76px); margin-top: 23px; }
   .hero-description { max-width: 400px; font-size: 14px; }
   .hero-footnote { font-size: 6px; }
-  .hero-product { width: 88vw; height: 66vw; max-height: 340px; right: -6%; top: auto; bottom: 42px; transform: none; }
-  .hero-index { left: 6%; bottom: 18px; }
+  .hero-product { align-self: center; width: min(78%, 330px); height: auto; right: auto; top: auto; bottom: auto; transform: none; }
+  .hero-index { left: 6%; bottom: 20px; }
   .section-wrap { padding-left: 7%; padding-right: 7%; }
   .intro { padding-top: 70px; padding-bottom: 75px; }
   .intro-content { grid-template-columns: 1fr; gap: 19px; }
