@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#263c91">
+  <meta name="description" content="Contact SiliconEng about test development, silicon validation, and product engineering.">
+  <title>Get in touch | SiliconEng</title>
+  <link rel="icon" href="/img/SiliconEngCircle.png" type="image/png">
+  <link rel="stylesheet" href="/contact.css">
+  <script src="/contact.js" defer></script>
+</head>
+<body class="contact-page">
+  <header class="contact-header">
+    <a class="contact-brand" data-concept-home href="/?concept=2" aria-label="SiliconEng home">
+      <img src="/img/SiliconEngCircle.png" alt="">
+      <span>SiliconEng<small>Integrated circuit development</small></span>
+    </a>
+    <a class="contact-back" data-concept-home href="/?concept=2">Back to website <span aria-hidden="true">&#8599;</span></a>
+  </header>
+
+  <main class="contact-main">
+    <section class="contact-form-section" aria-labelledby="contact-title">
+      <p class="contact-eyebrow">SILICONENG <i></i> CONTACT</p>
+      <h1 id="contact-title">Get in touch</h1>
+      <p class="contact-intro">Tell us a little about your project. Our team can help with test development, silicon validation, and product engineering.</p>
+
+      <form id="contact-form">
+        <div class="contact-name-fields">
+          <label>First name <span aria-hidden="true">*</span><input name="First name" autocomplete="given-name" required></label>
+          <label>Last name <span aria-hidden="true">*</span><input name="Last name" autocomplete="family-name" required></label>
+        </div>
+        <label>Professional email <span aria-hidden="true">*</span><input name="Email" type="email" autocomplete="email" required></label>
+        <label>Company name <span aria-hidden="true">*</span><input name="Company" autocomplete="organization" required></label>
+        <label>Job title<input name="Job title" autocomplete="organization-title"></label>
+
+        <fieldset class="contact-interests">
+          <legend>What can we help with? <span aria-hidden="true">*</span></legend>
+          <label><input type="radio" name="Interest" value="Test development" required><span>Test development</span></label>
+          <label><input type="radio" name="Interest" value="Silicon validation"><span>Silicon validation</span></label>
+          <label><input type="radio" name="Interest" value="Product and application support"><span>Product and application support</span></label>
+          <label><input type="radio" name="Interest" value="Other"><span>Other</span></label>
+        </fieldset>
+
+        <label>Message <span aria-hidden="true">*</span><textarea name="Message" rows="5" required></textarea></label>
+        <div class="contact-select-fields">
+          <label>Country <span aria-hidden="true">*</span>
+            <select name="Country" required>
+              <option value="" selected disabled>Please select</option>
+              <option>United States</option><option>Canada</option><option>Mexico</option><option>Ireland</option><option>United Kingdom</option><option>Other</option>
+            </select>
+          </label>
+          <label>How did you hear about SiliconEng?
+            <select name="How you heard about us">
+              <option value="" selected>Please select</option>
+              <option>Referral</option><option>Web search</option><option>Industry event</option><option>Existing contact</option><option>Other</option>
+            </select>
+          </label>
+        </div>
+        <p class="contact-form-note">Submit opens a prepared email to info@siliconeng.com in your email app so you can review and send it.</p>
+        <button class="contact-submit" type="submit">Submit <span aria-hidden="true">&#8594;</span></button>
+        <p class="contact-status" id="contact-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <aside class="contact-details" aria-labelledby="contact-details-title">
+      <p class="contact-eyebrow">LOCAL CONTACT</p>
+      <h2 id="contact-details-title">SiliconEng</h2>
+      <p class="contact-details-intro">Integrated circuit development partner for Analog, Power Management, RF, and SoC products.</p>
+      <div class="contact-location">
+        <span class="contact-location-label">SANTA CLARA, CALIFORNIA</span>
+        <p>Santa Clara, CA 95051</p>
+      </div>
+      <a class="contact-detail-link" href="mailto:info@siliconeng.com"><span>Email</span>info@siliconeng.com</a>
+      <a class="contact-detail-link" href="tel:+16692455007"><span>Phone</span>+1 669 245 5007</a>
+      <div class="contact-detail-rule"></div>
+      <p class="contact-help">Prefer a direct conversation? Call or email our team.</p>
+    </aside>
+  </main>
+
+  <footer class="contact-footer">
+    <a class="contact-brand" data-concept-home href="/?concept=2"><img src="/img/SiliconEngCircle.png" alt=""><span>SiliconEng<small>Integrated circuit development</small></span></a>
+    <small>&copy; <span id="contact-year">2026</span> SiliconEng</small>
+  </footer>
+</body>
+</html>
