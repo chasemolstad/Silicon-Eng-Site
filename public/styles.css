@@ -519,14 +519,14 @@ section[id], main[id] { scroll-margin-top: 64px; }
   .practical-company { padding: 62px 6%; gap: 6%; }
 }
 @media (max-width: 640px) {
-  .practical-header { min-height: 66px; padding: 0 17px; gap: 10px; }
+  .practical-header { min-height: 66px; padding: 0 12px; gap: 8px; }
   .practical-brand { gap: 7px; font-size: 16px; }
   .practical-brand img { width: 36px; height: 36px; }
-  .practical-brand small { font-size: 8px; }
-  .practical-header nav { gap: 9px; }
+  .practical-brand small { display: none; }
+  .practical-header nav { flex: 0 0 auto; gap: 6px; }
   .practical-header nav a { font-size: 9px; }
-  .practical-header nav a:not(:first-child):not(.practical-contact-link):not(.practical-resource-link) { display: none; }
-  .practical-header nav .practical-contact-link { padding: 8px 10px; }
+  .practical-header nav a:not(.practical-contact-link):not(.practical-resource-link) { display: none; }
+  .practical-header nav .practical-contact-link { padding: 8px 9px; white-space: nowrap; }
   .practical-hero { min-height: 0; padding: 42px 6% 35px; grid-template-columns: 1fr; gap: 25px; }
   .practical-hero-copy { padding: 0; }
   .practical-hero h1 { font-size: clamp(36px, 10vw, 48px); }
@@ -626,8 +626,8 @@ section[id], main[id] { scroll-margin-top: 64px; }
 }
 @media (max-width: 640px) {
   .varadis-nav .varadis-nav-resource { padding: 8px 9px; }
-  .practical-header nav a:not(:first-child):not(.practical-contact-link):not(.practical-resource-link) { display: none; }
-  .practical-header nav .practical-resource-link { padding: 8px 9px; }
+  .practical-header nav a:not(.practical-contact-link):not(.practical-resource-link) { display: none; }
+  .practical-header nav .practical-resource-link { padding: 8px 9px; white-space: nowrap; }
   .resources-header { min-height: 66px; padding: 0 17px; gap: 12px; }
   .resources-brand { min-width: 0; flex: 0 0 auto; gap: 7px; font-size: 16px; }
   .resources-brand img { width: 36px; height: 36px; }
