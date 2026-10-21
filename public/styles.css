@@ -525,7 +525,7 @@ section[id], main[id] { scroll-margin-top: 64px; }
   .practical-brand small { font-size: 8px; }
   .practical-header nav { gap: 9px; }
   .practical-header nav a { font-size: 9px; }
-  .practical-header nav a:not(:first-child):not(.practical-contact-link) { display: none; }
+  .practical-header nav a:not(:first-child):not(.practical-contact-link):not(.practical-resource-link) { display: none; }
   .practical-header nav .practical-contact-link { padding: 8px 10px; }
   .practical-hero { min-height: 0; padding: 42px 6% 35px; grid-template-columns: 1fr; gap: 25px; }
   .practical-hero-copy { padding: 0; }
