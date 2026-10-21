@@ -558,6 +558,7 @@ section[id], main[id] { scroll-margin-top: 64px; }
 .varadis-value details[open] summary::after, .practical-service-columns details[open] summary::after, .practical-value details[open] summary::after { content: "−"; }
 .varadis-nav .varadis-nav-resource { padding: 10px 13px; border: 1px solid #263c91; background: #263c91; color: #fff; text-decoration: none; transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease, color .18s ease; }
 .varadis-nav .varadis-nav-resource:hover { border-color: #263c91; background: #fff; color: #263c91; transform: translateY(-2px); box-shadow: 0 4px 12px #263c9126; }
+.varadis-nav .varadis-nav-resource, .varadis-nav .varadis-nav-contact { min-height: 38px; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; }
 .practical-header nav .practical-resource-link { padding: 11px 15px; background: #263c91; border: 1px solid #263c91; color: #fff; }
 .practical-header nav .practical-resource-link, .practical-hero .practical-button { display: inline-flex; align-items: center; border: 1px solid #263c91; background: #263c91; color: #fff; text-decoration: none; transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease, color .18s ease; }
 .practical-header nav .practical-resource-link:hover, .practical-hero .practical-button:hover { border-color: #263c91; background: #fff; color: #263c91; transform: translateY(-2px); box-shadow: 0 4px 12px #263c9126; }
