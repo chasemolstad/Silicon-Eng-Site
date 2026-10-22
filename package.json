@@ -1,0 +1,10 @@
+{
+  "name": "silicon-eng-site",
+  "private": true,
+  "scripts": {
+    "dev": "vite public --host 127.0.0.1 --port 5173 --strictPort"
+  },
+  "devDependencies": {
+    "vite": "^7.1.0"
+  }
+}
