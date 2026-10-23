@@ -1,21 +1,22 @@
 ﻿/* One composition, from the expanded hero to the sticky navigation bar. */
 .varadis-site {
-  --bar-height: 82px;
-  --expanded-height: clamp(400px, 30vw, 580px);
-  --expanded-logo: var(--expanded-height);
-  --expanded-logo-top: clamp(26px, 2.5vw, 44px);
+  --bar-height: 68px;
+  --expanded-height: clamp(290px, 21vw, 420px);
+  --expanded-logo: clamp(336px, 25vw, 500px);
+  --expanded-logo-top: clamp(16px, 1.25vw, 24px);
   --gutter: clamp(24px, 5vw, 100px);
-  --content-top: calc(var(--expanded-height) * .2);
-  --cta-width: 232px;
-  --cta-height: 54px;
+  --content-top: calc(var(--expanded-height) * .09);
+  --cta-width: 220px;
+  --cta-height: 46px;
   --cta-end-width: 154px;
-  --cta-end-height: 44px;
-  --cta-end-top: 19px;
+  --cta-end-height: 40px;
+  --cta-end-top: 14px;
   --cta-end-right: calc(var(--gutter) + 68px);
-  --light-top: 65%;
-  --light-bottom: 55%;
-  --light-top-inset: 80px;
-  --light-bottom-inset: 60px;
+  --silver-edge: 54%;
+  --silver-edge-min: 700px;
+  --curve-radius: .8;
+  --tech-ring: clamp(104px, 10vw, 176px);
+  --company-blue: #4576f7;
   --collapse: 0;
   --expand: calc(1 - var(--collapse));
   position: relative;
@@ -56,16 +57,16 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(110deg, #bec1c6 0%, #eceef0 36%, #fafafb 65%);
-  clip-path: polygon(0 0, calc((var(--light-top) - var(--light-top-inset)) * var(--expand) + 100% * var(--collapse)) 0, calc((var(--light-bottom) - var(--light-bottom-inset)) * var(--expand) + 100% * var(--collapse)) 100%, 0 100%);
+  clip-path: var(--silver-clip, ellipse(54% 110% at 0 50%));
   content: "";
 }
 .imeg-emblem {
   position: absolute;
   z-index: 1;
   left: var(--gutter);
-  top: calc(var(--expanded-logo-top) * var(--expand) + 9px * var(--collapse));
-  width: calc(var(--expanded-logo) * 1.02 * var(--expand) + 64px * var(--collapse));
-  height: calc(var(--expanded-logo) * var(--expand) + 64px * var(--collapse));
+  top: calc(var(--expanded-logo-top) * var(--expand) + 8px * var(--collapse));
+  width: calc(var(--expanded-logo) * 1.02 * var(--expand) + 52px * var(--collapse));
+  height: calc(var(--expanded-logo) * var(--expand) + 52px * var(--collapse));
   display: grid;
   place-items: center;
   overflow: clip;
@@ -75,8 +76,8 @@
 .imeg-brand {
   position: absolute;
   z-index: 2;
-  top: calc(30px * var(--brand-expand) + 20px * var(--brand-collapse));
-  left: calc((100% - 132px) * var(--brand-expand) + (var(--gutter) + 64px) * var(--brand-collapse));
+  top: calc(24px * var(--brand-expand) + 13px * var(--brand-collapse));
+  left: calc((100% - 132px) * var(--brand-expand) + (var(--gutter) + 52px) * var(--brand-collapse));
   transform: translateX(calc(-100% * var(--brand-expand)));
   height: 42px;
   display: flex;
@@ -94,7 +95,7 @@
 .imeg-menu {
   position: absolute;
   z-index: 4;
-  top: calc(30px * var(--expand) + 20px * var(--collapse));
+  top: calc(24px * var(--expand) + 13px * var(--collapse));
   right: calc(72px * var(--expand) + var(--gutter) * var(--collapse));
 }
 .imeg-menu summary { width: 42px; height: 42px; display: flex; flex-direction: column; align-items: flex-end; justify-content: center; gap: 5px; list-style: none; cursor: pointer; filter: drop-shadow(0 1px 2px rgb(20 24 32 / 30%)); }
@@ -133,11 +134,11 @@
   position: relative;
   top: calc(-180px * var(--collapse));
 }
-.imeg-contact-space { height: calc(64px + max(0px, (var(--expanded-height) - 432px) * .5)); }
+.imeg-contact-space { height: 72px; }
 .imeg-cta-slot { position: relative; display: inline-block; width: var(--cta-width); height: var(--cta-height); vertical-align: top; }
 .imeg-cta-target { position: absolute; right: var(--cta-end-right); top: var(--cta-end-top); width: var(--cta-end-width); height: var(--cta-end-height); visibility: hidden; pointer-events: none; }
-.imeg-copy .imeg-eyebrow { margin: 0 0 18px; color: #54617c; font: 9px "Segoe UI", Arial, sans-serif; line-height: 1.5; letter-spacing: .13em; font-weight: 650; }
-.imeg-copy h1 { margin: 0 0 23px; color: #222d40; font-size: clamp(42px, 3.5vw, 66px); line-height: 1.08; letter-spacing: -.045em; font-weight: 400; }
+.imeg-copy .imeg-eyebrow { margin: 0 0 14px; color: #54617c; font: 9px "Segoe UI", Arial, sans-serif; line-height: 1.5; letter-spacing: .13em; font-weight: 650; }
+.imeg-copy h1 { margin: 0 0 16px; color: #222d40; font-size: clamp(40px, 3.25vw, 62px); line-height: 1.08; letter-spacing: -.045em; font-weight: 400; }
 .imeg-copy h1 strong { font-weight: 650; }
 .imeg-copy > p:last-child { margin: 0; color: #586272; font-size: 14px; line-height: 1.7; }
 .imeg-hero-cta {
@@ -165,12 +166,14 @@
 }
 .imeg-hero-cta span { font-size: 25px; font-weight: 400; }
 .imeg-hero-cta:hover { background: #4058de; }
+@media (min-width: 700px) {
+  .imeg-copy h1 { text-indent: -10px; }
+}
 @media (max-width: 1399px) and (min-width: 1200px) {
-  .varadis-site { --light-top: 72%; --light-bottom: 62%; }
   .imeg-content { right: 38%; }
 }
 @media (max-width: 1199px) and (min-width: 901px) {
-  .varadis-site { --expanded-height: clamp(340px, 30vw, 400px); --expanded-logo: var(--expanded-height); --gutter: 32px; --light-top: 78%; --light-bottom: 68%; }
+  .varadis-site { --expanded-height: 290px; --expanded-logo: 310px; --gutter: 32px; --silver-edge: 60%; --silver-edge-min: 640px; }
   .imeg-brand { font-size: 22px; }
   .imeg-content { right: 30%; }
   .imeg-copy h1 { font-size: clamp(34px, 4.4vw, 46px); }
@@ -178,14 +181,14 @@
   .imeg-contact-space { height: 24px; }
 }
 @media (max-width: 900px) {
-  .varadis-site { --bar-height: 72px; --expanded-height: 680px; --expanded-logo: 300px; --expanded-logo-top: 84px; --gutter: 18px; --content-top: 400px; --cta-width: 208px; --cta-height: 48px; --cta-end-width: 100px; --cta-end-height: 38px; --cta-end-top: 17px; --cta-end-right: 66px; --light-top: 16%; --light-bottom: 49%; }
+  .varadis-site { --bar-height: 60px; --expanded-height: 680px; --expanded-logo: 300px; --expanded-logo-top: 84px; --gutter: 18px; --content-top: 400px; --cta-width: 208px; --cta-height: 48px; --cta-end-width: 100px; --cta-end-height: 36px; --cta-end-top: 12px; --cta-end-right: 66px; --light-top: 16%; --light-bottom: 49%; }
   .imeg-panel { clip-path: polygon(0 0, 100% 0, calc(100% - 5% * var(--expand)) 100%, 0 100%); }
   .imeg-panel::before { left: 0; }
-  .imeg-panel::after { clip-path: polygon(0 calc(var(--light-top) * var(--expand)), 100% calc(var(--light-bottom) * var(--expand)), 100% 100%, 0 100%); background: linear-gradient(120deg, #c8cbd0, #f5f6f8 65%); }
-  .imeg-emblem { left: calc((50% - 153px) * var(--expand) + 10px * var(--collapse)); top: calc(84px * var(--expand) + 9px * var(--collapse)); width: calc(306px * var(--expand) + 54px * var(--collapse)); height: calc(300px * var(--expand) + 54px * var(--collapse)); }
-  .imeg-brand { --brand-collapse: var(--collapse); --brand-expand: calc(1 - var(--brand-collapse)); top: calc(33px * var(--expand) + 16px * var(--collapse)); left: calc((100% - 112px) * var(--expand) + 61px * var(--collapse)); height: 40px; font-size: 23px; }
+  .imeg-panel::after { clip-path: var(--silver-clip, ellipse(140% 90% at 0 100%)); background: linear-gradient(120deg, #c8cbd0, #f5f6f8 65%); }
+  .imeg-emblem { left: calc((50% - 153px) * var(--expand) + 10px * var(--collapse)); top: calc(84px * var(--expand) + 8px * var(--collapse)); width: calc(306px * var(--expand) + 44px * var(--collapse)); height: calc(300px * var(--expand) + 44px * var(--collapse)); }
+  .imeg-brand { --brand-collapse: var(--collapse); --brand-expand: calc(1 - var(--brand-collapse)); top: calc(33px * var(--expand) + 10px * var(--collapse)); left: calc((100% - 112px) * var(--expand) + 54px * var(--collapse)); height: 40px; font-size: 23px; }
   .imeg-brand img { width: calc(30px * var(--expand)); height: 30px; }
-  .imeg-menu { top: calc(33px * var(--expand) + 15px * var(--collapse)); right: calc(62px * var(--expand) + 14px * var(--collapse)); }
+  .imeg-menu { top: calc(33px * var(--expand) + 9px * var(--collapse)); right: calc(62px * var(--expand) + 14px * var(--collapse)); }
   .imeg-menu summary { width: 32px; }
   .imeg-menu summary > span { width: 28px; }
   .imeg-menu nav { right: -4px; max-width: calc(100vw - 32px); }
@@ -202,10 +205,10 @@
 }
 @media (min-width: 700px) and (max-width: 900px) {
   .varadis-site { --expanded-height: 360px; --expanded-logo-top: 84px; --content-top: 120px; }
-  .imeg-emblem { left: calc(24px * var(--expand) + 10px * var(--collapse)); top: calc(84px * var(--expand) + 9px * var(--collapse)); }
+  .imeg-emblem { left: calc(24px * var(--expand) + 10px * var(--collapse)); top: calc(84px * var(--expand) + 8px * var(--collapse)); }
   .imeg-content { left: 24px; }
   .imeg-content::before { display: block; }
-  .imeg-contact-space { height: 20px; }
+  .imeg-contact-space { height: 28px; }
 }
 @media (max-width: 359px) {
   .imeg-brand { font-size: 20px; }
@@ -215,6 +218,356 @@
 @media (prefers-reduced-motion: reduce) {
   .imeg-hero-cta, .imeg-menu summary > span { transition: none; }
 }
-.varadis-site .varadis-capabilities-section { padding-top: calc(28px + clamp(26px, 2.5vw, 44px)); }
+.varadis-site .varadis-capabilities-section {
+  padding-top: max(28px, calc(var(--expanded-logo-top) + var(--expanded-logo) - var(--expanded-height) - 20px));
+  padding-bottom: calc(var(--tech-ring) * .5 + 20px);
+}
 .varadis-card-image.image-evaluation img { object-position: 75% center; }
 .varadis-card-image.image-support img { object-position: 60% center; }
+
+/* Circular photography and a clearer reading rhythm for Our Technology. */
+.varadis-site .varadis-technology {
+  --tech-circle: clamp(560px, 45vw, 900px);
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+  overflow-y: visible;
+  clip-path: inset(calc(var(--tech-ring) * -.5) 0 0 0);
+  display: flow-root;
+  min-height: calc(var(--tech-circle) * .72 + 32px);
+  padding: 64px max(6%, calc((100% - 1280px) / 2));
+  background: #f1f3f5;
+}
+.varadis-technology::before {
+  box-sizing: border-box;
+  position: absolute;
+  top: calc(var(--tech-ring) * -.5);
+  left: clamp(24px, 4vw, 80px);
+  width: var(--tech-ring);
+  aspect-ratio: 1;
+  border: clamp(12px, 1.4vw, 22px) solid #fff;
+  border-radius: 50%;
+  background: #f1f3f5;
+  pointer-events: none;
+  content: "";
+}
+.varadis-technology-copy {
+  position: relative;
+  z-index: 1;
+  width: min(630px, 52%);
+}
+.varadis-technology .varadis-kicker {
+  margin-bottom: 12px;
+  color: #334ba8;
+  font-size: 10px;
+  letter-spacing: .13em;
+}
+.varadis-technology-copy h2 {
+  max-width: 630px;
+  margin-bottom: 16px;
+  color: #202b3b;
+  font-size: clamp(27px, 2.2vw, 34px);
+  line-height: 1.12;
+  letter-spacing: -.035em;
+}
+.varadis-technology-copy > p:not(.varadis-kicker) {
+  margin-bottom: 0;
+  color: #414e60;
+  font-size: 15px;
+  line-height: 1.65;
+}
+.varadis-tech-categories { margin-top: 22px; gap: 10px; }
+.varadis-tech-categories article {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+  gap: 14px;
+  padding: 16px;
+  border-color: #d9dfe6;
+  border-left-color: #536dfe;
+  box-shadow: 0 3px 12px rgb(32 43 59 / 3%);
+}
+.varadis-tech-number {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid #d6ddff;
+  border-radius: 50%;
+  background: #f0f3ff;
+  color: #334ba8;
+  font-size: 13px;
+  font-weight: 700;
+}
+.varadis-tech-categories h3 {
+  margin: 2px 0 6px;
+  color: #202b3b;
+  font: 700 16px/1.35 Arial, Helvetica, sans-serif;
+  letter-spacing: -.015em;
+}
+.varadis-tech-categories article p {
+  color: #414e60;
+  font-size: 14px;
+  line-height: 1.65;
+}
+.varadis-site .varadis-technology-image {
+  position: absolute;
+  z-index: 0;
+  right: -4vw;
+  bottom: calc(var(--tech-circle) * -.28);
+  width: var(--tech-circle);
+  height: var(--tech-circle);
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: clamp(12px, 1.2vw, 22px) solid #fff;
+  border-radius: 50%;
+  background: #dbc09c;
+  pointer-events: none;
+}
+.varadis-site .varadis-technology-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+}
+@media (max-width: 1100px) {
+  .varadis-site .varadis-technology { min-height: 0; padding: 56px 6% 0; }
+  .varadis-technology-copy { width: 100%; max-width: 760px; margin: 0 auto; }
+  .varadis-site .varadis-technology-image {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: min(680px, 100%);
+    height: auto;
+    aspect-ratio: 1;
+    margin: 40px -3vw calc(min(680px, 88vw) * -.28) auto;
+  }
+}
+@media (max-width: 600px) {
+  .varadis-site .varadis-technology { padding: 52px 22px 0; }
+  .varadis-technology-copy h2 { font-size: 28px; }
+  .varadis-technology-copy > p:not(.varadis-kicker) { font-size: 15px; }
+  .varadis-tech-categories article { grid-template-columns: 32px minmax(0, 1fr); gap: 10px; padding: 15px 14px; }
+  .varadis-tech-number { width: 32px; height: 32px; font-size: 12px; }
+  .varadis-tech-categories article > div { display: contents; }
+  .varadis-tech-categories h3 { margin: 2px 0 0; font-size: 16px; }
+  .varadis-tech-categories article p { grid-column: 1 / -1; font-size: 14px; }
+  .varadis-site .varadis-technology-image { margin-top: 30px; margin-bottom: calc((100vw - 44px) * -.28); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .varadis-tech-categories article { transition: none; }
+}
+
+/* Mission and value proposition lead into the blue closing invitation. */
+.varadis-site .varadis-company {
+  padding: 48px max(8%, calc((100% - 1440px) / 2)) 104px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(48px, 8vw, 150px);
+}
+.varadis-company > div { position: relative; z-index: 1; max-width: 620px; }
+.varadis-company .varadis-kicker {
+  margin-bottom: 10px;
+  color: #465b76;
+  font-size: 10px;
+}
+.varadis-company h2 {
+  margin-bottom: 14px;
+  color: #202b3b;
+  font-size: clamp(25px, 2vw, 30px);
+  line-height: 1.18;
+  letter-spacing: -.025em;
+}
+.varadis-company p:not(.varadis-kicker) {
+  margin-bottom: 0;
+  color: #414e60;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.varadis-company .varadis-value details summary {
+  padding: 12px 0;
+  color: #24385a;
+  font-size: 14px;
+}
+.varadis-company .varadis-value details summary::after { color: var(--company-blue); font-size: 22px; }
+.varadis-company .varadis-value details summary:focus-visible { outline: 2px solid var(--company-blue); outline-offset: 4px; }
+.varadis-company .varadis-value li { padding: 10px 0; color: #414e60; font-size: 14px; line-height: 1.7; }
+.varadis-site .varadis-cta {
+  --large-circle: clamp(64px, 4.5vw, 88px);
+  --small-circle: clamp(36px, 2.5vw, 48px);
+  --circle-left: clamp(24px, 2vw, 48px);
+  position: relative;
+  padding: 48px 8%;
+  background: var(--company-blue);
+  color: #fff;
+}
+.varadis-cta::before, .varadis-cta::after, .varadis-footer::before {
+  box-sizing: border-box;
+  position: absolute;
+  border-radius: 50%;
+  background: var(--company-blue);
+  pointer-events: none;
+  content: "";
+}
+.varadis-cta::before {
+  top: calc(-1 * var(--large-circle) - 6px);
+  left: var(--circle-left);
+  width: var(--large-circle);
+  height: var(--large-circle);
+}
+.varadis-cta::after {
+  top: calc(var(--small-circle) * -.5);
+  left: calc(var(--circle-left) + var(--large-circle) - 12px);
+  width: var(--small-circle);
+  height: var(--small-circle);
+  border: 6px solid #fff;
+}
+.varadis-cta > p:first-child { margin-bottom: 10px; color: #0b1020; font-size: 10px; line-height: 1.5; }
+.varadis-cta h2 { max-width: 960px; margin-bottom: 16px; font-size: clamp(26px, 2.3vw, 34px); line-height: 1.15; }
+.varadis-cta > p:nth-of-type(2) { max-width: 800px; margin-bottom: 22px; color: #0b1020; font-size: 15px; font-weight: 500; line-height: 1.65; }
+.varadis-cta a { min-height: 44px; padding: 10px 18px; border-color: #fff; background: #fff; color: #202b3b; font-size: 14px; font-weight: 700; }
+.varadis-cta a span { color: #243c6c; font-size: 19px; }
+.varadis-cta a:hover { background: #f0f4ff; color: #202b3b; }
+.varadis-cta a:hover span { color: #243c6c; }
+.varadis-cta a:focus-visible { outline: 3px solid #fff; outline-offset: 5px; }
+.varadis-site .varadis-footer { position: relative; padding-top: 40px; }
+.varadis-footer > div:first-child { font-size: 16px; }
+.varadis-footer::before {
+  top: -26px;
+  right: 14%;
+  width: 52px;
+  height: 52px;
+  border: 7px solid #fff;
+}
+@media (max-width: 850px) {
+  .varadis-site .varadis-company { padding: 44px 7% 100px; grid-template-columns: 1fr; gap: 28px; }
+  .varadis-company > div { max-width: none; }
+  .varadis-site .varadis-cta { padding: 44px 7%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .varadis-cta a { transition: none; }
+}
+
+/* A connected service journey, with a focused view of each discipline. */
+.service-section-inner { width: min(1664px, calc(100% - clamp(40px, 8vw, 160px))); margin: 0 auto; }
+.service-section-heading {
+  display: grid;
+  grid-template-columns: .95fr 1.05fr;
+  align-items: end;
+  gap: 48px;
+  width: calc(100% - var(--expanded-logo) * .9);
+  max-width: 840px;
+  margin: 0 0 28px calc(var(--expanded-logo) * .9);
+}
+.service-kicker { margin: 0 0 12px; color: #334d87; font-size: 10px; font-weight: 700; letter-spacing: .13em; line-height: 1.5; }
+.service-section-heading h2 { margin: 0; color: #202b3b; font-size: clamp(28px, 2.3vw, 40px); line-height: 1.08; letter-spacing: -.045em; }
+.service-section-heading h2 span { color: var(--company-blue); }
+.service-section-heading > p { max-width: 400px; margin: 0 0 3px; color: #414e60; font-size: 15px; line-height: 1.65; }
+.service-phase-tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-bottom: 24px; }
+.service-rotation-controls { display: flex; justify-content: flex-end; margin: -8px 0 14px; }
+.service-rotation-controls[hidden], .service-phase-tabs[hidden], .service-phase-panel[hidden] { display: none; }
+.service-rotation-toggle { display: inline-flex; align-items: center; gap: 8px; padding: 7px 0 7px 12px; border: 0; background: transparent; color: #334156; font: 600 12px/1.4 Arial, Helvetica, sans-serif; cursor: pointer; }
+.service-rotation-toggle:hover { color: #203f85; }
+.service-rotation-icon { position: relative; display: grid; place-items: center; width: 28px; height: 28px; border: 1px solid #c6d4ee; border-radius: 50%; }
+.service-rotation-icon::before { width: 0; height: 0; margin-left: 2px; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 7px solid #334d87; content: ""; }
+.service-rotation-toggle[data-playing="true"] .service-rotation-icon::before { width: 7px; height: 10px; margin: 0; border: 0; border-left: 2px solid #334d87; border-right: 2px solid #334d87; }
+.service-phase-tabs button {
+  position: relative;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  min-height: 86px;
+  padding: 16px 22px;
+  border: 0;
+  border-bottom: 2px solid #dce2e9;
+  background: #fff;
+  color: #35435a;
+  text-align: left;
+  font: 700 15px/1.3 Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  transition: background-color .18s, border-color .18s;
+}
+.service-phase-tabs button:hover { background: #f5f7fc; border-bottom-color: #9db7fd; }
+.service-phase-tabs button[aria-selected="true"] { border-bottom-color: var(--company-blue); background: #f0f4ff; color: #202b3b; }
+.service-phase-tabs[data-rotating="true"] button[aria-selected="true"] { border-bottom-color: #c6d5fd; }
+.service-tab-number { display: grid; place-items: center; width: 48px; height: 48px; border: 1px solid #ccd5e2; border-radius: 50%; background: #fff; color: #334d87; font-size: 19px; }
+.service-phase-tabs button[aria-selected="true"] .service-tab-number { border-color: var(--company-blue); background: var(--company-blue); color: #fff; }
+.service-tab-progress { position: absolute; left: 0; right: 0; bottom: -2px; height: 3px; background: var(--company-blue); transform: scaleX(0); transform-origin: left; pointer-events: none; }
+.service-phase-panels { display: grid; gap: 28px; }
+.service-phase-panels.is-enhanced > .service-phase-panel { grid-area: 1 / 1; }
+/* Inactive panels reserve space, keeping automatic changes from shifting the page. */
+.service-phase-panels.is-enhanced > .service-phase-panel[hidden] { display: grid; visibility: hidden; pointer-events: none; }
+.service-phase-panel {
+  display: grid;
+  transition-property: none;
+  overflow: clip;
+  grid-template-columns: minmax(0, .47fr) minmax(0, .53fr);
+  align-items: stretch;
+  gap: 0;
+  min-height: 480px;
+  padding: 0;
+  border: 1px solid #e6eaf0;
+  border-radius: 28px 28px 100px 28px;
+  background: #f2f4f7;
+  scroll-margin-top: calc(var(--bar-height) + 24px);
+}
+.service-phase-visual {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  border-radius: 26px 0 112px 26px;
+}
+.service-phase-visual img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; border-radius: inherit; object-fit: cover; }
+.service-visual-evaluation img { object-position: 75% center; }
+.service-visual-support img { object-position: 60% center; }
+.service-phase-count { position: absolute; z-index: 1; right: -40px; bottom: 36px; display: flex; align-items: center; justify-content: center; gap: 4px; width: 80px; height: 80px; border-radius: 50%; background: #fff; color: #202b3b; font-size: 20px; font-weight: 700; }
+.service-phase-count small { color: #52637c; font-size: 12px; font-weight: 400; }
+.service-phase-copy { min-width: 0; align-self: center; padding: clamp(28px, 2.5vw, 44px); }
+.service-phase-copy .service-kicker { margin-bottom: 10px; }
+.service-phase-copy h3 { margin: 0 0 14px; color: #202b3b; font-size: clamp(26px, 2vw, 34px); line-height: 1.12; letter-spacing: -.035em; }
+.service-phase-description { margin: 0; max-width: 520px; color: #414e60; font-size: 15px; line-height: 1.65; }
+.service-phase-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 22px; row-gap: 13px; margin: 22px 0 24px; padding: 0; list-style: none; }
+.service-phase-list li { position: relative; padding-left: 17px; color: #334156; font-size: 14px; line-height: 1.6; }
+.service-phase-list li::before { position: absolute; left: 0; top: .6em; width: 6px; height: 6px; border-radius: 50%; background: var(--company-blue); content: ""; }
+.service-phase-link { display: inline-flex; align-items: center; gap: 12px; padding: 6px 0; color: #243c6c; font-size: 14px; font-weight: 700; text-decoration: none; }
+.service-phase-link span { display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid #b3c8ff; border-radius: 50%; background: #fff; color: #334d87; font-size: 20px; }
+.service-phase-link:hover { text-decoration: underline; text-underline-offset: 5px; }
+.service-rotation-toggle:focus-visible, .service-phase-tabs button:focus-visible, .service-phase-link:focus-visible, .service-phase-panel:focus-visible { outline: 3px solid #244eae; outline-offset: 4px; }
+@media (max-width: 1250px) {
+  .service-phase-tabs button { grid-template-columns: 40px minmax(0, 1fr); gap: 12px; padding: 16px; font-size: 14px; }
+  .service-tab-number { width: 40px; height: 40px; }
+  .service-phase-copy { padding: 28px 26px 28px 44px; }
+  .service-phase-count { right: -32px; width: 64px; height: 64px; font-size: 18px; }
+  .service-phase-list { grid-template-columns: 1fr; row-gap: 10px; }
+}
+@media (max-width: 900px) {
+  .varadis-site .varadis-capabilities-section { padding-top: calc(28px + max(0px, var(--expanded-logo-top) + var(--expanded-logo) - var(--expanded-height))); }
+  .service-section-heading { grid-template-columns: 1fr; gap: 16px; width: 100%; max-width: none; margin: 0 0 24px; }
+  .service-section-heading h2 { font-size: clamp(30px, 4.2vw, 36px); }
+  .service-section-heading > p { max-width: 600px; }
+  .service-phase-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 20px; }
+  .service-phase-tabs button { min-height: 80px; border: 1px solid #dce2e9; border-radius: 12px; }
+  .service-phase-tabs button[aria-selected="true"] { border-color: var(--company-blue); }
+  .service-tab-progress { left: 12px; right: 12px; bottom: 0; height: 2px; border-radius: 2px; }
+  .service-phase-panel { grid-template-columns: minmax(0, 1fr); grid-template-rows: max-content 1fr; min-height: 0; padding: 0; border-radius: 24px 24px 64px 24px; }
+  .service-phase-visual { height: clamp(300px, 48vw, 420px); border-radius: 23px 23px 96px 0; }
+  .service-phase-count { right: 28px; bottom: -32px; }
+  .service-phase-copy { align-self: start; padding: 48px 28px 28px; }
+  .service-phase-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) {
+  .service-section-heading > p, .service-phase-description { font-size: 15px; }
+  .service-phase-tabs button { display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 10px; min-height: 112px; padding: 12px; font-size: 14px; }
+  .service-tab-number { width: 36px; height: 36px; }
+  .service-phase-panel { border-radius: 20px 20px 52px 20px; }
+  .service-phase-visual { height: clamp(240px, 66vw, 340px); border-radius: 19px 19px 80px 0; }
+  .service-phase-copy { padding: 48px 20px 26px; }
+  .service-phase-count small { font-size: 11px; }
+  .service-phase-copy h3 { font-size: 27px; }
+  .service-phase-list { grid-template-columns: 1fr; margin-top: 20px; row-gap: 10px; }
+  .service-phase-link { gap: 10px; font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .service-phase-tabs button { transition: none; }
+}

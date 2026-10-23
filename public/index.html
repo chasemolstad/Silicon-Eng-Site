@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/concept-one.css">
   <script src="/concept-one.js" defer></script>
+  <script src="/services.js" defer></script>
 </head>
 <body data-concept="1">
   <div class="concept-switcher" role="group" aria-label="Choose a website concept">
@@ -44,64 +45,124 @@
     <main id="overview-1">
       <div class="imeg-hero-space" aria-hidden="true"></div>
       <section class="varadis-capabilities-section" id="services-1" aria-labelledby="capabilities-title-1">
-        <div class="varadis-section-heading"><p>SILICON ENGINEERING</p><h2 id="capabilities-title-1">Engineering for every phase</h2></div>
-        <div class="varadis-capability-grid">
-          <article class="varadis-image-card">
-            <div class="varadis-card-image image-chip"><img src="/img/automated-test-lab.avif" alt="Automated semiconductor test equipment"></div>
-            <h3>Test development</h3>
-            <p>Test programs developed from first plan through production release.</p>
-            <ul class="varadis-service-tags" aria-label="Test development services">
-              <li>ATE Probe Test Development including WLSCP</li>
-              <li>ATE Package Test Development</li>
-              <li>Analog / Power Management / SOC / Mixed Signal / RF Test</li>
-              <li>Design for Test Methodology (DFT)</li>
-              <li>Test plan development and production release</li>
-            </ul>
-          </article>
-          <article class="varadis-image-card">
-            <div class="varadis-card-image image-probe"><img src="/img/processor-board.jpg" alt="Semiconductor device mounted on a circuit board"></div>
-            <h3>Hardware design</h3>
-            <p>Purpose-built boards and probe architectures for demanding test conditions.</p>
-            <ul class="varadis-service-tags" aria-label="Hardware design services">
-              <li>High-density multilayer PCB stack-ups</li>
-              <li>Low-leakage, high-voltage applications</li>
-              <li>Thermal and signal integrity design</li>
-              <li>HTOL / HAST boards</li>
-              <li>Wafer-level probe card architectures</li>
-              <li>Load boards and SPICE simulations</li>
-            </ul>
-          </article>
-          <article class="varadis-image-card">
-            <div class="varadis-card-image image-application image-evaluation"><img src="/img/Semiconductor%20Test%20Chamber%20and%20Circuit%20Boards.png" alt="Semiconductor test chamber with circuit boards"></div>
-            <h3>Silicon evaluation</h3>
-            <p>Measure, qualify, debug, and improve device performance.</p>
-            <ul class="varadis-service-tags" aria-label="Silicon evaluation services">
-              <li>Product qualification (AEC-Q100, MIL-STD-883)</li>
-              <li>Silicon validation, ESD, and latchup</li>
-              <li>Die and package debug</li>
-              <li>Device and product characterization</li>
-              <li>Failure analysis and root cause detection</li>
-              <li>Test time reduction and yield improvement</li>
-            </ul>
-          </article>
-          <article class="varadis-image-card">
-            <div class="varadis-card-image image-application image-support"><img src="/img/Precision%20Microchip%20Probe%20Testing.png" alt="Precision probes testing a microchip"></div>
-            <h3>Product &amp; application support</h3>
-            <p>Support from product engineering and assembly through customer application.</p>
-            <ul class="varadis-service-tags" aria-label="Product and application support services">
-              <li>Product Engineering</li>
-              <li>Assembly Services &amp; Turnkey Operations</li>
-              <li>Samples, demo boards, and offshore release</li>
-              <li>Application board design and debug</li>
-              <li>Performance curves and datasheets</li>
-              <li>Customer demo board build and support</li>
-            </ul>
-          </article>
+        <div class="service-section-inner">
+          <div class="service-section-heading">
+            <div><p class="service-kicker">SILICON ENGINEERING</p><h2 id="capabilities-title-1">Engineering for<br><span>every phase.</span></h2></div>
+            <p>From the first test plan to the final application, we connect the expertise your silicon needs at every stage.</p>
+          </div>
+          <div class="service-rotation-controls" hidden>
+            <button class="service-rotation-toggle" type="button" aria-controls="service-phase-panels"><span class="service-rotation-icon" aria-hidden="true"></span><span class="service-rotation-label">Pause rotation</span></button>
+          </div>
+          <div class="service-phase-tabs" aria-label="Engineering capabilities" hidden>
+            <button type="button" id="service-tab-test" aria-controls="service-test"><span class="service-tab-number" aria-hidden="true">01</span><span>Test development</span></button>
+            <button type="button" id="service-tab-hardware" aria-controls="service-hardware"><span class="service-tab-number" aria-hidden="true">02</span><span>Hardware design</span></button>
+            <button type="button" id="service-tab-evaluation" aria-controls="service-evaluation"><span class="service-tab-number" aria-hidden="true">03</span><span>Silicon evaluation</span></button>
+            <button type="button" id="service-tab-support" aria-controls="service-support"><span class="service-tab-number" aria-hidden="true">04</span><span>Product support</span></button>
+          </div>
+          <div class="service-phase-panels" id="service-phase-panels">
+            <article class="service-phase-panel" id="service-test" aria-labelledby="service-test-title">
+              <figure class="service-phase-visual">
+                <img src="/img/automated-test-lab.avif" alt="Automated semiconductor test equipment" loading="lazy">
+                <span class="service-phase-count" aria-hidden="true">01 <small>/ 04</small></span>
+              </figure>
+              <div class="service-phase-copy">
+                <p class="service-kicker">FROM PLAN TO PRODUCTION</p>
+                <h3 id="service-test-title">Test development</h3>
+                <p class="service-phase-description">Test programs developed from first plan through production release.</p>
+                <ul class="service-phase-list" aria-label="Test development services">
+                  <li>ATE Probe Test Development including WLSCP</li>
+                  <li>ATE Package Test Development</li>
+                  <li>Analog / Power Management / SOC / Mixed Signal / RF Test</li>
+                  <li>Design for Test Methodology (DFT)</li>
+                  <li>Test plan development and production release</li>
+                </ul>
+                <a class="service-phase-link" href="/contact.html?concept=1">Discuss test development <span aria-hidden="true">&#8599;</span></a>
+              </div>
+            </article>
+            <article class="service-phase-panel" id="service-hardware" aria-labelledby="service-hardware-title">
+              <figure class="service-phase-visual">
+                <img src="/img/processor-board.jpg" alt="Semiconductor device mounted on a circuit board" loading="lazy">
+                <span class="service-phase-count" aria-hidden="true">02 <small>/ 04</small></span>
+              </figure>
+              <div class="service-phase-copy">
+                <p class="service-kicker">BUILT AROUND YOUR DEVICE</p>
+                <h3 id="service-hardware-title">Hardware design</h3>
+                <p class="service-phase-description">Purpose-built boards and probe architectures for demanding test conditions.</p>
+                <ul class="service-phase-list" aria-label="Hardware design services">
+                  <li>High-density multilayer PCB stack-ups</li>
+                  <li>Low-leakage, high-voltage applications</li>
+                  <li>Thermal and signal integrity design</li>
+                  <li>HTOL / HAST boards</li>
+                  <li>Wafer-level probe card architectures</li>
+                  <li>Load boards and SPICE simulations</li>
+                </ul>
+                <a class="service-phase-link" href="/contact.html?concept=1">Discuss hardware design <span aria-hidden="true">&#8599;</span></a>
+              </div>
+            </article>
+            <article class="service-phase-panel" id="service-evaluation" aria-labelledby="service-evaluation-title">
+              <figure class="service-phase-visual service-visual-evaluation">
+                <img src="/img/Semiconductor%20Test%20Chamber%20and%20Circuit%20Boards.png" alt="Semiconductor test chamber with circuit boards" loading="lazy">
+                <span class="service-phase-count" aria-hidden="true">03 <small>/ 04</small></span>
+              </figure>
+              <div class="service-phase-copy">
+                <p class="service-kicker">MEASURE. QUALIFY. IMPROVE.</p>
+                <h3 id="service-evaluation-title">Silicon evaluation</h3>
+                <p class="service-phase-description">Measure, qualify, debug, and improve device performance.</p>
+                <ul class="service-phase-list" aria-label="Silicon evaluation services">
+                  <li>Product qualification (AEC-Q100, MIL-STD-883)</li>
+                  <li>Silicon validation, ESD, and latchup</li>
+                  <li>Die and package debug</li>
+                  <li>Device and product characterization</li>
+                  <li>Failure analysis and root cause detection</li>
+                  <li>Test time reduction and yield improvement</li>
+                </ul>
+                <a class="service-phase-link" href="/contact.html?concept=1">Discuss silicon evaluation <span aria-hidden="true">&#8599;</span></a>
+              </div>
+            </article>
+            <article class="service-phase-panel" id="service-support" aria-labelledby="service-support-title">
+              <figure class="service-phase-visual service-visual-support">
+                <img src="/img/Precision%20Microchip%20Probe%20Testing.png" alt="Precision probes testing a microchip" loading="lazy">
+                <span class="service-phase-count" aria-hidden="true">04 <small>/ 04</small></span>
+              </figure>
+              <div class="service-phase-copy">
+                <p class="service-kicker">BEYOND THE TEST</p>
+                <h3 id="service-support-title">Product &amp; application support</h3>
+                <p class="service-phase-description">Support from product engineering and assembly through customer application.</p>
+                <ul class="service-phase-list" aria-label="Product and application support services">
+                  <li>Product Engineering</li>
+                  <li>Assembly Services &amp; Turnkey Operations</li>
+                  <li>Samples, demo boards, and offshore release</li>
+                  <li>Application board design and debug</li>
+                  <li>Performance curves and datasheets</li>
+                  <li>Customer demo board build and support</li>
+                </ul>
+                <a class="service-phase-link" href="/contact.html?concept=1">Discuss product support <span aria-hidden="true">&#8599;</span></a>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
-      <section class="varadis-technology" id="technology-1">
-        <div class="varadis-technology-copy"><p class="varadis-kicker">OUR TECHNOLOGY</p><h2>Three connected capabilities for every test program.</h2><p>We combine ATE experience, flexible bench automation, and purpose-built reliability hardware for Analog, Power Management, SoC, and RF products.</p><div class="varadis-tech-categories"><article><h3>01 / ATE PLATFORM EXPERTISE</h3><p>Teradyne ETS364 / ETS88 / ETS800, Microflex, UltraFlex, Advantest 93K, Accotest, ASL1000 / ASL1K, ASL3000 RF / ASL3K, and Focused Test.</p></article><article><h3>02 / BENCH AUTOMATION &amp; CUSTOM INSTRUMENTATION EXPERTISE</h3><p>GPIB-based Rack &amp; Stack, external instrument control, and custom-built test systems automated with GPIB and Python.</p></article><article><h3>03 / RELIABILITY TEST &amp; HARDWARE</h3><p>HTOL / HAST boards, low-leakage and high-voltage PCB designs, thermal and signal integrity work, and wafer-level probe card architectures.</p></article></div></div>
-        <figure class="varadis-technology-image"><img src="/img/SEMicro.avif" alt="Semiconductor microprocessor detail"><figcaption>ENGINEERED AT THE SILICON LEVEL</figcaption></figure>
+      <section class="varadis-technology" id="technology-1" aria-labelledby="technology-title-1">
+        <div class="varadis-technology-copy">
+          <p class="varadis-kicker">OUR TECHNOLOGY</p>
+          <h2 id="technology-title-1">Three connected capabilities for every test program.</h2>
+          <p>We combine ATE experience, flexible bench automation, and purpose-built reliability hardware for Analog, Power Management, SoC, and RF products.</p>
+          <div class="varadis-tech-categories">
+            <article>
+              <span class="varadis-tech-number" aria-hidden="true">01</span>
+              <div><h3>ATE platform expertise</h3><p>Teradyne ETS364 / ETS88 / ETS800, Microflex, UltraFlex, Advantest 93K, Accotest, ASL1000 / ASL1K, ASL3000 RF / ASL3K, and Focused Test.</p></div>
+            </article>
+            <article>
+              <span class="varadis-tech-number" aria-hidden="true">02</span>
+              <div><h3>Bench automation &amp; custom instrumentation expertise</h3><p>GPIB-based Rack &amp; Stack, external instrument control, and custom-built test systems automated with GPIB and Python.</p></div>
+            </article>
+            <article>
+              <span class="varadis-tech-number" aria-hidden="true">03</span>
+              <div><h3>Reliability test &amp; hardware</h3><p>HTOL / HAST boards, low-leakage and high-voltage PCB designs, thermal and signal integrity work, and wafer-level probe card architectures.</p></div>
+            </article>
+          </div>
+        </div>
+        <figure class="varadis-technology-image"><img src="/img/SEMicro.avif" alt="SiliconEng microchip resting on golden sand" loading="lazy"></figure>
       </section>
       <section class="varadis-company" id="company-1">
         <div><p class="varadis-kicker">OUR MISSION</p><h2>Helping customers achieve superior product performance.</h2><p>We empower our customers through accelerated time to market, optimized resource allocation, stringent quality control, disciplined operational expenses, and continued support through the product life cycle.</p></div>
