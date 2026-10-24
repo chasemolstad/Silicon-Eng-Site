@@ -1,7 +1,7 @@
 :root { color-scheme: light; --two-ink: #1e2933; --two-blue: #263c91; --two-muted: #626d77; --two-line: #dce1e5; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { min-width: 320px; margin: 0; color: var(--two-ink); background: #fff; font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
+body { min-width: 320px; margin: 0; color: var(--two-ink); background: #fff; font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
 a { color: inherit; }
 .two-header { min-height: 78px; padding: 0 7%; display: flex; align-items: center; justify-content: space-between; gap: 28px; border-bottom: 1px solid #e6e9ec; background: #fff; }
 .two-brand { display: inline-flex; align-items: center; gap: 10px; color: var(--two-ink); text-decoration: none; font-size: 18px; font-weight: 700; letter-spacing: -.04em; }
@@ -38,7 +38,7 @@ a { color: inherit; }
 .two-case-list { border-top: 2px solid var(--two-blue); border-bottom: 1px solid var(--two-line); }
 .two-case { padding: 22px 0; display: grid; grid-template-columns: 38px minmax(180px,220px) minmax(0,1fr); align-items: center; gap: 23px; border-bottom: 1px solid var(--two-line); }
 .two-case:last-child { border-bottom: 0; }
-.two-number { color: var(--two-blue); font: 11px monospace; }
+.two-number { color: var(--two-blue); font: 11px var(--font-sans); }
 .two-case > img { display: block; width: 100%; height: 146px; object-fit: cover; }
 .two-case > div { min-width: 0; }
 .two-type { color: var(--two-blue); font-size: 8px; letter-spacing: .1em; }

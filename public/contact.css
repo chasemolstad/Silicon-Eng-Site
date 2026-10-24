@@ -1,6 +1,6 @@
 :root { color-scheme: light; --contact-blue: #263c91; --contact-ink: #1e2933; --contact-muted: #66727d; --contact-line: #dce2e7; --contact-paper: #f4f6f7; }
 * { box-sizing: border-box; }
-body { min-width: 320px; margin: 0; background: #fff; color: var(--contact-ink); font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
+body { min-width: 320px; margin: 0; background: #fff; color: var(--contact-ink); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
 a { color: inherit; }
 .contact-header { min-height: 76px; padding: 0 max(6%, calc((100% - 1260px) / 2)); display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid #e6eaed; background: #fff; }
 .contact-brand { display: inline-flex; align-items: center; gap: 10px; color: var(--contact-ink); text-decoration: none; font-size: 18px; font-weight: 700; letter-spacing: -.04em; }

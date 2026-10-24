@@ -7,9 +7,12 @@
   <meta name="description" content="SiliconEng is an integrated circuit development partner for analog, power management, RF, and SoC products.">
   <title>SiliconEng | Integrated Circuit Development</title>
   <link rel="icon" href="/img/SiliconEngCircle.png" type="image/png">
+  <link rel="preload" href="/fonts/poppins-regular-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/fonts.css">
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/concept-one.css">
   <script src="/concept-one.js" defer></script>
+  <script src="/concept-two.js" defer></script>
   <script src="/services.js" defer></script>
 </head>
 <body data-concept="1">
@@ -21,7 +24,12 @@
   <div class="site-implementation varadis-site" id="implementation-1" data-implementation="1">
     <header class="imeg-header" aria-label="SiliconEng header">
       <div class="imeg-surface">
-        <div class="imeg-panel" aria-hidden="true"></div>
+        <div class="imeg-panel" aria-hidden="true">
+          <video class="imeg-video" autoplay muted loop playsinline preload="metadata" poster="/img/video-poster.jpg" tabindex="-1">
+            <source src="/img/video.mp4" type="video/mp4">
+          </video>
+        </div>
+        <button class="imeg-video-toggle" type="button" aria-label="Pause background video" hidden><span aria-hidden="true"></span></button>
         <a class="imeg-emblem" href="/?concept=1" aria-label="SiliconEng home">
           <img class="imeg-emblem-logo" src="/img/HQSiliconEngCircle.png" alt="" fetchpriority="high">
         </a>
@@ -182,12 +190,17 @@
       <section class="practical-hero">
         <div class="practical-hero-copy">
           <p class="practical-eyebrow">Your Silicon Partner <span></span> Santa Clara, California</p>
-          <h1>Your Silicon Partner</h1>
+          <h1>Your Silicon <strong>Partner</strong></h1>
           <p>At SiliconEng, we are your Integrated Circuit Development partner focused on Analog, Power Management, RF and SOCs.</p>
           <a class="practical-button" href="/contact.html?concept=2">Talk with an engineer <span aria-hidden="true">&rarr;</span></a>
           <p class="practical-note">Wafer probe <i></i> Package test <i></i> Silicon validation</p>
         </div>
-        <figure class="practical-chip"><img src="/img/Microchip%20Resting%20in%20Golden%20Sand.png" alt="Microchip resting in golden sand"><figcaption>Microprocessor / SiliconEng</figcaption></figure>
+        <div class="practical-chip" aria-hidden="true">
+          <video class="practical-hero-video" autoplay muted loop playsinline preload="metadata" poster="/img/siliconengvideo2-poster.jpg" tabindex="-1">
+            <source src="/img/siliconengvideo2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <button class="practical-video-toggle" type="button" aria-label="Pause hero video" hidden><span aria-hidden="true"></span></button>
       </section>
       <section class="practical-intro"><p class="practical-overline">BUILT AROUND YOUR PRODUCT</p><p>Our customers achieve record NPI cycle times and cost control with SiliconEng's functional expertise and bespoke services.</p></section>
       <section class="practical-services" id="services-2">
