@@ -1,4 +1,22 @@
 (() => {
+  const concept = new URLSearchParams(window.location.search).get("concept");
+  if (["3", "4"].includes(concept) && document.body.classList.contains("resources-two")) {
+    document.querySelectorAll("a[href]").forEach((link) => {
+      const destination = new URL(link.href);
+      if (destination.origin !== window.location.origin
+        || !["/", "/contact.html"].includes(destination.pathname)
+        || destination.searchParams.get("concept") !== "2") return;
+      destination.searchParams.set("concept", concept);
+      link.href = destination.pathname + destination.search + destination.hash;
+    });
+    const back = document.querySelector(".two-back");
+    if (back) {
+      const arrow = back.querySelector("span");
+      back.textContent = `Back to concept ${concept} `;
+      if (arrow) back.append(arrow);
+    }
+  }
+
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const pixels = (value) => Number.parseFloat(value) || 0;
 

@@ -8,72 +8,123 @@
   <title>SiliconEng | Integrated Circuit Development</title>
   <link rel="icon" href="/img/SiliconEngCircle.png" type="image/png">
   <script>
+    document.documentElement.classList.add("orbit-js");
     if (new URLSearchParams(window.location.search).get("concept") === "1") {
       window.location.replace("/concept-1.html" + window.location.search + window.location.hash);
+    } else if (new URLSearchParams(window.location.search).get("concept") === "3") {
+      window.location.replace("/concept-3.html" + window.location.search + window.location.hash);
+    } else if (new URLSearchParams(window.location.search).get("concept") === "4") {
+      window.location.replace("/concept-4.html" + window.location.search + window.location.hash);
     }
   </script>
   <link rel="preload" href="/fonts/poppins-regular-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/img/HQSiliconEngCircle.png" as="image" fetchpriority="high">
   <link rel="stylesheet" href="/fonts.css">
   <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/concept-two.css">
   <script src="/concept-two.js" defer></script>
 </head>
 <body data-concept="2">
   <div class="concept-switcher" role="group" aria-label="Website concept">
     <button type="button" data-concept-choice="2" aria-pressed="true" aria-label="Show concept 2">2</button>
+    <button type="button" data-concept-choice="3" aria-pressed="false" aria-label="Show concept 3">3</button>
+    <button type="button" data-concept-choice="4" aria-pressed="false" aria-label="Show concept 4">4</button>
   </div>
 
-  <div class="site-implementation practical-site" id="implementation-2" data-implementation="2">
-    <header class="practical-header">
-      <a class="practical-brand" href="#overview-2" aria-label="SiliconEng home"><img src="/img/SiliconEngCircle.png" alt=""><span>SiliconEng<small>Integrated circuit development</small></span></a>
-      <nav aria-label="Concept 2 navigation"><a href="#services-2">Services</a><a href="#platforms-2">Our Technology</a><a href="#company-2">Company</a><a class="practical-resource-link" href="/resources-2.html">Resources</a><a class="practical-contact-link" href="/contact.html?concept=2">Contact Us</a></nav>
+  <div class="site-implementation practical-site orbit-site" id="implementation-2" data-implementation="2">
+    <a class="orbit-skip" href="#overview-2">Skip to content</a>
+    <div class="orbit-glass" aria-hidden="true"></div>
+    <header class="orbit-header">
+      <a class="orbit-brand" href="#overview-2" aria-label="SiliconEng home"><span class="orbit-slot" aria-hidden="true"><img src="/img/HQSiliconEngCircle.png" width="1268" height="1241" alt=""></span><span class="orbit-wordmark">SiliconEng<small>Integrated circuit development</small></span></a>
+      <nav class="orbit-nav" aria-label="Main navigation"><a href="#services-2">Services</a><a href="#platforms-2">Our Technology</a><a href="#company-2">Company</a><a href="/resources-2.html">Resources</a></nav>
+      <a class="orbit-contact" href="/contact.html?concept=2">Contact Us <span aria-hidden="true">&rarr;</span></a>
+      <button class="orbit-menu-toggle" type="button" aria-expanded="false" aria-controls="orbit-menu"><span data-menu-label>Menu</span><span class="orbit-menu-icon" aria-hidden="true"><i></i><i></i></span></button>
     </header>
-    <main id="overview-2">
-      <section class="practical-hero">
-        <div class="practical-hero-copy">
-          <p class="practical-eyebrow">Your Silicon Partner <span></span> Santa Clara, California</p>
-          <h1>Your Silicon <strong>Partner</strong></h1>
-          <p>At SiliconEng, we are your Integrated Circuit Development partner focused on Analog, Power Management, RF and SOCs.</p>
-          <a class="practical-button" href="/contact.html?concept=2">Talk with an engineer <span aria-hidden="true">&rarr;</span></a>
-          <p class="practical-note">Wafer probe <i></i> Package test <i></i> Silicon validation</p>
+    <div class="orbit-menu" id="orbit-menu" hidden>
+      <nav aria-label="Mobile navigation"><a href="#services-2">Services</a><a href="#platforms-2">Our Technology</a><a href="#company-2">Company</a><a href="/resources-2.html">Resources</a></nav>
+      <a class="orbit-cta" href="/contact.html?concept=2">Talk with an engineer <span aria-hidden="true">&rarr;</span></a>
+      <p><span>Santa Clara, California</span><a href="mailto:info@siliconeng.com">info@siliconeng.com</a></p>
+    </div>
+    <main id="overview-2" tabindex="-1">
+      <section class="orbit-hero" aria-labelledby="orbit-title">
+        <video class="orbit-video" autoplay muted loop playsinline preload="metadata" poster="/img/siliconengvideo2-poster.jpg" aria-hidden="true" tabindex="-1"><source src="/img/siliconengvideo2.mp4" type="video/mp4"></video>
+        <div class="orbit-lens">
+          <div class="orbit-copy">
+            <span class="orbit-wrap orbit-wrap-mark" aria-hidden="true"></span><span class="orbit-wrap orbit-wrap-edge" aria-hidden="true"></span>
+            <p class="orbit-eyebrow">Santa Clara, California</p>
+            <h1 class="orbit-title" id="orbit-title"><span>Your Silicon</span> <strong>Partner</strong></h1>
+            <p class="orbit-lede">At SiliconEng, we are your Integrated Circuit Development partner focused on Analog, Power Management, RF and SOCs.</p>
+            <ul class="orbit-tags" aria-label="Core services"><li>Wafer probe</li><li>Package test</li><li>Silicon validation</li></ul>
+          </div>
+          <div class="orbit-cta-wrap"><a class="orbit-cta" href="/contact.html?concept=2">Talk with an engineer <span aria-hidden="true">&rarr;</span></a></div>
         </div>
-        <div class="practical-chip" aria-hidden="true">
-          <video class="practical-hero-video" autoplay muted loop playsinline preload="metadata" poster="/img/siliconengvideo2-poster.jpg" tabindex="-1">
-            <source src="/img/siliconengvideo2.mp4" type="video/mp4">
-          </video>
-        </div>
-        <button class="practical-video-toggle" type="button" aria-label="Pause hero video" hidden><span aria-hidden="true"></span></button>
+        <figure class="orbit-mark"><div class="orbit-mark-inner"><img src="/img/HQSiliconEngCircle.png" width="1268" height="1241" alt="SiliconEng's silver, black, and blue circular wafer mark" fetchpriority="high"><span class="orbit-mark-glint" aria-hidden="true"></span></div></figure>
+        <a class="orbit-scroll" href="#services-2"><span>Scroll</span><i aria-hidden="true"></i></a>
+        <button class="orbit-video-toggle" type="button" aria-label="Pause hero video" data-playing="true"><svg data-icon="pause" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2h3v12H4zm5 0h3v12H9z"/></svg><svg data-icon="play" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="m5 2 9 6-9 6z"/></svg></button>
       </section>
       <section class="practical-intro"><p class="practical-overline">BUILT AROUND YOUR PRODUCT</p><p>Our customers achieve record NPI cycle times and cost control with SiliconEng's functional expertise and bespoke services.</p></section>
       <section class="practical-services" id="services-2">
-        <div class="practical-section-heading"><div><p class="practical-overline">SERVICES</p><h2>Engineering from test plan to production release.</h2></div><p>From ATE test development and custom hardware to silicon evaluation and product support.</p></div>
+        <div class="practical-section-heading"><div><p class="practical-overline">SERVICES</p><h2>Engineering From Test Plan To Production Release.</h2></div><p>From ATE test development and custom hardware to silicon evaluation, product support, and turnkey operations.</p></div>
         <div class="practical-service-columns">
           <article>
-            <span class="practical-index">01 / TEST DEVELOPMENT</span><h3>Wafer probe &amp; package test</h3><p class="practical-service-summary">Test programs from first plan through production release.</p>
-            <details class="service-details"><summary>View service details</summary><div class="service-details-content"><div><ul><li>ATE Probe Test Development, including WLSCP</li><li>ATE Package Test Development</li><li>Analog / Power Management / SoC / Mixed Signal / RF test</li><li>Design for Test Methodology (DFT), with early design-team engagement</li><li>Test plan development and detailed documentation</li><li>Production release and post-release support</li></ul></div></div></details>
+            <span class="practical-index">01 / TEST DEVELOPMENT</span><h3>Wafer Probe &amp; Package Test</h3><p class="practical-service-summary">Test programs from first plan through production release.</p>
+            <details class="service-details"><summary>View service details</summary><div class="service-details-content"><div><ul><li>ATE Probe &amp; Package Test Development, including WLCSP</li><li>Analog / Power Management / SoC / Mixed Signal / RF test</li><li>Design for Test Methodology (DFT), with early design-team engagement</li><li>Test plan development and detailed documentation</li><li>Production release and post-release support</li></ul></div></div></details>
           </article>
           <article>
-            <span class="practical-index">02 / HARDWARE DESIGN</span><h3>Purpose-built test hardware</h3><p class="practical-service-summary">High-density PCB stack-ups, reliability boards, and wafer probe card architectures.</p>
+            <span class="practical-index">02 / HARDWARE DESIGN</span><h3>Purpose-Built Test Hardware</h3><p class="practical-service-summary">High-density PCB stack-ups, reliability boards, and wafer probe card architectures.</p>
             <details class="service-details"><summary>View service details</summary><div class="service-details-content"><div><ul><li>High-density multilayer PCB stack-ups</li><li>Low-leakage, high-voltage applications</li><li>Thermal and signal integrity design</li><li>HTOL / HAST boards</li><li>Wafer-level probe card architectures</li><li>Load board design and SPICE simulations</li></ul></div></div></details>
           </article>
           <article>
-            <span class="practical-index">03 / SILICON EVALUATION</span><h3>Qualification &amp; characterization</h3><p class="practical-service-summary">Device validation, debug, analysis, and yield improvement.</p>
-            <details class="service-details"><summary>View service details</summary><div class="service-details-content"><div><ul><li>Product qualification (AEC-Q100, MIL-STD-883)</li><li>Silicon validation, ESD, and latchup</li><li>Die and package debug</li><li>Device and product characterization</li><li>Failure analysis and root cause detection</li><li>Test time reduction and yield improvement</li></ul></div></div></details>
+            <span class="practical-index">03 / SILICON EVALUATION</span><h3>Qualification &amp; Characterization</h3><p class="practical-service-summary">Validate, qualify, debug, and improve device performance.</p>
+            <details class="service-details"><summary>View service details</summary><div class="service-details-content"><div><ul><li>Product qualification (AEC-Q100, MIL-STD-883)</li><li>Silicon validation, ESD, and latchup</li><li>Die and package debug</li><li>Device and product characterization</li><li>Failure analysis and root cause detection</li><li>Product Robustness Testing Under Extreme Conditions</li></ul></div></div></details>
           </article>
           <article>
-            <span class="practical-index">04 / PRODUCT SUPPORT</span><h3>Product &amp; application support</h3><p class="practical-service-summary">Product engineering, assembly, turnkey operations, and application support.</p>
-            <details class="service-details"><summary>View service details</summary><div class="service-details-content"><div><ul><li>Product engineering</li><li>Assembly Services &amp; Turnkey Operations</li><li>Samples, demo boards, and offshore release</li><li>Application board design and debug</li><li>Performance curves and datasheets</li><li>Customer demo board build and support</li></ul></div></div></details>
+            <span class="practical-index">04 / PRODUCT SUPPORT</span><h3>Product &amp; Application Support</h3><p class="practical-service-summary">Product engineering, application support, test time reduction, and yield improvement.</p>
+            <details class="service-details"><summary>View service details</summary><div class="service-details-content"><div><ul><li>Product engineering</li><li>Assembly Services &amp; Turnkey Operations</li><li>Samples, demo boards, and offshore release</li><li>Application board design and debug</li><li>Performance curves and datasheets</li><li>Customer demo board build and support</li><li>Test time reduction and yield improvement</li></ul></div></div></details>
+          </article>
+          <article>
+            <span class="practical-index">05 / TURNKEY OPERATIONS</span>
+            <h3>Turnkey Operations <small>(Onshore &amp; Offshore)</small></h3>
+            <p class="practical-service-summary">From assembly and multisite test to inventory management and drop shipping.</p>
+            <details class="service-details"><summary>View service details</summary><div class="service-details-content"><div><ul><li>Assembly &mdash; engagement with industry-leading partners</li><li>Wafer Probe</li><li>Multisite Test</li><li>Tape &amp; Reel</li><li>Inventory Management</li><li>Drop Ship Services</li></ul></div></div></details>
           </article>
         </div>
       </section>
       <section class="practical-platforms" id="platforms-2">
-        <div><p class="practical-overline">OUR TECHNOLOGY &amp; TEST METHODS</p><h2>Three capabilities for each test program.</h2><p>ATE platform expertise, flexible bench automation, and purpose-built reliability hardware for Analog, Power Management, SoC, and RF products.</p></div>
-        <div class="practical-platform-list"><p><strong>ATE platform expertise</strong><span>Teradyne ETS364 / ETS88 / ETS800, Microflex, UltraFlex, Advantest 93K, Accotest, ASL1000 / ASL1K, ASL3000 RF / ASL3K, and Focused Test.</span></p><p><strong>Bench automation &amp; custom instrumentation expertise</strong><span>GPIB-based Rack &amp; Stack, external instrument control, and custom-built test systems automated with GPIB and Python.</span></p><p><strong>Reliability test &amp; hardware</strong><span>HTOL / HAST boards, high-density multilayer PCB stack-ups for low-leakage and high-voltage use, thermal and signal integrity design, and wafer-level probe card architectures.</span></p></div>
+        <div><p class="practical-overline">OUR TECHNOLOGY &amp; TEST METHODS</p><h2>Three capabilities for every test solution.</h2><p>ATE platform expertise, flexible bench automation, and purpose-built reliability hardware for Analog, Power Management, SoC, and RF products.</p></div>
+        <div class="practical-platform-list"><p><strong>ATE platform expertise</strong><span>Teradyne ETS364 / ETS88 / ETS800, Microflex, UltraFlex, Advantest 93K, Accotest, Chroma Test, ASL1000, and Focused Test.</span></p><p><strong>Bench automation &amp; custom instrumentation expertise</strong><span>GPIB-based Rack &amp; Stack, external instrument control, and custom-built test systems automated with GPIB and Python.</span></p><p><strong>Reliability test &amp; hardware</strong><span>HTOL / HAST boards, high-density multilayer PCB stack-ups for low-leakage and high-voltage use, thermal and signal integrity design, and wafer-level probe card architectures.</span></p></div>
       </section>
       <section class="practical-company" id="company-2">
         <div class="practical-mission"><p class="practical-overline">OUR MISSION</p><h2>Help customers achieve superior product performance.</h2><p>To empower our customers to achieve superior product performance metrics through:</p><ul><li>Accelerated time to market</li><li>Optimized resource allocation</li><li>Stringent quality control</li><li>Disciplined operational expenses</li><li>Continued support through product life cycle</li></ul></div>
         <div class="practical-value"><p class="practical-overline">OUR VALUE PROPOSITION</p><h2>Silicon engineering when you need it.</h2><p>At SiliconEng, we offer a comprehensive suite of silicon engineering services, providing:</p><details class="value-details"><summary>View our value proposition</summary><div class="service-details-content"><div><ul><li><strong>One-stop shop for silicon engineering:</strong> Streamline your R&amp;D and operations with our full range of services.</li><li><strong>Specialized expertise:</strong> Avoid the financial burden of maintaining a diverse resource pool of Validation, Test, Product, Packaging, and Quality Engineers.</li><li><strong>Cost-effective access to state-of-the-art equipment:</strong> Minimize the need to own and operate expensive Automated Test Equipment (ATE) and lab facilities.</li><li><strong>Hybrid team model:</strong> Benefit from Silicon Valley expertise combined with offshore partners for exceptional cycle times and optimized development budgets.</li><li><strong>"Left Shift" practices:</strong> Implement critical NPI phase practices to prevent costly silicon re-spins.</li><li><strong>Legacy device modernization:</strong> Port legacy devices and systems to modern ATEs for improved quality and manufacturability.</li></ul></div></div></details></div>
       </section>
       <section class="practical-why"><p class="practical-overline">WHY CHOOSE SILICONENG?</p><h2>Innovative Methodologies, Exceptional Results</h2><p>We bring a practical perspective to semiconductor development, helping teams improve product performance, quality, and execution throughout their silicon programs.</p></section>
+      <section class="practical-about" id="about-2" aria-labelledby="about-title-2">
+        <div class="practical-about-heading">
+          <p class="practical-overline">OUR TEAM</p>
+          <h2 id="about-title-2">About SiliconEng</h2>
+          <div class="practical-about-experience"><strong>100+</strong><span>years of combined<br>team experience</span></div>
+        </div>
+        <div class="practical-about-copy">
+          <p class="practical-about-intro">SiliconEng brings together highly skilled professionals specializing in analog, power management, SoC, and RF integrated circuits and systems. We help semiconductor teams improve efficiency across post-silicon development, from the first test plan to high-volume production.</p>
+          <p>Our services span ATE test development, product characterization, demo board development, reliability and AEC-Q100 qualification, datasheet creation, sample generation, warehousing, and release into onshore and offshore high-volume production.</p>
+          <div class="practical-about-focus">
+            <div>
+              <h3>Practical ATE expertise</h3>
+              <p>Our experience covers Teradyne ETS364, ETS88, and ETS800; Accotest; Microflex; UltraFlex; Advantest 93K; Chroma Test; and legacy ASL1000 systems. We also develop custom test systems using Python to automate instruments over USB and GPIB.</p>
+            </div>
+            <div>
+              <h3>Quality at every stage</h3>
+              <p>We develop test plans, design and build test and bench hardware, and write test programs supported by thorough documentation. Our quality checks include Gauge R&amp;R, spike checks, and software robustness testing, with a focus on quality, performance, and on-time delivery.</p>
+            </div>
+          </div>
+          <div class="practical-about-projects">
+            <h3>ITAR-Sensitive Project Support</h3>
+            <p>Contact our team to discuss support for ITAR-sensitive projects and your program&rsquo;s requirements.</p>
+            <a href="/contact.html?concept=2">Discuss Your Project <span aria-hidden="true">&#8599;</span></a>
+          </div>
+        </div>
+      </section>
     </main>
     <footer class="practical-footer" id="contact-2"><a class="practical-brand" href="#overview-2"><img src="/img/SiliconEngCircle.png" alt=""><span>SiliconEng<small>Integrated circuit development</small></span></a><div><a href="mailto:info@siliconeng.com">info@siliconeng.com</a><a href="tel:+16692455007">+1 669 245 5007</a><span>Santa Clara, CA 95051</span></div><small>&copy; <span class="current-year">2026</span> SiliconEng</small></footer>
   </div>
@@ -83,7 +134,7 @@
       document.querySelectorAll("[data-concept-choice]").forEach((button) => {
         button.addEventListener("click", () => {
           if (document.body.dataset.concept !== button.dataset.conceptChoice) {
-            window.location.assign("/");
+            window.location.assign(`/?concept=${button.dataset.conceptChoice}`);
             return;
           }
           window.scrollTo({ top: 0, behavior: "smooth" });

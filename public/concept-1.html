@@ -18,6 +18,8 @@
 <body data-concept="1">
   <div class="concept-switcher" role="group" aria-label="Website concept">
     <button type="button" data-concept-choice="2" aria-pressed="false" aria-label="Show concept 2">2</button>
+    <button type="button" data-concept-choice="3" aria-pressed="false" aria-label="Show concept 3">3</button>
+    <button type="button" data-concept-choice="4" aria-pressed="false" aria-label="Show concept 4">4</button>
   </div>
 
   <div class="site-implementation varadis-site" id="implementation-1" data-implementation="1">
@@ -74,11 +76,10 @@
               </figure>
               <div class="service-phase-copy">
                 <p class="service-kicker">FROM PLAN TO PRODUCTION</p>
-                <h3 id="service-test-title">Test development</h3>
+                <h3 id="service-test-title">Test Development</h3>
                 <p class="service-phase-description">Test programs developed from first plan through production release.</p>
                 <ul class="service-phase-list" aria-label="Test development services">
-                  <li>ATE Probe Test Development including WLSCP</li>
-                  <li>ATE Package Test Development</li>
+                  <li>ATE Probe &amp; Package Test Development, including WLCSP</li>
                   <li>Analog / Power Management / SOC / Mixed Signal / RF Test</li>
                   <li>Design for Test Methodology (DFT)</li>
                   <li>Test plan development and production release</li>
@@ -93,7 +94,7 @@
               </figure>
               <div class="service-phase-copy">
                 <p class="service-kicker">BUILT AROUND YOUR DEVICE</p>
-                <h3 id="service-hardware-title">Hardware design</h3>
+                <h3 id="service-hardware-title">Hardware Design</h3>
                 <p class="service-phase-description">Purpose-built boards and probe architectures for demanding test conditions.</p>
                 <ul class="service-phase-list" aria-label="Hardware design services">
                   <li>High-density multilayer PCB stack-ups</li>
@@ -112,16 +113,16 @@
                 <span class="service-phase-count" aria-hidden="true">03 <small>/ 04</small></span>
               </figure>
               <div class="service-phase-copy">
-                <p class="service-kicker">MEASURE. QUALIFY. IMPROVE.</p>
-                <h3 id="service-evaluation-title">Silicon evaluation</h3>
-                <p class="service-phase-description">Measure, qualify, debug, and improve device performance.</p>
+                <p class="service-kicker">VALIDATE. QUALIFY. IMPROVE.</p>
+                <h3 id="service-evaluation-title">Silicon Evaluation</h3>
+                <p class="service-phase-description">Validate, qualify, debug, and improve device performance.</p>
                 <ul class="service-phase-list" aria-label="Silicon evaluation services">
                   <li>Product qualification (AEC-Q100, MIL-STD-883)</li>
                   <li>Silicon validation, ESD, and latchup</li>
                   <li>Die and package debug</li>
                   <li>Device and product characterization</li>
                   <li>Failure analysis and root cause detection</li>
-                  <li>Test time reduction and yield improvement</li>
+                  <li>Product Robustness Testing Under Extreme Conditions</li>
                 </ul>
                 <a class="service-phase-link" href="/contact.html?concept=1">Discuss silicon evaluation <span aria-hidden="true">&#8599;</span></a>
               </div>
@@ -133,7 +134,7 @@
               </figure>
               <div class="service-phase-copy">
                 <p class="service-kicker">BEYOND THE TEST</p>
-                <h3 id="service-support-title">Product &amp; application support</h3>
+                <h3 id="service-support-title">Product &amp; Application Support</h3>
                 <p class="service-phase-description">Support from product engineering and assembly through customer application.</p>
                 <ul class="service-phase-list" aria-label="Product and application support services">
                   <li>Product Engineering</li>
@@ -142,6 +143,7 @@
                   <li>Application board design and debug</li>
                   <li>Performance curves and datasheets</li>
                   <li>Customer demo board build and support</li>
+                  <li>Test time reduction and yield improvement</li>
                 </ul>
                 <a class="service-phase-link" href="/contact.html?concept=1">Discuss product support <span aria-hidden="true">&#8599;</span></a>
               </div>
@@ -152,12 +154,12 @@
       <section class="varadis-technology" id="technology-1" aria-labelledby="technology-title-1">
         <div class="varadis-technology-copy">
           <p class="varadis-kicker">OUR TECHNOLOGY</p>
-          <h2 id="technology-title-1">Three connected capabilities for every test program.</h2>
+          <h2 id="technology-title-1">Three connected capabilities for every test solution.</h2>
           <p>We combine ATE experience, flexible bench automation, and purpose-built reliability hardware for Analog, Power Management, SoC, and RF products.</p>
           <div class="varadis-tech-categories">
             <article>
               <span class="varadis-tech-number" aria-hidden="true">01</span>
-              <div><h3>ATE platform expertise</h3><p>Teradyne ETS364 / ETS88 / ETS800, Microflex, UltraFlex, Advantest 93K, Accotest, ASL1000 / ASL1K, ASL3000 RF / ASL3K, and Focused Test.</p></div>
+              <div><h3>ATE platform expertise</h3><p>Teradyne ETS364 / ETS88 / ETS800, Microflex, UltraFlex, Advantest 93K, Accotest, Chroma Test, ASL1000, and Focused Test.</p></div>
             </article>
             <article>
               <span class="varadis-tech-number" aria-hidden="true">02</span>
@@ -185,7 +187,7 @@
       document.querySelectorAll("[data-concept-choice]").forEach((button) => {
         button.addEventListener("click", () => {
           if (document.body.dataset.concept !== button.dataset.conceptChoice) {
-            window.location.assign("/");
+            window.location.assign(`/?concept=${button.dataset.conceptChoice}`);
             return;
           }
           window.scrollTo({ top: 0, behavior: "smooth" });

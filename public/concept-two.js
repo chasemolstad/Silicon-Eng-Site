@@ -1,11 +1,180 @@
 (() => {
   const site = document.querySelector('#implementation-2');
-  const hero = site?.querySelector('.practical-hero');
-  const video = hero?.querySelector('.practical-hero-video');
-  const toggle = hero?.querySelector('.practical-video-toggle');
-  if (!video || !toggle) return;
+  if (!site) return;
+  const header = site.querySelector('.orbit-header');
+  const brand = header.querySelector('.orbit-brand');
+  const slot = header.querySelector('.orbit-slot');
+  const glass = site.querySelector('.orbit-glass');
+  const hero = site.querySelector('.orbit-hero');
+  const lens = site.querySelector('.orbit-lens');
+  const mark = site.querySelector('.orbit-mark');
+  const markInner = mark.querySelector('.orbit-mark-inner');
+  const menuToggle = header.querySelector('.orbit-menu-toggle');
+  const menuPanel = site.querySelector('.orbit-menu');
+  const main = site.querySelector('main');
+  const footer = site.querySelector('footer');
+  const switcher = document.querySelector('.concept-switcher');
+  const phone = matchMedia('(max-width: 860px)');
+  const motion = matchMedia('(prefers-reduced-motion: reduce)');
+  const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
+  const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
+  const lerp = (from, to, t) => from + (to - from) * t;
+  const easeInOut = t => (t < .5 ? 4 * t ** 3 : 1 - (-2 * t + 2) ** 3 / 2);
 
-  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  // While the header holds focus or the menu is open, the bar is shown outright instead of waiting for scroll.
+  let focusInside = false;
+  function isForced() { return focusInside || !menuPanel.hidden; }
+
+  // Mobile navigation
+  function closeMenu(restoreFocus = false) {
+    if (menuPanel.hidden) return;
+    menuPanel.hidden = true;
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.querySelector('[data-menu-label]').textContent = 'Menu';
+    document.body.classList.remove('orbit-menu-open');
+    [main, footer, switcher].forEach(element => { if (element) element.inert = false; });
+    if (restoreFocus) menuToggle.focus({ preventScroll: true });
+    requestRender();
+  }
+  menuToggle.addEventListener('click', () => {
+    if (!menuPanel.hidden) return closeMenu(true);
+    menuPanel.hidden = false;
+    menuToggle.setAttribute('aria-expanded', 'true');
+    menuToggle.querySelector('[data-menu-label]').textContent = 'Close';
+    document.body.classList.add('orbit-menu-open');
+    [main, footer, switcher].forEach(element => { if (element) element.inert = true; });
+    requestRender();
+  });
+  menuPanel.querySelectorAll('a').forEach(link => link.addEventListener('click', () => closeMenu()));
+  document.addEventListener('keydown', event => {
+    if (menuPanel.hidden) return;
+    if (event.key === 'Escape') { event.preventDefault(); closeMenu(true); }
+    if (event.key === 'Tab') {
+      const targets = [brand, menuToggle, ...menuPanel.querySelectorAll('a')];
+      const first = targets[0];
+      const last = targets.at(-1);
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    }
+  });
+  phone.addEventListener('change', () => { if (!phone.matches) closeMenu(); });
+  header.addEventListener('focusin', () => { focusInside = true; requestRender(); });
+  header.addEventListener('focusout', event => { if (!header.contains(event.relatedTarget)) { focusInside = false; requestRender(); } });
+
+  // Highlight the nav link for the section crossing the upper middle of the viewport.
+  const navLinks = [...header.querySelectorAll('.orbit-nav a[href^="#"]')];
+  const crossing = new Set();
+  const spy = new IntersectionObserver(entries => {
+    entries.forEach(entry => { if (entry.isIntersecting) crossing.add(entry.target.id); else crossing.delete(entry.target.id); });
+    const current = navLinks.filter(link => crossing.has(link.hash.slice(1))).at(-1);
+    navLinks.forEach(link => link.classList.toggle('is-active', link === current));
+  }, { rootMargin: '-42% 0px -57% 0px' });
+  navLinks.forEach(link => { const section = document.querySelector(link.hash); if (section) spy.observe(section); });
+
+  // Scroll builds the top bar: the copy fades, the lens stretches from a circle into the bar,
+  // the mark flies into the bar's slot, and finally the nav fades in.
+  let geometry;
+  let frame = 0;
+  function offsetFrom(element) {
+    let left = 0;
+    let top = 0;
+    for (let node = element; node; node = node.offsetParent) { left += node.offsetLeft; top += node.offsetTop; }
+    return { left, top };
+  }
+  function measure() {
+    const box = offsetFrom(mark);
+    const size = mark.offsetWidth;
+    // The header is fixed, so the slot's offsets are already viewport coordinates.
+    const target = offsetFrom(slot);
+    geometry = {
+      x: box.left + size * .4976,
+      y: box.top + size * .4775,
+      size,
+      targetX: target.left + slot.offsetWidth * .4976,
+      targetY: target.top + slot.offsetWidth * .4775,
+      targetSize: slot.offsetWidth,
+      travel: clamp(hero.offsetHeight * .62, 260, 620),
+      heroEnd: hero.offsetTop + hero.offsetHeight
+    };
+  }
+  function resetMorph() {
+    site.classList.remove('is-morphing', 'is-flying', 'is-docked');
+    mark.style.transform = '';
+    site.style.setProperty('--o-hero', '1');
+  }
+  function render() {
+    frame = 0;
+    if (!geometry) return;
+    const y = scrollY;
+    const forced = isForced();
+    const morph = !motion.matches;
+    site.classList.toggle('has-morph', morph);
+    site.classList.toggle('is-past', y > geometry.heroEnd - 80);
+    header.classList.toggle('is-forced', forced && (!morph || y < geometry.travel));
+    if (!morph) {
+      resetMorph();
+      header.classList.toggle('is-bar', forced || y > 24);
+      return;
+    }
+    const raw = clamp(y / geometry.travel);
+    const shape = easeInOut(raw);
+    site.style.setProperty('--o-hero', clamp(1 - raw * 4).toFixed(3));
+    site.style.setProperty('--o-drift', `${Math.min(y * .12, 90).toFixed(1)}px`);
+
+    site.classList.toggle('is-morphing', raw > 0);
+    let glassTop = Infinity;
+    if (raw > 0) {
+      const circle = lens.getBoundingClientRect();
+      const width = document.documentElement.clientWidth;
+      const bar = header.offsetHeight;
+      glassTop = lerp(circle.top, 0, shape);
+      glass.style.left = `${lerp(circle.left, 0, shape).toFixed(1)}px`;
+      glass.style.top = `${glassTop.toFixed(1)}px`;
+      glass.style.width = `${lerp(circle.width, width, shape).toFixed(1)}px`;
+      glass.style.height = `${lerp(circle.height, bar, shape).toFixed(1)}px`;
+      glass.style.borderRadius = `${lerp(circle.width / 2, 0, shape).toFixed(1)}px`;
+      glass.style.setProperty('--e', shape.toFixed(3));
+    }
+    // The header type turns dark once the glass has spread out under it.
+    header.classList.toggle('is-bar', shape > .62 && glassTop < header.offsetHeight * .5);
+
+    // The mark rises quickly while it shrinks, then slides home along the bar.
+    const rise = 1 - (1 - raw) ** 2;
+    const slide = raw ** 2;
+    const scale = Math.pow(geometry.targetSize / geometry.size, raw);
+    mark.style.transform = raw > 0
+      ? `translate3d(${((geometry.targetX - geometry.x) * slide).toFixed(1)}px, ${((geometry.targetY - (geometry.y - y)) * rise).toFixed(1)}px, 0) scale(${scale.toFixed(4)})`
+      : '';
+    site.classList.toggle('is-flying', raw > 0 && raw < 1);
+    site.classList.toggle('is-docked', raw >= 1);
+  }
+  function requestRender() { if (!frame) frame = requestAnimationFrame(render); }
+  function remeasure() { measure(); render(); }
+  addEventListener('scroll', requestRender, { passive: true });
+  addEventListener('resize', remeasure);
+  new ResizeObserver(remeasure).observe(hero);
+  motion.addEventListener('change', remeasure);
+  document.fonts?.ready.then(remeasure);
+  // The lens slides out of the mark on load; keep the glass in step if the page loads part-way down.
+  lens.addEventListener('animationend', requestRender);
+
+  // Light catches the silver mark as the pointer moves across the hero, and the mark drifts away from it.
+  hero.addEventListener('pointermove', event => {
+    if (event.pointerType !== 'mouse' || !finePointer.matches || motion.matches || site.classList.contains('is-flying') || site.classList.contains('is-docked')) return;
+    const box = markInner.getBoundingClientRect();
+    markInner.style.setProperty('--gx', `${clamp((event.clientX - box.left) / box.width * 100, -25, 125).toFixed(1)}%`);
+    markInner.style.setProperty('--gy', `${clamp((event.clientY - box.top) / box.height * 100, -25, 125).toFixed(1)}%`);
+    const heroBox = hero.getBoundingClientRect();
+    markInner.style.setProperty('--wx', `${(((event.clientX - heroBox.left) / heroBox.width - .5) * -16).toFixed(1)}px`);
+    markInner.style.setProperty('--wy', `${(((event.clientY - heroBox.top) / heroBox.height - .5) * -16).toFixed(1)}px`);
+  });
+  hero.addEventListener('pointerleave', () => {
+    ['--gx', '--gy', '--wx', '--wy'].forEach(name => markInner.style.removeProperty(name));
+  });
+
+  // Hero video
+  const video = hero.querySelector('.orbit-video');
+  const toggle = hero.querySelector('.orbit-video-toggle');
   let inView = false;
   let pausedByUser = false;
   let motionOverride = false;
@@ -15,11 +184,10 @@
     toggle.dataset.playing = String(!video.paused);
     toggle.setAttribute('aria-label', video.paused ? 'Play hero video' : 'Pause hero video');
   }
-
   function syncPlayback() {
     toggle.hidden = Boolean(video.error);
     const shouldPlay = !site.hidden && !document.hidden && inView && !pausedByUser
-      && (!reducedMotion.matches || motionOverride) && !video.error;
+      && (!motion.matches || motionOverride) && !video.error;
     if (!shouldPlay) {
       video.pause();
     } else if (video.paused && !playPending) {
@@ -38,16 +206,16 @@
     motionOverride = !pausedByUser;
     syncPlayback();
   });
-  reducedMotion.addEventListener('change', () => {
+  motion.addEventListener('change', () => {
     motionOverride = false;
     syncPlayback();
   });
   document.addEventListener('visibilitychange', syncPlayback);
-  window.addEventListener('pageshow', syncPlayback);
-  new MutationObserver(syncPlayback).observe(document.body, { attributes: true, attributeFilter: ['data-concept'] });
+  addEventListener('pageshow', () => { closeMenu(); syncPlayback(); });
   new IntersectionObserver(([entry]) => {
     inView = entry.isIntersecting;
     syncPlayback();
   }).observe(hero);
+  remeasure();
   syncPlayback();
 })();
