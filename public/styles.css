@@ -484,7 +484,7 @@ section[id], main[id] { scroll-margin-top: 64px; }
 .practical-services { padding: 76px max(clamp(24px, 2.5vw, 64px), calc((100% - 1760px) / 2)) 83px; background: #fff; }
 .practical-section-heading { max-width: 1200px; margin: 0 auto 38px; display: grid; grid-template-columns: 1.05fr .95fr; align-items: end; gap: 8%; }
 .practical-section-heading .practical-overline { margin-bottom: 12px; }
-.practical-section-heading h2, .practical-platforms h2, .practical-mission h2, .practical-value h2, .practical-why h2 { margin-bottom: 0; font-size: clamp(32px, 3.5vw, 46px); line-height: 1.13; letter-spacing: -.04em; font-weight: 600; }
+.practical-section-heading h2, .practical-platforms h2, .practical-company-overview h2, .practical-mission h2, .practical-value h2, .practical-why h2 { margin-bottom: 0; font-size: clamp(32px, 3.5vw, 46px); line-height: 1.13; letter-spacing: -.04em; font-weight: 600; }
 .practical-section-heading > p { margin: 0 0 2px; color: var(--p-muted); font-size: 16px; line-height: 1.75; }
 .practical-service-columns { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 2px solid #5369d9; border-bottom: 1px solid var(--p-line); }
 .practical-service-columns article { min-width: 0; padding: 25px 20px; border-right: 1px solid var(--p-line); }
@@ -505,7 +505,14 @@ section[id], main[id] { scroll-margin-top: 64px; }
 .practical-platform-list p { margin: 0; padding: 19px 20px; display: grid; grid-template-columns: 1fr; gap: 10px; align-items: start; border: 1px solid #ffffff3d; background: #ffffff0a; font-size: 16px; line-height: 1.7; }
 .practical-platform-list strong { color: #fff; font-size: 15px; font-weight: 600; }
 .practical-platform-list span { color: #f2f3f6; }
-.practical-company { padding: 78px max(7%, calc((100% - 1200px) / 2)); display: grid; grid-template-columns: .78fr 1.22fr; gap: 9%; background: #f3f5f7; }
+.practical-company { padding: 78px max(7%, calc((100% - 1200px) / 2)); display: grid; grid-template-columns: .78fr 1.22fr; gap: 64px 9%; background: #f3f5f7; }
+/* The company overview spans both columns and lines its copy up with the value proposition below. */
+.practical-company-overview { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: start; padding-bottom: 60px; border-bottom: 1px solid #d6dce1; }
+.practical-company-overview h2 { margin: 13px 0 0; font-size: clamp(30px, 3.2vw, 40px); }
+.practical-company-copy { padding-left: 8%; }
+.practical-company-copy p { margin-bottom: 16px; color: var(--p-muted); font-size: 16px; line-height: 1.8; }
+.practical-company-copy p:last-child { margin-bottom: 0; }
+.practical-company-copy .practical-company-lead { color: var(--p-ink); font-size: 18px; }
 .practical-mission, .practical-value { align-self: start; }
 .practical-mission .practical-overline, .practical-value .practical-overline { margin-bottom: 13px; }
 .practical-mission h2, .practical-value h2 { margin: 0 0 15px; font-size: clamp(30px, 3.2vw, 40px); }
@@ -517,9 +524,29 @@ section[id], main[id] { scroll-margin-top: 64px; }
 .practical-value ul { margin-top: 19px; border-top: 1px solid #d6dce1; }
 .practical-value li { padding: 15px 0; border-bottom: 1px solid #d6dce1; color: #56616b; font-size: 16px; line-height: 1.75; }
 .practical-value strong { color: #26323d; font-size: 16px; font-weight: 600; }
-.practical-why { padding: 60px 7%; text-align: center; background: #fff; }
-.practical-why h2 { margin: 12px auto 14px; font-size: clamp(30px, 3.2vw, 42px); }
-.practical-why > p:last-child { max-width: 800px; margin: 0 auto; color: var(--p-muted); font-size: 16px; line-height: 1.75; }
+.practical-why { padding: 84px max(7%, calc((100% - 1200px) / 2)); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); grid-template-areas: "intro cycle" "steps cycle"; align-items: start; gap: 34px 7%; background: #fff; }
+.practical-why-intro { grid-area: intro; }
+.practical-why h2 { margin: 12px 0 14px; font-size: clamp(30px, 3.2vw, 42px); }
+.practical-why-intro > p:last-child { max-width: 540px; margin: 0; color: var(--p-muted); font-size: 16px; line-height: 1.75; }
+/* Innovate, apply, refine: the methodology loop. */
+.practical-cycle { grid-area: cycle; align-self: center; margin: 0; }
+.practical-cycle svg { display: block; width: 100%; max-width: 520px; height: auto; margin-inline: auto; overflow: visible; font-family: var(--font-sans); }
+.practical-cycle-track { fill: none; stroke: #cfd6dc; stroke-width: 1.5; stroke-dasharray: 1 7; stroke-linecap: round; }
+.practical-cycle-arc { fill: none; stroke: #5369d9; stroke-width: 3.5; stroke-linecap: round; }
+.practical-cycle-head { fill: #5369d9; }
+.practical-cycle-signal circle { fill: #5369d9; }
+.practical-cycle-signal circle:first-child { fill-opacity: .2; }
+.practical-cycle-hub circle { fill: #fff; stroke: #dce1e5; stroke-width: 1.5; }
+.practical-cycle-halo { fill: none; stroke: #5369d9; stroke-opacity: .18; stroke-width: 1.5; }
+.practical-cycle-rim { fill: none; stroke: #fff; stroke-opacity: .14; stroke-width: 1; }
+.practical-cycle-num { fill: #b4c1ff; font-size: 11px; font-weight: 700; letter-spacing: .14em; text-anchor: middle; }
+.practical-cycle-label { fill: #fff; font-size: 21px; font-weight: 600; letter-spacing: -.02em; text-anchor: middle; }
+.practical-cycle-steps { grid-area: steps; margin: 0; padding: 0; list-style: none; border-top: 1px solid #d6dce1; }
+.practical-cycle-steps li { padding: 16px 0; display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; border-bottom: 1px solid #d6dce1; }
+.practical-cycle-steps li > span { padding-top: 4px; color: #5369d9; font-size: 12px; font-weight: 700; letter-spacing: .1em; }
+.practical-cycle-steps strong { display: block; color: var(--p-ink); font-size: 17px; font-weight: 600; }
+.practical-cycle-steps p { margin: 3px 0 0; color: var(--p-muted); font-size: 15px; line-height: 1.65; }
+@media (prefers-reduced-motion: reduce) { .practical-cycle-signal { display: none; } }
 .practical-about { padding: 76px max(7%, calc((100% - 1200px) / 2)); display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); align-items: start; gap: 8%; border-top: 1px solid var(--p-line); background: #f3f5f7; }
 .practical-about-heading .practical-overline { margin-bottom: 14px; }
 .practical-about h2 { margin: 0; color: var(--p-ink); font-size: clamp(32px, 3.2vw, 44px); line-height: 1.15; letter-spacing: -.04em; font-weight: 600; }
@@ -563,7 +590,9 @@ section[id], main[id] { scroll-margin-top: 64px; }
   .practical-platforms { grid-template-columns: 1fr; gap: 24px; }
   .varadis-capability-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .varadis-card-image { height: clamp(210px, 30vw, 300px); }
-  .practical-company { padding: 62px 6%; gap: 6%; }
+  .practical-company { padding: 62px 6%; gap: 52px 6%; }
+  .practical-company-overview { padding-bottom: 48px; }
+  .practical-why { padding: 64px 6%; }
   .practical-about { grid-template-columns: minmax(0, .65fr) minmax(0, 1.35fr); gap: 6%; padding: 62px 6%; }
   .practical-about-focus { grid-template-columns: 1fr; gap: 24px; }
 }
@@ -598,8 +627,12 @@ section[id], main[id] { scroll-margin-top: 64px; }
   .practical-platforms { padding: 52px 6%; grid-template-columns: 1fr; gap: 27px; }
   .practical-platform-list p { grid-template-columns: 1fr; gap: 10px; font-size: 16px; }
   .practical-company { padding: 53px 6%; grid-template-columns: 1fr; gap: 36px; }
+  .practical-company-overview { row-gap: 20px; padding-bottom: 36px; }
+  .practical-company-copy { padding-left: 0; }
+  .practical-company-copy .practical-company-lead { font-size: 17px; }
   .practical-value { padding: 31px 0 0; border-top: 1px solid #d6dce1; border-left: 0; }
-  .practical-why { padding: 48px 6%; }
+  .practical-why { padding: 52px 6%; grid-template-columns: minmax(0, 1fr); grid-template-areas: "intro" "cycle" "steps"; gap: 28px; }
+  .practical-cycle svg { max-width: 360px; }
   .practical-about { padding: 53px 6%; grid-template-columns: 1fr; gap: 30px; }
   .practical-about h2 { font-size: 36px; }
   .practical-about-experience { display: flex; align-items: center; gap: 18px; margin-top: 24px; padding-left: 16px; }

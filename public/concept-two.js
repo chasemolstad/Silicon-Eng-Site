@@ -159,18 +159,61 @@
   lens.addEventListener('animationend', requestRender);
 
   // Light catches the silver mark as the pointer moves across the hero, and the mark drifts away from it.
+  // The pointer only sets a target; one frame loop eases toward it, so the light keeps up while the pointer moves.
+  const rest = { x: 0, y: 0, wx: 0, wy: 0 };
+  const light = { ...rest };
+  let pointer = null;
+  let lightFrame = 0;
+  let lightTime = 0;
+  function lightTarget() {
+    if (!pointer) return rest;
+    // Measure the outer mark, which the drift doesn't move, and allow for the scale while it flies to the bar.
+    const box = mark.getBoundingClientRect();
+    const width = mark.offsetWidth;
+    const height = mark.offsetHeight;
+    const radius = width * .46;
+    const scale = box.width / width;
+    // Treat the mark as a dome: the highlight sits under the pointer near the middle and eases toward the rim as
+    // the pointer moves away, instead of stopping hard at an edge. Offsets are from the glint's resting spot.
+    const vx = (pointer.x - (box.left + box.width / 2)) / (radius * scale);
+    const vy = (pointer.y - (box.top + box.height / 2)) / (radius * scale);
+    const reach = radius / Math.hypot(1, vx, vy);
+    const area = hero.getBoundingClientRect();
+    return {
+      x: width * (.4976 - .3) + vx * reach,
+      y: height * (.4879 - .22) + vy * reach,
+      wx: ((pointer.x - area.left) / area.width - .5) * -16,
+      wy: ((pointer.y - area.top) / area.height - .5) * -16
+    };
+  }
+  function stepLight(now) {
+    const dt = lightTime ? Math.min((now - lightTime) / 1000, .05) : 0;
+    lightTime = now;
+    const target = lightTarget();
+    // Frame-rate independent easing: the light follows within a few frames, the drift a little more softly.
+    const follow = motion.matches ? 1 : 1 - Math.exp(-dt / .05);
+    const sway = motion.matches ? 1 : 1 - Math.exp(-dt / .12);
+    light.x += (target.x - light.x) * follow;
+    light.y += (target.y - light.y) * follow;
+    light.wx += (target.wx - light.wx) * sway;
+    light.wy += (target.wy - light.wy) * sway;
+    markInner.style.setProperty('--glint-x', `${light.x.toFixed(2)}px`);
+    markInner.style.setProperty('--glint-y', `${light.y.toFixed(2)}px`);
+    markInner.style.setProperty('--wx', `${light.wx.toFixed(2)}px`);
+    markInner.style.setProperty('--wy', `${light.wy.toFixed(2)}px`);
+    const settled = Object.keys(rest).every(key => Math.abs(target[key] - light[key]) < .05);
+    lightFrame = settled ? 0 : requestAnimationFrame(stepLight);
+    if (settled) lightTime = 0;
+  }
+  function wakeLight() { if (!lightFrame) lightFrame = requestAnimationFrame(stepLight); }
   hero.addEventListener('pointermove', event => {
-    if (event.pointerType !== 'mouse' || !finePointer.matches || motion.matches || site.classList.contains('is-flying') || site.classList.contains('is-docked')) return;
-    const box = markInner.getBoundingClientRect();
-    markInner.style.setProperty('--gx', `${clamp((event.clientX - box.left) / box.width * 100, -25, 125).toFixed(1)}%`);
-    markInner.style.setProperty('--gy', `${clamp((event.clientY - box.top) / box.height * 100, -25, 125).toFixed(1)}%`);
-    const heroBox = hero.getBoundingClientRect();
-    markInner.style.setProperty('--wx', `${(((event.clientX - heroBox.left) / heroBox.width - .5) * -16).toFixed(1)}px`);
-    markInner.style.setProperty('--wy', `${(((event.clientY - heroBox.top) / heroBox.height - .5) * -16).toFixed(1)}px`);
+    if (event.pointerType !== 'mouse' || !finePointer.matches || motion.matches) return;
+    pointer = { x: event.clientX, y: event.clientY };
+    wakeLight();
   });
-  hero.addEventListener('pointerleave', () => {
-    ['--gx', '--gy', '--wx', '--wy'].forEach(name => markInner.style.removeProperty(name));
-  });
+  hero.addEventListener('pointerleave', () => { pointer = null; wakeLight(); });
+  addEventListener('scroll', () => { if (pointer) wakeLight(); }, { passive: true });
+  motion.addEventListener('change', () => { pointer = null; wakeLight(); });
 
   // Hero video
   const video = hero.querySelector('.orbit-video');

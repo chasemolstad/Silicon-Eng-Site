@@ -1,6 +1,4 @@
 /* Concept 3: a moving editorial, built around SiliconEng's wafer mark. */
-@property --c3-gx { syntax: '<percentage>'; inherits: true; initial-value: 30%; }
-@property --c3-gy { syntax: '<percentage>'; inherits: true; initial-value: 22%; }
 .editorial-site { --c3-paper: #eef0f1; --c3-ink: #202932; --c3-blue: #4576f7; --c3-muted: #5a6570; --c3-gutter: clamp(24px, 5.5vw, 112px); --c3-emblem: clamp(250px, 24vw, 440px); --c3-header: 96px; --c3-bar: 70px; --c3-ease: cubic-bezier(.16, 1, .3, 1); }
 .editorial-site a, .editorial-site button { -webkit-tap-highlight-color: transparent; }
 .editorial-site [hidden] { display: none !important; }
@@ -55,9 +53,11 @@
 /* Stage: the mark straddles the film's top edge, catching light from the pointer. */
 .editorial-stage { position: relative; flex: 1 1 auto; display: flex; flex-direction: column; min-height: clamp(300px, 28vw, 460px); margin: 0 var(--c3-gutter); }
 .editorial-emblem { position: absolute; top: calc(var(--c3-emblem) * -.5); right: clamp(0px, 1.5vw, 24px); z-index: 3; width: var(--c3-emblem); margin: 0; pointer-events: none; rotate: var(--c3-turn, 0deg); transform-origin: 49.76% 48.79%; }
-.editorial-emblem-inner { position: relative; isolation: isolate; translate: var(--c3-wx, 0px) var(--c3-wy, 0px); transition: translate 1.1s var(--c3-ease); transform-origin: 49.76% 48.79%; animation: editorial-emblem-in 1.5s var(--c3-ease) .3s both; }
+.editorial-emblem-inner { position: relative; isolation: isolate; translate: var(--c3-wx, 0px) var(--c3-wy, 0px); transform-origin: 49.76% 48.79%; animation: editorial-emblem-in 1.5s var(--c3-ease) .3s both; will-change: translate; }
 .editorial-emblem img { display: block; width: 100%; height: auto; filter: drop-shadow(0 22px 26px #121b2433); }
-.editorial-emblem-glint { position: absolute; inset: 0; background: radial-gradient(circle at var(--c3-gx) var(--c3-gy), #ffffffdb, #ffffff52 24%, #ffffff00 48%); -webkit-mask: url('/img/HQSiliconEngCircle.png') 0 0 / 100% 100% no-repeat; mask: url('/img/HQSiliconEngCircle.png') 0 0 / 100% 100% no-repeat; mix-blend-mode: overlay; transition: --c3-gx .9s var(--c3-ease), --c3-gy .9s var(--c3-ease); }
+.editorial-emblem-glint { position: absolute; inset: 0; overflow: hidden; -webkit-mask: url('/img/HQSiliconEngCircle.png') 0 0 / 100% 100% no-repeat; mask: url('/img/HQSiliconEngCircle.png') 0 0 / 100% 100% no-repeat; mix-blend-mode: overlay; }
+/* The light rests at 30% 22% and moves by translate alone, so following the pointer never repaints the mark. */
+.editorial-emblem-glint::before { position: absolute; top: 22%; left: 30%; width: 94%; aspect-ratio: 1; margin: -47% 0 0 -47%; background: radial-gradient(closest-side, #ffffffdb, #ffffff52 50%, #ffffff00); content: ''; translate: var(--c3-glint-x, 0px) var(--c3-glint-y, 0px); will-change: translate; }
 .editorial-film { position: relative; flex: 1 1 auto; overflow: hidden; background: #313c45; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 28px), calc(100% - 28px) 100%, 0 100%); animation: editorial-film-in 1.3s cubic-bezier(.76, 0, .24, 1) .15s both; }
 .editorial-film::after { position: absolute; inset: 50% 0 0; z-index: 0; background: linear-gradient(transparent, #101820ae); pointer-events: none; content: ''; }
 .editorial-film-video { position: absolute; top: -70px; left: 0; display: block; width: 100%; height: calc(100% + 70px); object-fit: cover; object-position: center 52%; translate: 0 var(--c3-shift, 0px); transition: scale 1.1s cubic-bezier(.2,.6,.3,1); }
@@ -100,11 +100,12 @@ body.editorial-film-open { overflow: hidden; }
 @keyframes editorial-rise { from { transform: translateY(110%); } }
 @keyframes editorial-film-in { from { clip-path: polygon(0 0, 100% 0, 100% 0, 100% 0, 0 0); } }
 @keyframes editorial-emblem-in { from { opacity: 0; transform: rotate(-36deg) scale(.84); } }
-@keyframes editorial-glint { 0%, 100% { --c3-gx: 22%; --c3-gy: 18%; } 50% { --c3-gx: 78%; --c3-gy: 70%; } }
+/* Sweeps the light from 22% 18% to 78% 70% of the mark; translate percentages are of the light's own size. */
+@keyframes editorial-glint { 0%, 100% { translate: -8.5% -4.2%; } 50% { translate: 51.1% 50%; } }
 @keyframes editorial-panel-in { from { opacity: 0; transform: translateY(-8px); } }
 
 /* Without a mouse, the light drifts across the mark on its own. */
-@media (hover: none) { .editorial-emblem-glint { animation: editorial-glint 7s ease-in-out 1.8s infinite; } }
+@media (hover: none) { .editorial-emblem-glint::before { animation: editorial-glint 7s ease-in-out 1.8s infinite; } }
 @media (min-width: 1800px) {
   .editorial-intro-bottom > p { flex-basis: 480px; max-width: 480px; font-size: 17px; }
   .editorial-nav > a { font-size: 15px; }
@@ -137,6 +138,7 @@ body.editorial-film-open { overflow: hidden; }
   .editorial-mobile-panel nav a:nth-child(3) { animation-delay: .1s; }
   .editorial-mobile-panel nav a:nth-child(4) { animation-delay: .15s; }
   .editorial-mobile-panel nav a:nth-child(5) { animation-delay: .2s; }
+  .editorial-mobile-panel nav a:nth-child(6) { animation-delay: .25s; }
   .editorial-mobile-panel nav a span { color: #657580; font-size: 13px; font-weight: 400; letter-spacing: 0; }
   .editorial-mobile-panel nav .editorial-mobile-contact { color: #2855ca; }
   .editorial-mobile-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 15px; color: var(--c3-muted); font-size: 13px; }

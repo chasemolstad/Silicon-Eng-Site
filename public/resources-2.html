@@ -17,61 +17,116 @@
     <a class="two-brand" href="/?concept=2" aria-label="SiliconEng home"><img src="/img/SiliconEngCircle.png" alt=""><span>SiliconEng<small>Integrated circuit development</small></span></a>
     <nav aria-label="Concept 2 resources navigation">
       <a href="#white-papers">White papers</a>
-      <a href="#case-studies">Case studies</a>
+      <button class="two-nav-soon" type="button" disabled>Case studies <small>Soon</small></button>
       <a class="two-back" href="/?concept=2">Back to concept 2 <span aria-hidden="true">&#8599;</span></a>
     </nav>
   </header>
 
   <main>
-    <section class="two-hero">
+    <section class="two-hero" aria-labelledby="resources-title">
       <div class="two-hero-copy">
         <p class="two-eyebrow">SILICONENG <i></i> RESOURCES</p>
-        <h1>Useful insight for the work between silicon and production.</h1>
-        <p>Practical guidance for analog and power IC test development, from datasheet review to production release.</p>
-        <div class="two-hero-links"><a href="#white-papers">Browse white papers <span aria-hidden="true">&#8595;</span></a><a href="#case-studies">Case studies <span aria-hidden="true">&#8595;</span></a></div>
+        <h1 id="resources-title">Useful insight for the work between silicon and production.</h1>
+        <p>Practical guidance for analog and power IC test development, from datasheet review to production release, written by the engineers who do the work.</p>
+        <div class="two-hero-links">
+          <a href="#white-papers">Browse white papers <span aria-hidden="true">&#8595;</span></a>
+          <button class="two-soon" type="button" disabled>Case studies <small>Coming soon</small></button>
+        </div>
+        <ul class="two-hero-stats" aria-label="Resources at a glance">
+          <li><strong>2</strong><span>white papers</span></li>
+          <li><strong>3</strong><span>worked examples on real parts</span></li>
+          <li><strong>Free</strong><span>PDF downloads, no sign-up</span></li>
+        </ul>
       </div>
-      <figure class="two-hero-image"><img src="/img/processor-board.jpg" alt="Semiconductor processor mounted on a circuit board"><figcaption>SILICON ENGINEERING</figcaption></figure>
+      <div class="two-shelf" aria-hidden="true">
+        <div class="two-cover two-shelf-back">
+          <span class="two-cover-brand"><img src="/img/SiliconEngCircle.png" alt="">SiliconEng</span>
+          <span class="two-cover-kicker">White paper 02</span>
+          <span class="two-cover-title">Analog and Power IC Test Development</span>
+          <span class="two-cover-sub">A field guide to pitfalls and good practice</span>
+          <svg class="two-cover-trace" viewBox="0 0 100 40" preserveAspectRatio="none"><path class="two-cover-grid" d="M0 10H100M0 20H100M0 30H100M25 0V40M50 0V40M75 0V40"/><polyline points="0,32 18,32 21,6 25,16 29,9 33,14 37,10.5 41,13 45,11.3 49,12.6 53,11.7 57,12.2 62,12 100,12"/></svg>
+          <span class="two-cover-foot">Version 1.8 &#183; 19 pages</span>
+        </div>
+        <div class="two-cover two-shelf-front">
+          <span class="two-cover-brand"><img src="/img/SiliconEngCircle.png" alt="">SiliconEng</span>
+          <span class="two-cover-kicker">White paper 01</span>
+          <span class="two-cover-title">From Datasheet to ATE</span>
+          <span class="two-cover-sub">A systematic method for power-IC test program development</span>
+          <svg class="two-cover-trace" viewBox="0 0 100 40" preserveAspectRatio="none"><path class="two-cover-grid" d="M0 10H100M0 20H100M0 30H100M25 0V40M50 0V40M75 0V40"/><polyline points="0,34 22,34 22,26 46,26 46,18 70,18 70,10 100,10"/></svg>
+          <span class="two-cover-foot">Version 2.7 &#183; 14 pages</span>
+        </div>
+      </div>
     </section>
 
     <section class="two-papers" id="white-papers" aria-labelledby="white-papers-title">
-      <div class="two-section-heading"><div><p class="two-eyebrow">TECHNICAL NOTES</p><h2 id="white-papers-title">White papers</h2></div><p>Practical methods and field-tested considerations for developing analog and power IC production tests.</p></div>
+      <div class="two-section-heading"><div><p class="two-eyebrow">TECHNICAL NOTES</p><h2 id="white-papers-title">White papers</h2></div><p>Practical methods and field-tested considerations for developing analog and power IC production tests. Start with the method, then read the companion field guide.</p></div>
       <div class="two-paper-list">
-        <article aria-labelledby="paper-datasheet-title">
-          <span class="two-number" aria-hidden="true">01</span>
-          <div>
-            <p class="two-type">TEST PROGRAM DEVELOPMENT</p>
+        <article class="two-paper" aria-labelledby="paper-datasheet-title">
+          <a class="two-cover-link" href="/whitepapers/whitepaper-01-from-datasheet-to-ate.pdf" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <span class="two-cover">
+              <span class="two-cover-brand"><img src="/img/SiliconEngCircle.png" alt="">SiliconEng</span>
+              <span class="two-cover-kicker">White paper 01</span>
+              <span class="two-cover-title">From Datasheet to ATE</span>
+              <span class="two-cover-sub">A systematic method for power-IC test program development</span>
+              <svg class="two-cover-trace" viewBox="0 0 100 40" preserveAspectRatio="none"><path class="two-cover-grid" d="M0 10H100M0 20H100M0 30H100M25 0V40M50 0V40M75 0V40"/><polyline points="0,34 22,34 22,26 46,26 46,18 70,18 70,10 100,10"/></svg>
+              <span class="two-cover-foot">Version 2.7 &#183; 14 pages</span>
+            </span>
+          </a>
+          <div class="two-paper-body">
+            <p class="two-paper-tags"><span class="two-type">01 &#183; Test program development</span><span class="two-badge">Start here</span></p>
             <h3 id="paper-datasheet-title">From Datasheet to ATE: A Systematic Method for Power-IC Test Program Development</h3>
             <p>A four-stage method for turning a power-IC datasheet into a production test program with defensible limits and a written record of engineering decisions.</p>
-            <p class="two-paper-meta">PDF &#183; 14 pages &#183; Version 2.7</p>
-            <div class="two-paper-actions">
-              <a href="/whitepapers/whitepaper-01-from-datasheet-to-ate.pdf" target="_blank" rel="noopener" aria-label="Read From Datasheet to ATE (PDF, opens in a new tab)">Read PDF <span aria-hidden="true">&#8599;</span></a>
-              <a href="/whitepapers/whitepaper-01-from-datasheet-to-ate.pdf" download aria-label="Download From Datasheet to ATE PDF">Download PDF <span aria-hidden="true">&#8595;</span></a>
+            <p class="two-inside-label">Inside this paper</p>
+            <ul class="two-inside">
+              <li>Extraction, normalization, test planning, and guardbanded limits</li>
+              <li>Worked example: TI TPS7A20 low-noise LDO</li>
+              <li>An 18-question checklist to run before writing test code</li>
+              <li>A decision-log template</li>
+            </ul>
+            <div class="two-paper-foot">
+              <div class="two-paper-actions">
+                <a href="/whitepapers/whitepaper-01-from-datasheet-to-ate.pdf" target="_blank" rel="noopener" aria-label="Read From Datasheet to ATE (PDF, opens in a new tab)">Read PDF <span aria-hidden="true">&#8599;</span></a>
+                <a href="/whitepapers/whitepaper-01-from-datasheet-to-ate.pdf" download aria-label="Download From Datasheet to ATE PDF">Download <span aria-hidden="true">&#8595;</span></a>
+              </div>
+              <p class="two-paper-meta">PDF &#183; 14 pages &#183; Version 2.7</p>
             </div>
-            <details><summary>Inside this paper</summary><p>Extraction, normalization, test planning, and guardbanded limits, with a TI TPS7A20 worked example. Includes an 18-question checklist and a decision-log template.</p></details>
           </div>
         </article>
-        <article aria-labelledby="paper-analog-title">
-          <span class="two-number" aria-hidden="true">02</span>
-          <div>
-            <p class="two-type">ANALOG AND POWER TEST</p>
+        <article class="two-paper" aria-labelledby="paper-analog-title">
+          <a class="two-cover-link" href="/whitepapers/whitepaper-02-analog-power-test-pitfalls.pdf" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <span class="two-cover">
+              <span class="two-cover-brand"><img src="/img/SiliconEngCircle.png" alt="">SiliconEng</span>
+              <span class="two-cover-kicker">White paper 02</span>
+              <span class="two-cover-title">Analog and Power IC Test Development</span>
+              <span class="two-cover-sub">A field guide to pitfalls and good practice</span>
+              <svg class="two-cover-trace" viewBox="0 0 100 40" preserveAspectRatio="none"><path class="two-cover-grid" d="M0 10H100M0 20H100M0 30H100M25 0V40M50 0V40M75 0V40"/><polyline points="0,32 18,32 21,6 25,16 29,9 33,14 37,10.5 41,13 45,11.3 49,12.6 53,11.7 57,12.2 62,12 100,12"/></svg>
+              <span class="two-cover-foot">Version 1.8 &#183; 19 pages</span>
+            </span>
+          </a>
+          <div class="two-paper-body">
+            <p class="two-paper-tags"><span class="two-type">02 &#183; Analog and power test</span><span class="two-badge two-badge-quiet">Companion to 01</span></p>
             <h3 id="paper-analog-title">Analog and Power IC Test Development: A Field Guide to Pitfalls and Good Practice</h3>
             <p>A practical guide to the measurement errors and test-development traps that affect analog and power ICs, from instrument uncertainty to sockets, layout, and transient protection.</p>
-            <p class="two-paper-meta">PDF &#183; 19 pages &#183; Version 1.8</p>
-            <div class="two-paper-actions">
-              <a href="/whitepapers/whitepaper-02-analog-power-test-pitfalls.pdf" target="_blank" rel="noopener" aria-label="Read Analog and Power IC Test Development (PDF, opens in a new tab)">Read PDF <span aria-hidden="true">&#8599;</span></a>
-              <a href="/whitepapers/whitepaper-02-analog-power-test-pitfalls.pdf" download aria-label="Download Analog and Power IC Test Development PDF">Download PDF <span aria-hidden="true">&#8595;</span></a>
+            <p class="two-inside-label">Inside this paper</p>
+            <ul class="two-inside">
+              <li>The 10:1 test uncertainty rule and seven workarounds</li>
+              <li>Worked examples: TI TPS54360 buck and INA333 in&#8209;amp</li>
+              <li>Sockets, layout, simulation, gauge R&amp;R, and spike checks</li>
+              <li>A 14-point good-practice checklist</li>
+            </ul>
+            <div class="two-paper-foot">
+              <div class="two-paper-actions">
+                <a href="/whitepapers/whitepaper-02-analog-power-test-pitfalls.pdf" target="_blank" rel="noopener" aria-label="Read Analog and Power IC Test Development (PDF, opens in a new tab)">Read PDF <span aria-hidden="true">&#8599;</span></a>
+                <a href="/whitepapers/whitepaper-02-analog-power-test-pitfalls.pdf" download aria-label="Download Analog and Power IC Test Development PDF">Download <span aria-hidden="true">&#8595;</span></a>
+              </div>
+              <p class="two-paper-meta">PDF &#183; 19 pages &#183; Version 1.8</p>
             </div>
-            <details><summary>Inside this paper</summary><p>Test uncertainty and measurement workarounds, with TI TPS54360 and INA333 worked examples. Covers simulation, gauge R&amp;R, data review, spike checks, and a 14-point good-practice checklist.</p></details>
           </div>
         </article>
       </div>
     </section>
 
-    <section class="two-cases" id="case-studies" aria-labelledby="case-studies-title">
-      <div class="two-section-heading"><div><h2 id="case-studies-title">Case studies</h2></div></div>
-    </section>
-
-    <section class="two-cta"><div><p class="two-eyebrow">NEED A TECHNICAL PARTNER?</p><h2>Bring your next device into focus.</h2></div><a href="/contact.html?concept=2">Talk with an engineer <span aria-hidden="true">&#8594;</span></a></section>
+    <section class="two-cta"><div><p class="two-eyebrow">NEED A TECHNICAL PARTNER?</p><h2>Bring your next device into focus.</h2><p>Questions about a paper, or a test program of your own? Our engineers are glad to talk it through.</p></div><a href="/contact.html?concept=2">Talk with an engineer <span aria-hidden="true">&#8594;</span></a></section>
   </main>
 
   <footer class="two-footer"><a class="two-brand" href="/?concept=2"><img src="/img/SiliconEngCircle.png" alt=""><span>SiliconEng<small>Integrated circuit development</small></span></a><div><a href="mailto:info@siliconeng.com">info@siliconeng.com</a><a href="tel:+16692455007">+1 669 245 5007</a><span>Santa Clara, CA 95051</span></div><small>&copy; 2026 SiliconEng</small></footer>

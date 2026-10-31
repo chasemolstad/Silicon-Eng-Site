@@ -86,18 +86,67 @@
   updateScroll();
 
   // Light catches the silver mark as the pointer moves across the hero, and the mark drifts away from it.
+  // The pointer only sets a target; one frame loop eases toward it, so the light keeps up while the pointer moves.
+  const rest = { x: 0, y: 0, wx: 0, wy: 0 };
+  const light = { ...rest };
+  let pointer = null;
+  let lightFrame = 0;
+  let lightTime = 0;
+  function lightTarget() {
+    if (!pointer) return rest;
+    // Measure the outer mark, which the drift doesn't move. Scrolling turns it, so turn the pointer into its frame.
+    const box = emblem.getBoundingClientRect();
+    const width = emblem.offsetWidth;
+    const height = emblem.offsetHeight;
+    const radius = width * .46;
+    const turn = (parseFloat(emblem.style.getPropertyValue('--c3-turn')) || 0) * Math.PI / 180;
+    const cos = Math.cos(turn);
+    const sin = Math.sin(turn);
+    // Treat the mark as a dome: the highlight sits under the pointer near the middle and eases toward the rim as
+    // the pointer moves away, instead of stopping hard at an edge. Offsets are from the glint's resting spot.
+    const sx = (pointer.x - (box.left + box.width / 2)) / radius;
+    const sy = (pointer.y - (box.top + box.height / 2)) / radius;
+    const vx = sx * cos + sy * sin;
+    const vy = sy * cos - sx * sin;
+    const reach = radius / Math.hypot(1, vx, vy);
+    const area = hero.getBoundingClientRect();
+    const dx = ((pointer.x - area.left) / area.width - .5) * -18;
+    const dy = ((pointer.y - area.top) / area.height - .5) * -18;
+    return {
+      x: width * (.4976 - .3) + vx * reach,
+      y: height * (.4879 - .22) + vy * reach,
+      wx: dx * cos + dy * sin,
+      wy: dy * cos - dx * sin
+    };
+  }
+  function stepLight(now) {
+    const dt = lightTime ? Math.min((now - lightTime) / 1000, .05) : 0;
+    lightTime = now;
+    const target = lightTarget();
+    // Frame-rate independent easing: the light follows within a few frames, the drift a little more softly.
+    const follow = motion.matches ? 1 : 1 - Math.exp(-dt / .05);
+    const sway = motion.matches ? 1 : 1 - Math.exp(-dt / .12);
+    light.x += (target.x - light.x) * follow;
+    light.y += (target.y - light.y) * follow;
+    light.wx += (target.wx - light.wx) * sway;
+    light.wy += (target.wy - light.wy) * sway;
+    emblemInner.style.setProperty('--c3-glint-x', `${light.x.toFixed(2)}px`);
+    emblemInner.style.setProperty('--c3-glint-y', `${light.y.toFixed(2)}px`);
+    emblemInner.style.setProperty('--c3-wx', `${light.wx.toFixed(2)}px`);
+    emblemInner.style.setProperty('--c3-wy', `${light.wy.toFixed(2)}px`);
+    const settled = Object.keys(rest).every(key => Math.abs(target[key] - light[key]) < .05);
+    lightFrame = settled ? 0 : requestAnimationFrame(stepLight);
+    if (settled) lightTime = 0;
+  }
+  function wakeLight() { if (!lightFrame) lightFrame = requestAnimationFrame(stepLight); }
   hero.addEventListener('pointermove', event => {
     if (event.pointerType !== 'mouse' || !finePointer.matches || motion.matches) return;
-    const box = emblemInner.getBoundingClientRect();
-    emblemInner.style.setProperty('--c3-gx', `${clamp((event.clientX - box.left) / box.width * 100, -25, 125).toFixed(1)}%`);
-    emblemInner.style.setProperty('--c3-gy', `${clamp((event.clientY - box.top) / box.height * 100, -25, 125).toFixed(1)}%`);
-    const heroBox = hero.getBoundingClientRect();
-    emblemInner.style.setProperty('--c3-wx', `${(((event.clientX - heroBox.left) / heroBox.width - .5) * -18).toFixed(1)}px`);
-    emblemInner.style.setProperty('--c3-wy', `${(((event.clientY - heroBox.top) / heroBox.height - .5) * -18).toFixed(1)}px`);
+    pointer = { x: event.clientX, y: event.clientY };
+    wakeLight();
   });
-  hero.addEventListener('pointerleave', () => {
-    ['--c3-gx', '--c3-gy', '--c3-wx', '--c3-wy'].forEach(name => emblemInner.style.removeProperty(name));
-  });
+  hero.addEventListener('pointerleave', () => { pointer = null; wakeLight(); });
+  addEventListener('scroll', () => { if (pointer) wakeLight(); }, { passive: true });
+  motion.addEventListener('change', () => { pointer = null; wakeLight(); });
 
   const video = site.querySelector('.editorial-film-video');
   const toggle = site.querySelector('.editorial-video-toggle');
