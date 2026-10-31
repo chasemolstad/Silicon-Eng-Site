@@ -8,10 +8,10 @@
   <script>
     const params = new URLSearchParams(window.location.search);
     const concept = params.get('from') || params.get('concept');
-    window.location.replace(concept === '2' ? '/resources-2.html' : '/resources-1.html');
+    window.location.replace(concept === '1' ? '/resources-1.html' : '/resources-2.html');
   </script>
 </head>
 <body>
-  <p>Opening SiliconEng resources… <a href="/resources-1.html">Continue</a></p>
+  <p>Opening SiliconEng resources… <a href="/resources-2.html">Continue</a></p>
 </body>
 </html>
