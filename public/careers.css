@@ -42,9 +42,29 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--careers-blue); 
 #careers-form textarea { min-height: 112px; resize: vertical; }
 #careers-form input:focus, #careers-form select:focus, #careers-form textarea:focus { border-color: var(--careers-blue); box-shadow: 0 0 0 3px #263c9118; background: #fff; }
 #careers-form input::placeholder { color: #8c969f; }
-.careers-attach-note { padding: 14px 16px; border-left: 2px solid var(--careers-blue); background: var(--careers-paper); }
-.careers-attach-note strong { display: block; color: var(--careers-blue); font-size: 14px; font-weight: 600; }
-.careers-attach-note p { margin: 4px 0 0; color: var(--careers-muted); font-size: 14px; line-height: 1.7; }
+/* The file input covers the whole drop area, so a click opens the file picker and a dropped file lands on the input itself. */
+.careers-upload-field > label { margin-bottom: 7px; }
+.careers-upload { position: relative; min-height: 136px; display: grid; place-items: center; padding: 22px; border: 1px dashed #b9c3cc; border-radius: 3px; background: #f4f6f7; text-align: center; transition: border-color .18s ease, background-color .18s ease, box-shadow .18s ease; }
+.careers-upload:hover, .careers-upload.is-dragging, .careers-upload:has(input:focus-visible) { border-color: var(--careers-blue); background: #fff; }
+.careers-upload.is-dragging, .careers-upload:has(input:focus-visible) { box-shadow: 0 0 0 3px #263c9118; }
+#careers-form .careers-upload input { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; min-height: 0; margin: 0; padding: 0; border: 0; opacity: 0; cursor: pointer; }
+.careers-upload svg { flex: none; width: 28px; height: 28px; fill: none; stroke: var(--careers-blue); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.careers-upload-prompt { display: grid; justify-items: center; gap: 3px; }
+.careers-upload-prompt svg { margin-bottom: 7px; }
+.careers-upload-prompt p { margin: 0; color: var(--careers-muted); font-size: 14px; line-height: 1.6; }
+.careers-upload-prompt strong { color: var(--careers-blue); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.careers-upload-prompt p:last-child { color: #7a858f; font-size: 13px; }
+.careers-upload.has-file { min-height: 0; padding: 14px 16px; border-style: solid; background: #fff; place-items: stretch; text-align: left; }
+.careers-upload-file { display: flex; align-items: center; gap: 12px; }
+.careers-upload-prompt[hidden], .careers-upload-file[hidden] { display: none; }
+.careers-upload-file p { flex: 1; min-width: 0; margin: 0; display: grid; }
+.careers-upload-file strong { overflow: hidden; color: var(--careers-ink); font-size: 15px; font-weight: 500; text-overflow: ellipsis; white-space: nowrap; }
+.careers-upload-file span { color: var(--careers-muted); font-size: 13px; }
+.careers-upload-file button { position: relative; z-index: 2; flex: none; min-height: 36px; padding: 0 12px; border: 1px solid #cbd3da; border-radius: 2px; background: #fff; color: var(--careers-blue); font: inherit; font-size: 13px; cursor: pointer; transition: border-color .18s ease; }
+.careers-upload-file button:hover { border-color: var(--careers-blue); }
+.careers-upload.is-invalid { border-color: #b4232c; }
+.careers-upload-error { margin: 7px 0 0; color: #b4232c; font-size: 13px; line-height: 1.5; }
+.careers-upload-error:empty { display: none; }
 .careers-submit { width: fit-content; min-height: 46px; padding: 0 17px; display: inline-flex; align-items: center; justify-content: space-between; gap: 27px; border: 1px solid var(--careers-blue); border-radius: 2px; background: var(--careers-blue); color: #fff; font: inherit; font-size: 15px; cursor: pointer; transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease, color .18s ease; }
 .careers-submit:hover { transform: translateY(-2px); background: #fff; color: var(--careers-blue); box-shadow: 0 4px 12px #263c9126; }
 .careers-submit span { font-size: 17px; }

@@ -66,11 +66,24 @@
             <label>LinkedIn or portfolio<input name="LinkedIn or portfolio" type="url" autocomplete="url" placeholder="https://"></label>
           </div>
           <label>Anything you&rsquo;d like us to know?<textarea name="Message" rows="5"></textarea></label>
-          <div class="careers-attach-note">
-            <strong>Remember to attach your resume.</strong>
-            <p>Continuing opens a prepared email to careers@siliconeng.com in your email app. Attach your resume, ideally as a PDF, before you send it.</p>
+          <div class="careers-upload-field">
+            <label for="careers-resume">Resume <span aria-hidden="true">*</span></label>
+            <div class="careers-upload" data-upload>
+              <input id="careers-resume" name="Resume" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required aria-describedby="careers-resume-hint careers-resume-error">
+              <div class="careers-upload-prompt" data-upload-prompt>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M12 18v-6M9.5 14.5 12 12l2.5 2.5"/></svg>
+                <p><strong>Choose a file</strong> or drag it here</p>
+                <p id="careers-resume-hint">PDF, DOC, or DOCX, up to 10 MB</p>
+              </div>
+              <div class="careers-upload-file" data-upload-file hidden>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>
+                <p><strong data-upload-name></strong><span data-upload-size></span></p>
+                <button type="button" data-upload-remove>Remove</button>
+              </div>
+            </div>
+            <p class="careers-upload-error" id="careers-resume-error" data-upload-error></p>
           </div>
-          <button class="careers-submit" type="submit">Continue to email <span aria-hidden="true">&#8594;</span></button>
+          <button class="careers-submit" type="submit">Submit <span aria-hidden="true">&#8594;</span></button>
           <p class="careers-status" id="careers-status" role="status" aria-live="polite"></p>
         </form>
       </div>

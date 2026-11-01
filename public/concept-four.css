@@ -72,11 +72,10 @@ body[data-concept="4"] { background: #fff; }
 .seam-eyebrow { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin: 0 0 clamp(18px, 3.4vh, 32px); color: #fff; font-size: 12px; font-weight: 500; line-height: 1.6; letter-spacing: .14em; }
 .seam-eyebrow::before { width: 8px; height: 8px; margin-right: 6px; background: var(--s-signal); content: ''; }
 .seam-eyebrow span { color: #ffffff8c; }
-.seam-site .seam-title { margin: 0 0 .14em; color: #fff; font-size: var(--s-title); font-weight: 600; line-height: .9; letter-spacing: -.062em; }
+.seam-site .seam-title { margin: 0 0 .14em; color: #fff; font-size: var(--s-title); font-weight: 400; line-height: .9; letter-spacing: -.062em; }
 .seam-title .seam-line { display: block; overflow: hidden; padding: 0 .12em .16em 0; margin-bottom: -.16em; color: inherit; }
 .seam-title .seam-line > * { display: block; color: inherit; animation: seam-rise 1.15s var(--s-ease) .25s both; }
-.seam-title .seam-line:first-child > span { padding-right: .04em; background: linear-gradient(176deg, #ffffff 18%, #c7cdd2 62%, #8f989f 100%); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: none; filter: drop-shadow(0 2px 14px #0b0d0f40); }
-.seam-title .seam-line > em { color: #5b8cff; font-style: italic; font-weight: 200; letter-spacing: -.045em; animation-delay: .36s; }
+.seam-title .seam-line > strong { padding-right: .04em; background: linear-gradient(176deg, var(--s-signal-hi) 18%, #5b8cff 62%, var(--s-signal) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 700; text-shadow: none; filter: drop-shadow(0 2px 14px #0b0d0f40); animation-delay: .36s; }
 .seam-lede { max-width: 27em; margin: clamp(22px, 3.4vh, 34px) 0 0; color: #fff; font-size: clamp(16px, 1.16vw, 18px); line-height: 1.7; }
 .seam-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 30px; margin-top: clamp(26px, 4.2vh, 42px); }
 .seam-eyebrow, .seam-lede, .seam-actions, .seam-readout { animation: seam-fade-up 1s var(--s-ease) both; }
