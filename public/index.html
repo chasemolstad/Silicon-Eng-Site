@@ -11,8 +11,6 @@
     document.documentElement.classList.add("orbit-js");
     if (new URLSearchParams(window.location.search).get("concept") === "1") {
       window.location.replace("/concept-1.html" + window.location.search + window.location.hash);
-    } else if (new URLSearchParams(window.location.search).get("concept") === "3") {
-      window.location.replace("/concept-3.html" + window.location.search + window.location.hash);
     } else if (new URLSearchParams(window.location.search).get("concept") === "4") {
       window.location.replace("/concept-4.html" + window.location.search + window.location.hash);
     }
@@ -27,7 +25,6 @@
 <body data-concept="2">
   <div class="concept-switcher" role="group" aria-label="Website concept">
     <button type="button" data-concept-choice="2" aria-pressed="true" aria-label="Show concept 2">2</button>
-    <button type="button" data-concept-choice="3" aria-pressed="false" aria-label="Show concept 3">3</button>
     <button type="button" data-concept-choice="4" aria-pressed="false" aria-label="Show concept 4">4</button>
   </div>
 
@@ -37,12 +34,12 @@
     <header class="orbit-header">
       <a class="orbit-brand" href="#overview-2" aria-label="SiliconEng home"><span class="orbit-slot" aria-hidden="true"><img src="/img/HQSiliconEngCircle.png" width="1268" height="1241" alt=""></span><span class="orbit-wordmark">SiliconEng<small>Integrated circuit development</small></span></a>
       <nav class="orbit-nav" aria-label="Main navigation"><a href="#services-2">Services</a><a href="#platforms-2">Our Technology</a><a href="#company-2">Company</a><a href="/resources-2.html">Resources</a><a href="/careers.html?concept=2">Careers</a></nav>
-      <a class="orbit-contact" href="/contact.html?concept=2">Contact Us <span aria-hidden="true">&rarr;</span></a>
+      <a class="orbit-contact" href="/contact.html?concept=2">Contact Us</a>
       <button class="orbit-menu-toggle" type="button" aria-expanded="false" aria-controls="orbit-menu"><span data-menu-label>Menu</span><span class="orbit-menu-icon" aria-hidden="true"><i></i><i></i></span></button>
     </header>
     <div class="orbit-menu" id="orbit-menu" hidden>
       <nav aria-label="Mobile navigation"><a href="#services-2">Services</a><a href="#platforms-2">Our Technology</a><a href="#company-2">Company</a><a href="/resources-2.html">Resources</a><a href="/careers.html?concept=2">Careers</a></nav>
-      <a class="orbit-cta" href="/contact.html?concept=2">Talk with an engineer <span aria-hidden="true">&rarr;</span></a>
+      <a class="orbit-cta" href="/contact.html?concept=2">Talk with an engineer</a>
       <p><span>Santa Clara, California</span><a href="mailto:info@siliconeng.com">info@siliconeng.com</a></p>
     </div>
     <main id="overview-2" tabindex="-1">
@@ -56,7 +53,7 @@
             <p class="orbit-lede">At SiliconEng, we are your Integrated Circuit Development partner focused on Analog, Power Management, RF and SOCs.</p>
             <ul class="orbit-tags" aria-label="Core services"><li>Wafer probe</li><li>Package test</li><li>Silicon validation</li><li>Turnkey operations</li></ul>
           </div>
-          <div class="orbit-cta-wrap"><a class="orbit-cta" href="/contact.html?concept=2">Talk with an engineer <span aria-hidden="true">&rarr;</span></a></div>
+          <div class="orbit-cta-wrap"><a class="orbit-cta" href="/contact.html?concept=2">Talk with an engineer</a></div>
         </div>
         <figure class="orbit-mark"><div class="orbit-mark-inner"><img src="/img/HQSiliconEngCircle.png" width="1268" height="1241" alt="SiliconEng's silver, black, and blue circular wafer mark" fetchpriority="high"><span class="orbit-mark-glint" aria-hidden="true"></span></div></figure>
         <a class="orbit-scroll" href="#services-2"><span>Scroll</span><i aria-hidden="true"></i></a>
@@ -91,7 +88,7 @@
         </div>
       </section>
       <section class="practical-platforms" id="platforms-2">
-        <div><p class="practical-overline">OUR TECHNOLOGY &amp; TEST METHODS</p><h2>Three capabilities for every test solution.</h2><p>ATE platform expertise, flexible bench automation, and purpose-built reliability hardware for Analog, Power Management, SoC, and RF products.</p></div>
+        <div><p class="practical-overline">OUR TECHNOLOGY &amp; TEST METHODS</p><h2>Ten ATE platforms, plus the bench.</h2><p>ATE platform expertise, flexible bench automation, and purpose-built reliability hardware for Analog, Power Management, SoC, and RF products.</p></div>
         <div class="practical-platform-list"><p><strong>ATE platform expertise</strong><span>Teradyne ETS364 / ETS88 / ETS800, Microflex, UltraFlex, Advantest 93K, Accotest, Chroma Test, ASL1000, and Focused Test.</span></p><p><strong>Bench automation &amp; custom instrumentation expertise</strong><span>GPIB-based Rack &amp; Stack, external instrument control, and custom-built test systems automated with GPIB and Python.</span></p><p><strong>Reliability test &amp; hardware</strong><span>HTOL / HAST boards, high-density multilayer PCB stack-ups for low-leakage and high-voltage use, thermal and signal integrity design, and wafer-level probe card architectures.</span></p></div>
       </section>
       <section class="practical-company" id="company-2">
@@ -122,15 +119,15 @@
             <path class="practical-cycle-arc" d="M83.2 187.2A128 128 0 0 1 131.2 104.1" marker-end="url(#cycle-arrow-2)"/>
             <g class="practical-cycle-signal"><circle r="10"/><circle r="4.5"/><animateMotion dur="9s" repeatCount="indefinite" path="M210 77A128 128 0 1 1 210 333A128 128 0 1 1 210 77"/></g>
             <g class="practical-cycle-hub" transform="translate(210 205)"><circle r="34"/><image href="/img/SiliconEngCircle.png" x="-21" y="-21" width="42" height="42"/></g>
-            <g class="practical-cycle-node" transform="translate(210 77)"><circle class="practical-cycle-halo" r="75"/><circle r="66" fill="url(#cycle-fill-2)" filter="url(#cycle-shadow-2)"/><circle class="practical-cycle-rim" r="58"/><text class="practical-cycle-num" y="-10">01</text><text class="practical-cycle-label" y="17">Innovate</text></g>
-            <g class="practical-cycle-node" transform="translate(320.85 269)"><circle class="practical-cycle-halo" r="75"/><circle r="66" fill="url(#cycle-fill-2)" filter="url(#cycle-shadow-2)"/><circle class="practical-cycle-rim" r="58"/><text class="practical-cycle-num" y="-10">02</text><text class="practical-cycle-label" y="17">Apply</text></g>
-            <g class="practical-cycle-node" transform="translate(99.15 269)"><circle class="practical-cycle-halo" r="75"/><circle r="66" fill="url(#cycle-fill-2)" filter="url(#cycle-shadow-2)"/><circle class="practical-cycle-rim" r="58"/><text class="practical-cycle-num" y="-10">03</text><text class="practical-cycle-label" y="17">Refine</text></g>
+            <g class="practical-cycle-node" transform="translate(210 77)"><circle class="practical-cycle-halo" r="75"/><circle r="66" fill="url(#cycle-fill-2)" filter="url(#cycle-shadow-2)"/><circle class="practical-cycle-rim" r="58"/><text class="practical-cycle-num" y="-10">1</text><text class="practical-cycle-label" y="17">Innovate</text></g>
+            <g class="practical-cycle-node" transform="translate(320.85 269)"><circle class="practical-cycle-halo" r="75"/><circle r="66" fill="url(#cycle-fill-2)" filter="url(#cycle-shadow-2)"/><circle class="practical-cycle-rim" r="58"/><text class="practical-cycle-num" y="-10">2</text><text class="practical-cycle-label" y="17">Apply</text></g>
+            <g class="practical-cycle-node" transform="translate(99.15 269)"><circle class="practical-cycle-halo" r="75"/><circle r="66" fill="url(#cycle-fill-2)" filter="url(#cycle-shadow-2)"/><circle class="practical-cycle-rim" r="58"/><text class="practical-cycle-num" y="-10">3</text><text class="practical-cycle-label" y="17">Refine</text></g>
           </svg>
         </figure>
         <ol class="practical-cycle-steps">
-          <li><span aria-hidden="true">01</span><div><strong>Innovate</strong><p>Develop new test methods, purpose-built hardware, and automation for each device.</p></div></li>
-          <li><span aria-hidden="true">02</span><div><strong>Apply</strong><p>Put them to work on your silicon, from the first test plan through production release.</p></div></li>
-          <li><span aria-hidden="true">03</span><div><strong>Refine</strong><p>Use characterization, yield, and test-time data to improve the next iteration.</p></div></li>
+          <li><span aria-hidden="true">1</span><div><strong>Innovate</strong><p>Develop new test methods, purpose-built hardware, and automation for each device.</p></div></li>
+          <li><span aria-hidden="true">2</span><div><strong>Apply</strong><p>Put them to work on your silicon, from the first test plan through production release.</p></div></li>
+          <li><span aria-hidden="true">3</span><div><strong>Refine</strong><p>Use characterization, yield, and test-time data to improve the next iteration.</p></div></li>
         </ol>
       </section>
       <section class="practical-about" id="about-2" aria-labelledby="about-title-2">
@@ -155,8 +152,15 @@
           <div class="practical-about-projects">
             <h3>ITAR-Sensitive Project Support</h3>
             <p>Contact our team to discuss support for ITAR-sensitive projects and your program&rsquo;s requirements.</p>
-            <a href="/contact.html?concept=2">Discuss Your Project <span aria-hidden="true">&#8599;</span></a>
+            <a href="/contact.html?concept=2">Discuss Your Project</a>
           </div>
+        </div>
+        <div class="practical-owners">
+          <h3>Meet the owners</h3>
+          <ul class="practical-owner-list">
+            <li><figure class="practical-owner"><div class="practical-owner-photo"><img src="/img/RajMoothedath.jpg" width="400" height="400" style="--face: 50% 0%; --zoom: 1.9" alt="" loading="lazy" decoding="async"></div><figcaption><strong>Raj Moothedath</strong><span>Co-owner</span></figcaption></figure></li>
+            <li><figure class="practical-owner"><div class="practical-owner-photo"><img src="/img/DomingoFigueroa.jpg" width="400" height="400" style="--face: 50% 60%; --zoom: 1.2" alt="" loading="lazy" decoding="async"></div><figcaption><strong>Domingo Figueroa</strong><span>Co-owner</span></figcaption></figure></li>
+          </ul>
         </div>
       </section>
     </main>

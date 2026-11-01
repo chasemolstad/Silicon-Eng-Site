@@ -1,6 +1,6 @@
 (() => {
   const concept = new URLSearchParams(window.location.search).get("concept");
-  if (["3", "4"].includes(concept) && document.body.classList.contains("resources-two")) {
+  if (concept === "4" && document.body.classList.contains("resources-two")) {
     document.querySelectorAll("a[href]").forEach((link) => {
       const destination = new URL(link.href);
       if (destination.origin !== window.location.origin

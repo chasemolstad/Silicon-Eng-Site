@@ -9,7 +9,7 @@
     const params = new URLSearchParams(window.location.search);
     const concept = params.get('from') || params.get('concept');
     const resourcePage = concept === '1' ? '/resources-1.html' : '/resources-2.html';
-    const context = concept === '3' || concept === '4' ? `?concept=${concept}` : '';
+    const context = concept === '4' ? `?concept=${concept}` : '';
     window.location.replace(resourcePage + context);
   </script>
 </head>

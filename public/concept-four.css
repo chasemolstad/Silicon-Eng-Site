@@ -35,7 +35,7 @@ body[data-concept="4"] { background: #fff; }
 .seam-header::after { position: absolute; inset: auto 0 0; height: 1px; background: var(--s-line); opacity: 0; content: ''; transition: opacity .4s; }
 .seam-header.is-scrolled, body.seam-menu-open .seam-header { background: #ffffffd9; -webkit-backdrop-filter: blur(18px) saturate(1.4); backdrop-filter: blur(18px) saturate(1.4); box-shadow: 0 12px 30px -22px #0b0d0f40; color: var(--s-ink); }
 .seam-header.is-scrolled::after, body.seam-menu-open .seam-header::after { opacity: 1; }
-.seam-header-left { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-width: 0; padding: 0 var(--s-inner) 0 var(--s-gutter); }
+.seam-header-left { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-width: 0; padding: 0 clamp(16px, 1.6vw, 28px) 0 var(--s-gutter); }
 .seam-header-right { display: flex; align-items: center; justify-content: flex-end; gap: 20px; padding: 0 var(--s-gutter) 0 24px; }
 .seam-header-left, .seam-header-right { animation: seam-fade 1s .15s both; }
 .seam-brand { display: inline-flex; align-items: center; gap: 12px; color: inherit; text-decoration: none; font-size: 21px; font-weight: 600; letter-spacing: -.045em; }
@@ -54,12 +54,10 @@ body[data-concept="4"] { background: #fff; }
 .seam-header.is-scrolled .seam-nav a { color: var(--s-text); }
 .seam-header.is-scrolled .seam-nav a:hover, .seam-header.is-scrolled .seam-nav a.is-active { color: var(--s-ink); }
 .seam-nav a:hover::before, .seam-nav a.is-active::before { transform: scale(1); }
-.seam-header-cta { display: inline-flex; align-items: center; gap: 16px; min-height: 44px; padding: 0 16px 0 18px; border: 1px solid #ffffff8c; background: #0b0d0f33; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: background-color .3s, border-color .3s, color .3s; }
-.seam-header-cta i { font-style: normal; font-size: 16px; transition: transform .3s var(--s-ease); }
+.seam-header-cta { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border: 1px solid #ffffff8c; background: #0b0d0f33; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: background-color .3s, border-color .3s, color .3s; }
 .seam-header-cta:hover { border-color: #fff; background: #fff; color: var(--s-ink); }
 .seam-header.is-scrolled .seam-header-cta { border-color: var(--s-ink); background: var(--s-ink); color: #fff; }
 .seam-header.is-scrolled .seam-header-cta:hover { border-color: var(--s-signal); background: var(--s-signal); }
-.seam-header-cta:hover i { transform: translate(2px, -2px); }
 .seam-menu-toggle { display: none; }
 .seam-menu { display: none; }
 
@@ -68,14 +66,16 @@ body[data-concept="4"] { background: #fff; }
 .seam-film { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: var(--s-graphite); animation: seam-fade 1.2s .05s both; }
 .seam-film-video { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; filter: saturate(.9) contrast(1.04); transform: translate3d(0, var(--film-shift, 0px), 0) scale(1.1); }
 .seam-copy { position: relative; z-index: 1; isolation: isolate; grid-column: 1; grid-row: 1; display: flex; flex-direction: column; justify-content: space-between; gap: clamp(36px, 6vh, 64px); min-width: 0; padding: calc(var(--s-header) + clamp(28px, 6.5vh, 84px)) var(--s-inner) clamp(26px, 4vh, 44px) var(--s-gutter); text-shadow: 0 1px 16px #0b0d0f4d; }
-.seam-copy::before { position: absolute; inset: 0; z-index: -1; background: var(--s-glass); -webkit-backdrop-filter: blur(var(--s-glass-blur)) brightness(var(--s-glass-shade)); backdrop-filter: blur(var(--s-glass-blur)) brightness(var(--s-glass-shade)); box-shadow: inset -1px 0 0 #ffffff59, 30px 0 60px -36px #0b0d0f59; content: ''; animation: seam-glass-in 1.1s var(--s-ease) both; }
+.seam-copy::before { position: absolute; inset: 0 auto 0 0; z-index: -1; width: 0; background: var(--s-glass); -webkit-backdrop-filter: blur(var(--s-glass-blur)) brightness(var(--s-glass-shade)); backdrop-filter: blur(var(--s-glass-blur)) brightness(var(--s-glass-shade)); box-shadow: inset -1px 0 0 #ffffff59, 30px 0 60px -36px #0b0d0f59; content: ''; animation: seam-glass-in 1.1s var(--s-ease) forwards; }
+/* Until the glass reaches it, the rest of the left column carries the same top and bottom shading as the film on the right, shrinking in step with the glass. */
+.seam-copy::after { position: absolute; inset: 0 0 0 auto; z-index: -1; width: 100%; background: linear-gradient(#0b0d0f99, #0b0d0f00) top / 100% 190px no-repeat, linear-gradient(#0b0d0f00, #0b0d0fc7) bottom / 100% 42% no-repeat; pointer-events: none; content: ''; animation: seam-shade-out 1.1s var(--s-ease) forwards; }
 .seam-eyebrow { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin: 0 0 clamp(18px, 3.4vh, 32px); color: #fff; font-size: 12px; font-weight: 500; line-height: 1.6; letter-spacing: .14em; }
 .seam-eyebrow::before { width: 8px; height: 8px; margin-right: 6px; background: var(--s-signal); content: ''; }
 .seam-eyebrow span { color: #ffffff8c; }
 .seam-site .seam-title { margin: 0 0 .14em; color: #fff; font-size: var(--s-title); font-weight: 400; line-height: .9; letter-spacing: -.062em; }
 .seam-title .seam-line { display: block; overflow: hidden; padding: 0 .12em .16em 0; margin-bottom: -.16em; color: inherit; }
 .seam-title .seam-line > * { display: block; color: inherit; animation: seam-rise 1.15s var(--s-ease) .25s both; }
-.seam-title .seam-line > strong { padding-right: .04em; background: linear-gradient(176deg, var(--s-signal-hi) 18%, #5b8cff 62%, var(--s-signal) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 700; text-shadow: none; filter: drop-shadow(0 2px 14px #0b0d0f40); animation-delay: .36s; }
+.seam-title .seam-line > strong { padding-right: .04em; background: linear-gradient(176deg, #3e74fb, #3e75fc); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 700; text-shadow: none; filter: drop-shadow(0 2px 14px #0b0d0f40); animation-delay: .36s; }
 .seam-lede { max-width: 27em; margin: clamp(22px, 3.4vh, 34px) 0 0; color: #fff; font-size: clamp(16px, 1.16vw, 18px); line-height: 1.7; }
 .seam-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 30px; margin-top: clamp(26px, 4.2vh, 42px); }
 .seam-eyebrow, .seam-lede, .seam-actions, .seam-readout { animation: seam-fade-up 1s var(--s-ease) both; }
@@ -83,15 +83,16 @@ body[data-concept="4"] { background: #fff; }
 .seam-lede { animation-delay: .5s; }
 .seam-actions { animation-delay: .6s; }
 .seam-readout { animation-delay: .75s; }
-.seam-cta { position: relative; isolation: isolate; display: inline-flex; align-items: center; justify-content: space-between; gap: 26px; min-height: 56px; padding: 0 18px 0 24px; overflow: hidden; background: #eceff1; color: var(--s-ink); text-decoration: none; font-size: 15px; font-weight: 600; letter-spacing: -.01em; text-shadow: none; transition: color .45s; }
+/* Desktop: the title, lede, and actions ride in with the glass, travelling its full width with the same timing. */
+@media (min-width: 861px) {
+  .seam-title .seam-line > * { animation: none; }
+  .seam-title, .seam-lede, .seam-actions { position: relative; left: calc(var(--s-seam) * -1); animation: seam-ride-in 1.1s var(--s-ease) forwards; }
+}
+.seam-cta { position: relative; isolation: isolate; display: inline-flex; align-items: center; justify-content: space-between; min-height: 56px; padding: 0 24px; overflow: hidden; background: #eceff1; color: var(--s-ink); text-decoration: none; font-size: 15px; font-weight: 600; letter-spacing: -.01em; text-shadow: none; transition: color .45s; }
 .seam-cta::before { position: absolute; inset: 0; z-index: -1; background: var(--s-signal); content: ''; transform: scaleX(0); transform-origin: right; transition: transform .55s cubic-bezier(.7, 0, .2, 1); }
 .seam-cta:hover { color: #fff; }
 .seam-cta:hover::before { transform: scaleX(1); transform-origin: left; }
-.seam-cta-arrow { font-size: 19px; font-weight: 400; transition: transform .45s var(--s-ease); }
-.seam-cta:hover .seam-cta-arrow { transform: translateX(4px); }
 .seam-text-link { display: inline-flex; align-items: center; gap: 14px; min-height: 44px; color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; }
-.seam-text-link span { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid #ffffff73; border-radius: 50%; font-size: 15px; transition: transform .4s var(--s-ease), background-color .3s, border-color .3s; }
-.seam-text-link:hover span { border-color: var(--s-signal); background: var(--s-signal); transform: translateY(3px); }
 .seam-readout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin: 0; padding: 20px 0 0; border-top: 1px solid #ffffff3d; list-style: none; }
 .seam-readout li { display: grid; align-content: start; gap: 6px; min-width: 0; }
 .seam-readout strong { color: #fff; font-size: clamp(18px, 1.55vw, 26px); font-weight: 500; line-height: 1.15; letter-spacing: -.035em; white-space: nowrap; }
@@ -130,11 +131,61 @@ body[data-concept="4"] { background: #fff; }
 .seam-site.has-dock.is-docked .seam-socket::before, .seam-site.has-dock.is-docked .seam-socket::after, body.seam-menu-open .seam-socket::before, body.seam-menu-open .seam-socket::after { opacity: 0; }
 .seam-site.is-docked .seam-wafer, body.seam-menu-open .seam-wafer { visibility: hidden; }
 
+/* A wide photo between Services and Technology, tinted toward the brand blue and fading into the Technology band below. */
+.practical-banner { position: relative; height: clamp(220px, 30vw, 440px); overflow: hidden; background: var(--p-blue); }
+.practical-banner img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
+.practical-banner::after { position: absolute; inset: 0; background: linear-gradient(rgb(38 60 145 / 12%), rgb(38 60 145 / 0%) 35%, rgb(38 60 145 / 0%) 55%, var(--p-blue)); content: ''; }
+/* Services: photo tiles, the first one large. Pointing at a tile slides its list up over the photo, and clicking or
+   tapping the tile keeps the list open. */
+/* The tiles share Our Team's side margins, so their edges line up with that section's. */
+.svc-tiles { padding-inline: max(5%, calc((100% - 1440px) / 2)); }
+.svc-grid { margin: 0 auto; display: grid; grid-template-columns: 1.3fr 1fr 1fr; grid-template-rows: repeat(2, 350px); gap: 12px; }
+.svc-tile { position: relative; display: flex; align-items: flex-end; overflow: hidden; background: #18212b; }
+.svc-tile:first-child { grid-row: span 2; }
+.svc-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.svc-tile::after { position: absolute; inset: 0; background: linear-gradient(#0b111800 20%, #0b1118b3 55%, #0b1118f2); content: ''; }
+.svc-text { position: relative; z-index: 1; padding: 22px 24px; color: #fff; transition: opacity .3s; }
+.svc-text .practical-index { color: #b4c1ff; }
+.svc-text h3 { margin: 6px 0 0; color: #fff; font-size: 21px; line-height: 1.3; font-weight: 600; }
+.svc-tile:first-child h3 { font-size: 30px; }
+.svc-text h3 small { display: block; font-size: 14px; font-weight: 500; }
+.svc-text p { max-width: 34em; margin: 8px 0 0; color: #ffffffcc; font-size: 15px; line-height: 1.6; }
+.svc-toggle { position: absolute; inset: 0; z-index: 3; width: 100%; padding: 0; border: 0; background: transparent; cursor: pointer; }
+.svc-toggle:focus-visible { outline: 3px solid #8eabff; outline-offset: -3px; }
+.svc-more { position: absolute; inset: 0; z-index: 2; overflow: hidden; pointer-events: none; padding: 24px; background: #263c91; color: #fff; opacity: 0; visibility: hidden; transform: translateY(16px); transition: opacity .35s, transform .45s var(--s-ease), visibility 0s .45s; }
+.svc-tile.is-open .svc-text { opacity: 0; }
+.svc-tile.is-open .svc-more { opacity: 1; visibility: visible; transform: none; transition: opacity .35s, transform .45s var(--s-ease); }
+@media (hover: hover) {
+  .svc-tile:hover .svc-text { opacity: 0; }
+  .svc-tile:hover .svc-more { opacity: 1; visibility: visible; transform: none; transition: opacity .35s, transform .45s var(--s-ease); }
+}
+.svc-more-title { margin: 0 0 14px; font-size: 18px; font-weight: 600; line-height: 1.3; }
+.svc-more ul { margin: 0; padding: 0; list-style: none; }
+.svc-more li { position: relative; margin: 0 0 7px; padding-left: 15px; color: #ffffffe6; font-size: 14px; line-height: 1.5; }
+.svc-more li::before { position: absolute; left: 0; color: #b4c1ff; content: '\2022'; }
+.svc-ate { margin-top: 18px; padding-top: 18px; border-top: 1px solid #ffffff4d; }
+.svc-ate-label { margin: 0 0 8px; color: #b4c1ff; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.svc-ate p:last-child { margin: 0; color: #ffffffe6; font-size: 14px; line-height: 1.6; }
+@media (max-width: 900px) {
+  .svc-tiles { padding-inline: 6%; }
+  .svc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; grid-auto-rows: minmax(380px, auto); }
+  .svc-tile:first-child { grid-row: auto; grid-column: 1 / -1; }
+}
+/* On a phone the first tile is taller so its list and the ATE platforms fit when it opens. */
+@media (max-width: 640px) {
+  .svc-grid { grid-template-columns: minmax(0, 1fr); grid-auto-rows: minmax(400px, auto); }
+  .svc-tile:first-child { min-height: 540px; }
+}
+
 @keyframes seam-fade { from { opacity: 0; } }
 @keyframes seam-fade-up { from { opacity: 0; transform: translateY(18px); } }
 @keyframes seam-rise { from { transform: translateY(108%); } }
-@keyframes seam-glass-in { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0); } }
-@keyframes seam-glass-in-down { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0); } }
+/* The glass grows by width, its shade shrinks by width, and the copy moves by left, so all three are drawn in the same frames and the copy stays inside the glass. */
+/* Glass and copy start hidden in their own styles and these only bring them in, so a frame painted before the animation starts shows neither. */
+@keyframes seam-glass-in { to { width: 100%; } }
+@keyframes seam-shade-out { to { width: 0; } }
+@keyframes seam-ride-in { to { left: 0; } }
+@keyframes seam-glass-in-down { to { height: 100%; } }
 @keyframes seam-wafer-in { from { opacity: 0; transform: rotate(-32deg) scale(.86); } }
 @keyframes seam-menu-in { from { opacity: 0; transform: translateY(22px); } }
 
@@ -183,9 +234,11 @@ body[data-concept="4"] { background: #fff; }
   .seam-socket { width: 34px; }
   .seam-hero { display: flex; flex-direction: column; min-height: 0; }
   .seam-copy { display: contents; }
-  .seam-copy::before { display: none; }
-  .seam-copy-main, .seam-readout { position: relative; z-index: 1; background: var(--s-glass); -webkit-backdrop-filter: blur(var(--s-glass-blur)) brightness(var(--s-glass-shade)); backdrop-filter: blur(var(--s-glass-blur)) brightness(var(--s-glass-shade)); text-shadow: 0 1px 16px #0b0d0f4d; }
-  .seam-copy-main { order: 1; padding: calc(var(--s-header) + 30px) var(--s-gutter) 34px; animation: seam-glass-in-down 1.1s var(--s-ease) both; }
+  .seam-copy::before, .seam-copy::after { display: none; }
+  .seam-copy-main::before, .seam-readout { background: var(--s-glass); -webkit-backdrop-filter: blur(var(--s-glass-blur)) brightness(var(--s-glass-shade)); backdrop-filter: blur(var(--s-glass-blur)) brightness(var(--s-glass-shade)); }
+  .seam-copy-main, .seam-readout { position: relative; z-index: 1; text-shadow: 0 1px 16px #0b0d0f4d; }
+  .seam-copy-main::before { position: absolute; inset: 0 0 auto; z-index: -1; height: 0; content: ''; animation: seam-glass-in-down 1.1s var(--s-ease) forwards; }
+  .seam-copy-main { order: 1; padding: calc(var(--s-header) + 30px) var(--s-gutter) 34px; }
   .seam-site .seam-title { font-size: clamp(44px, 15.6vw, 120px); }
   .seam-lede { max-width: 30em; font-size: 16px; }
   .seam-stage { order: 2; aspect-ratio: 5 / 4; }
@@ -221,4 +274,8 @@ body[data-concept="4"] { background: #fff; }
 @media (prefers-reduced-motion: reduce) {
   html:has(.seam-site) { scroll-behavior: auto; }
   .seam-site *, .seam-site *::before, .seam-site *::after { animation: none !important; transition: none !important; }
+  .seam-title, .seam-lede, .seam-actions { left: 0 !important; }
+  .seam-copy::before { width: 100% !important; }
+  .seam-copy::after { display: none; }
+  .seam-copy-main::before { height: 100% !important; }
 }

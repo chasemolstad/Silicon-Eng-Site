@@ -1,7 +1,7 @@
 (() => {
   const query = new URLSearchParams(window.location.search);
   const requestedConcept = query.get("concept");
-  const concept = ["2", "3", "4"].includes(requestedConcept) ? requestedConcept : "2";
+  const concept = ["2", "4"].includes(requestedConcept) ? requestedConcept : "2";
 
   document.querySelectorAll("[data-concept-home]").forEach((link) => {
     link.href = `/?concept=${concept}`;

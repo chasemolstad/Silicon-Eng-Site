@@ -237,3 +237,13 @@
   addEventListener('pageshow', () => { pageActive = true; closeMenu(); syncPlayback(); });
   syncPlayback();
 })();
+
+// Services: clicking or tapping a tile keeps its list open; with a mouse, hovering shows it too.
+document.querySelectorAll('.svc-toggle').forEach(button => {
+  button.addEventListener('click', () => {
+    const tile = button.closest('.svc-tile');
+    const open = !tile.classList.contains('is-open');
+    tile.classList.toggle('is-open', open);
+    button.setAttribute('aria-expanded', String(open));
+  });
+});

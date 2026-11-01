@@ -28,9 +28,8 @@ a { color: inherit; }
 #contact-form .contact-interests label { display: flex; align-items: center; gap: 9px; color: #485560; font-size: 15px; cursor: pointer; }
 .contact-interests input { width: 14px; height: 14px; margin: 0; accent-color: var(--contact-blue); }
 .contact-form-note { margin: 0; color: var(--contact-muted); font-size: 13px; line-height: 1.7; }
-.contact-submit { width: fit-content; min-width: 126px; min-height: 46px; padding: 0 17px; display: inline-flex; align-items: center; justify-content: space-between; gap: 27px; border: 1px solid var(--contact-blue); border-radius: 2px; background: var(--contact-blue); color: #fff; font: inherit; font-size: 15px; cursor: pointer; transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease, color .18s ease; }
+.contact-submit { width: fit-content; min-width: 126px; min-height: 46px; padding: 0 17px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--contact-blue); border-radius: 2px; background: var(--contact-blue); color: #fff; font: inherit; font-size: 15px; cursor: pointer; transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease, color .18s ease; }
 .contact-submit:hover { transform: translateY(-2px); background: #fff; color: var(--contact-blue); box-shadow: 0 4px 12px #263c9126; }
-.contact-submit span { font-size: 17px; }
 .contact-status { min-height: 1em; margin: 0; color: var(--contact-blue); font-size: 14px; }
 .contact-details { padding: 29px; border: 1px solid #d5dce3; border-radius: 5px; background: #f7f8fa; }
 .contact-details h2 { margin: 0 0 11px; color: var(--contact-blue); font-size: clamp(25px, 2.8vw, 32px); line-height: 1.2; letter-spacing: -.035em; }
