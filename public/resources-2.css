@@ -27,10 +27,6 @@ a:focus-visible { outline: 3px solid var(--two-blue); outline-offset: 4px; }
 .two-hero-links a { display: inline-flex; align-items: center; justify-content: space-between; gap: 22px; min-height: 46px; padding: 9px 16px; border: 1px solid var(--two-blue); background: var(--two-blue); color: #fff; text-decoration: none; font-size: 14px; transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease, color .18s ease; }
 .two-hero-links a:hover { transform: translateY(-2px); background: #fff; color: var(--two-blue); box-shadow: 0 4px 12px #263c9126; }
 .two-soon { display: inline-flex; align-items: center; gap: 12px; min-height: 46px; padding: 9px 16px; border: 1px dashed #b9c1c9; background: transparent; color: #87919a; font: inherit; font-size: 14px; cursor: not-allowed; }
-.two-hero-stats { margin: 36px 0 0; padding: 22px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px; border-top: 1px solid #d4dbe1; list-style: none; }
-.two-hero-stats li { display: grid; align-content: start; gap: 4px; }
-.two-hero-stats strong { color: var(--two-blue); font-size: 26px; font-weight: 600; line-height: 1.1; letter-spacing: -.03em; }
-.two-hero-stats span { color: var(--two-muted); font-size: 13px; line-height: 1.5; }
 
 /* The hero shelf shows the two papers as covers on a navy blueprint. */
 .two-shelf { position: relative; min-width: 0; min-height: 0; overflow: hidden; background: radial-gradient(circle at 68% 32%, #3a56a8 0, transparent 58%), linear-gradient(160deg, var(--two-blue), #15235a); }
@@ -102,7 +98,6 @@ a:focus-visible { outline: 3px solid var(--two-blue); outline-offset: 4px; }
 @media (max-width: 900px) {
   .two-hero { padding-left: 6%; gap: 5%; }
   .two-hero-copy { padding: 42px 0; }
-  .two-hero-stats { gap: 14px; }
   .two-header nav a:not(.two-back), .two-nav-soon { display: none; }
   .two-header nav { gap: 0; }
   .two-papers { padding: 60px 6% 66px; }
@@ -120,8 +115,6 @@ a:focus-visible { outline: 3px solid var(--two-blue); outline-offset: 4px; }
   .two-hero-copy { padding: 0; }
   .two-hero h1 { margin: 17px 0 14px; font-size: clamp(34px,9vw,48px); }
   .two-hero-copy > p:not(.two-eyebrow) { font-size: 16px; }
-  .two-hero-stats { margin-top: 30px; gap: 12px; }
-  .two-hero-stats strong { font-size: 22px; }
   .two-shelf { height: 320px; }
   .two-shelf .two-cover { --cover: 160px; }
   .two-papers { padding: 48px 6%; }
