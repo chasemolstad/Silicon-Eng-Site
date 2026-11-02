@@ -239,5 +239,12 @@
       document.querySelectorAll("#year, .current-year").forEach((year) => { year.textContent = new Date().getFullYear(); });
     })();
   </script>
+  <!-- Liquid glass lens for the hero panel: the map is neutral grey except for a band at the right edge, where the film behind is pulled toward the edge as if bent by thick glass. -->
+  <svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+    <filter id="seam-liquid" x="0" y="0" width="1" height="1" color-interpolation-filters="sRGB">
+      <feImage preserveAspectRatio="none" result="lens" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3ClinearGradient id='g'%3E%3Cstop offset='.86' stop-color='%23808080'/%3E%3Cstop offset='.95' stop-color='%23608080'/%3E%3Cstop offset='.985' stop-color='%23288080'/%3E%3Cstop offset='1' stop-color='%23008080'/%3E%3C/linearGradient%3E%3Crect width='100' height='100' fill='url(%23g)'/%3E%3C/svg%3E"/>
+      <feDisplacementMap in="SourceGraphic" in2="lens" scale="70" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
 </body>
 </html>

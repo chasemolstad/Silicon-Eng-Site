@@ -188,6 +188,10 @@
   addEventListener('scroll', () => { if (pointer) wakeLight(); }, { passive: true });
   motion.addEventListener('change', () => { pointer = null; wakeLight(); });
 
+  // Liquid glass lens. Only Chromium applies SVG filters behind an element; elsewhere a url() would cancel
+  // the whole backdrop filter, so other browsers keep the plain glass.
+  if (navigator.userAgentData?.brands?.some(({ brand }) => brand === 'Chromium')) site.style.setProperty('--s-glass-lens', 'url(#seam-liquid)');
+
   // Hero film. The video file starts loading only after the rest of the page has loaded. With Save-Data,
   // a 2G connection, or reduced motion it waits for the Play button, and the poster shows until then.
   const video = site.querySelector('.seam-film-video');
