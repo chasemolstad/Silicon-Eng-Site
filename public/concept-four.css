@@ -92,7 +92,10 @@ body[data-concept="4"] { background: #fff; }
 .seam-cta::before { position: absolute; inset: 0; z-index: -1; background: var(--s-signal); content: ''; transform: scaleX(0); transform-origin: right; transition: transform .55s cubic-bezier(.7, 0, .2, 1); }
 .seam-cta:hover { color: #fff; }
 .seam-cta:hover::before { transform: scaleX(1); transform-origin: left; }
-.seam-text-link { display: inline-flex; align-items: center; gap: 14px; min-height: 44px; color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; }
+.seam-text-link { position: relative; display: inline-flex; align-items: center; gap: 14px; min-height: 44px; padding: 0 12px; margin: 0 -12px; border-radius: 2px; color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: background-color .35s; }
+.seam-text-link::after { position: absolute; right: 12px; bottom: 9px; left: 12px; height: 1px; background: var(--s-signal); content: ''; transform: scaleX(0); transform-origin: right; transition: transform .45s cubic-bezier(.7, 0, .2, 1); }
+.seam-text-link:hover { background-color: rgba(61, 118, 247, .18); }
+.seam-text-link:hover::after { transform: scaleX(1); transform-origin: left; }
 .seam-readout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin: 0; padding: 20px 0 0; border-top: 1px solid #ffffff3d; list-style: none; }
 .seam-readout li { display: grid; align-content: start; gap: 6px; min-width: 0; }
 .seam-readout strong { color: #fff; font-size: clamp(18px, 1.55vw, 26px); font-weight: 500; line-height: 1.15; letter-spacing: -.035em; white-space: nowrap; }
