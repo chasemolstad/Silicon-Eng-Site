@@ -452,6 +452,7 @@ section[id], main[id] { scroll-margin-top: 64px; }
 .practical-owners h3 { margin: 0 0 20px; color: var(--p-ink); font-size: 18px; line-height: 1.4; font-weight: 600; letter-spacing: -.015em; }
 .practical-owner-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin: 0; padding: 0; list-style: none; }
 .practical-owner { margin: 0; }
+.practical-owner > a { display: block; }
 .practical-owner-photo { overflow: hidden; aspect-ratio: 4 / 5; background: #dfe4e8; box-shadow: 0 24px 40px -28px #172536a6; }
 .practical-owner-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; transition: scale .7s cubic-bezier(.16, 1, .3, 1); }
 .practical-owner:hover .practical-owner-photo img { scale: 1.04; }
@@ -472,6 +473,7 @@ section[id], main[id] { scroll-margin-top: 64px; }
 .practical-footer > div { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 19px; color: #515d68; font-size: 14px; }
 .practical-footer > div a { text-decoration: none; }
 .practical-footer > div a:hover { color: var(--p-blue); }
+.practical-footer-social { display: inline-flex; align-items: center; }
 .practical-footer > small { grid-column: 1/-1; padding-top: 14px; border-top: 1px solid var(--p-line); color: #79838c; font-size: 11px; }
 
 @media (min-width: 1101px) and (max-width: 1200px) {
