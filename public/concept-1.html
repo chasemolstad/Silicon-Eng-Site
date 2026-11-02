@@ -16,10 +16,6 @@
   <script src="/services.js" defer></script>
 </head>
 <body data-concept="1">
-  <div class="concept-switcher" role="group" aria-label="Website concept">
-    <button type="button" data-concept-choice="2" aria-pressed="false" aria-label="Show concept 2">2</button>
-    <button type="button" data-concept-choice="4" aria-pressed="false" aria-label="Show concept 4">4</button>
-  </div>
 
   <div class="site-implementation varadis-site" id="implementation-1" data-implementation="1">
     <header class="imeg-header" aria-label="SiliconEng header">
@@ -30,10 +26,10 @@
           </video>
         </div>
         <button class="imeg-video-toggle" type="button" aria-label="Pause background video" hidden><span aria-hidden="true"></span></button>
-        <a class="imeg-emblem" href="/?concept=1" aria-label="SiliconEng home">
+        <a class="imeg-emblem" href="/concept-1.html" aria-label="SiliconEng home">
           <img class="imeg-emblem-logo" src="/img/HQSiliconEngCircle.png" alt="" fetchpriority="high">
         </a>
-        <a class="imeg-brand" href="/?concept=1" aria-label="SiliconEng home"><img src="/img/HQSiliconEngCircle.png" alt=""><span>SiliconEng</span></a>
+        <a class="imeg-brand" href="/concept-1.html" aria-label="SiliconEng home"><img src="/img/HQSiliconEngCircle.png" alt=""><span>SiliconEng</span></a>
         <details class="imeg-menu">
           <summary aria-label="Open navigation menu"><span></span><span></span><span></span></summary>
           <nav aria-label="Concept 1 navigation"><a href="#services-1">Services <span aria-hidden="true">&#8599;</span></a><a href="#technology-1">Our Technology <span aria-hidden="true">&#8599;</span></a><a href="#company-1">Company <span aria-hidden="true">&#8599;</span></a><a href="/resources-1.html">Resources <span aria-hidden="true">&#8599;</span></a><a href="/contact.html?concept=1">Talk with an engineer <span aria-hidden="true">&#8599;</span></a></nav>
@@ -183,15 +179,6 @@
 
   <script>
     (() => {
-      document.querySelectorAll("[data-concept-choice]").forEach((button) => {
-        button.addEventListener("click", () => {
-          if (document.body.dataset.concept !== button.dataset.conceptChoice) {
-            window.location.assign(`/?concept=${button.dataset.conceptChoice}`);
-            return;
-          }
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-      });
       document.querySelectorAll(".practical-service-columns details.service-details, .practical-value details.value-details, .varadis-value details.value-details").forEach((details) => {
         const summary = details.querySelector("summary");
         const panel = details.querySelector(".service-details-content");

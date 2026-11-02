@@ -11,7 +11,6 @@
   const waferInner = wafer.querySelector('.seam-wafer-inner');
   const main = site.querySelector('main');
   const footer = site.querySelector('footer');
-  const switcher = document.querySelector('.concept-switcher');
   const wide = matchMedia('(min-width: 1321px)');
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
@@ -24,7 +23,7 @@
     menuToggle.setAttribute('aria-expanded', 'false');
     menuToggle.querySelector('[data-menu-label]').textContent = 'Menu';
     document.body.classList.remove('seam-menu-open');
-    [main, footer, switcher].forEach(element => { if (element) element.inert = false; });
+    [main, footer].forEach(element => { element.inert = false; });
     if (restoreFocus) menuToggle.focus({ preventScroll: true });
   }
   menuToggle.addEventListener('click', () => {
@@ -33,7 +32,7 @@
     menuToggle.setAttribute('aria-expanded', 'true');
     menuToggle.querySelector('[data-menu-label]').textContent = 'Close';
     document.body.classList.add('seam-menu-open');
-    [main, footer, switcher].forEach(element => { if (element) element.inert = true; });
+    [main, footer].forEach(element => { element.inert = true; });
   });
   menuPanel.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
     closeMenu();
@@ -189,15 +188,27 @@
   addEventListener('scroll', () => { if (pointer) wakeLight(); }, { passive: true });
   motion.addEventListener('change', () => { pointer = null; wakeLight(); });
 
-  // Hero film
+  // Hero film. The video file starts loading only after the rest of the page has loaded. With Save-Data,
+  // a 2G connection, or reduced motion it waits for the Play button, and the poster shows until then.
   const video = site.querySelector('.seam-film-video');
   const toggle = site.querySelector('.seam-video-toggle');
+  const source = video.querySelector('source[data-src]');
+  const connection = navigator.connection;
+  const lightweight = Boolean(connection?.saveData) || /2g$/.test(connection?.effectiveType || '');
+  let loaded = !source;
   let inView = true;
   let pausedByUser = false;
   let motionOverride = false;
   let pending = false;
   let pageActive = true;
   video.muted = true;
+
+  function loadFilm() {
+    if (loaded) return;
+    loaded = true;
+    source.src = source.dataset.src;
+    video.load();
+  }
 
   function updateControl() {
     const playing = !video.paused;
@@ -207,7 +218,7 @@
     toggle.querySelector('[data-video-label]').textContent = playing ? 'Pause' : 'Play';
   }
   function shouldPlay() {
-    return pageActive && inView && !document.hidden && !pausedByUser
+    return loaded && pageActive && inView && !document.hidden && !pausedByUser
       && (!motion.matches || motionOverride) && !video.error;
   }
   function syncPlayback() {
@@ -222,6 +233,7 @@
   toggle.addEventListener('click', () => {
     pausedByUser = !video.paused;
     motionOverride = !pausedByUser;
+    loadFilm();
     syncPlayback();
   });
   video.addEventListener('play', updateControl);
@@ -231,11 +243,22 @@
     hero.style.setProperty('--film-progress', video.duration ? video.currentTime / video.duration : 0);
   });
   new IntersectionObserver(([entry]) => { inView = entry.isIntersecting; syncPlayback(); }, { threshold: .05 }).observe(film);
-  motion.addEventListener('change', () => { motionOverride = false; syncPlayback(); });
+  motion.addEventListener('change', () => {
+    motionOverride = false;
+    if (!motion.matches && !lightweight) loadFilm();
+    syncPlayback();
+  });
   document.addEventListener('visibilitychange', syncPlayback);
   addEventListener('pagehide', () => { pageActive = false; video.pause(); });
   addEventListener('pageshow', () => { pageActive = true; closeMenu(); syncPlayback(); });
   syncPlayback();
+  const startFilm = () => {
+    if (lightweight || motion.matches) return;
+    loadFilm();
+    syncPlayback();
+  };
+  if (document.readyState === 'complete') startFilm();
+  else addEventListener('load', startFilm, { once: true });
 })();
 
 // Services: clicking or tapping a tile keeps its list open; with a mouse, hovering shows it too.

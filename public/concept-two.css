@@ -68,7 +68,7 @@
 .orbit-site.is-morphing .orbit-lens::before { visibility: hidden; }
 
 /* Hero */
-.orbit-hero { position: relative; height: clamp(600px, calc(100svh - 42px - env(safe-area-inset-bottom)), 1100px); overflow: hidden; background: #1d2329; color: var(--o-ink); }
+.orbit-hero { position: relative; height: clamp(600px, 100svh, 1100px); overflow: hidden; background: #1d2329; color: var(--o-ink); }
 .orbit-video { position: absolute; inset: 0; z-index: 0; display: block; width: 100%; height: 100%; object-fit: cover; translate: 0 var(--o-drift, 0px); scale: 1.06; }
 .orbit-hero::after { position: absolute; inset: 0; z-index: 0; background: linear-gradient(90deg, #0b111833, #0b111800 55%), linear-gradient(0deg, #0b111840, #0b111800 30%); content: ''; pointer-events: none; }
 .orbit-mark { position: absolute; top: calc(var(--o-mark-y) - var(--o-mark) * .4775); left: calc(var(--o-mark-x) - var(--o-mark) * .4976); z-index: 32; width: var(--o-mark); margin: 0; pointer-events: none; transform-origin: 49.76% 48.79%; }
@@ -149,7 +149,7 @@
     --o-mark: clamp(132px, min(42vw, 26svh), 260px);
     --o-mark-x: 50%;
     --o-mark-y: calc(var(--o-mark) * .5 + 5svh);
-    --o-lens: min(110vw, 540px, calc(100svh - 40px - env(safe-area-inset-bottom) - var(--o-mark) * .5 - 5svh - 90px));
+    --o-lens: min(110vw, 540px, calc(100svh - env(safe-area-inset-bottom) - var(--o-mark) * .5 - 5svh - 90px));
     --o-copy: min(84vw, calc(var(--o-lens) * .8));
     --o-lens-x: 50%;
     --o-lens-y: calc(var(--o-mark-y) + var(--o-lens) / 2);

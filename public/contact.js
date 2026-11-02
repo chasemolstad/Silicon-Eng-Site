@@ -1,10 +1,10 @@
 (() => {
   const query = new URLSearchParams(window.location.search);
-  const requestedConcept = query.get("concept");
-  const concept = ["1", "2", "4"].includes(requestedConcept) ? requestedConcept : "2";
+  // Opened from an archived concept page, the home links go back to it; otherwise to the homepage.
+  const archivedHome = { 1: "/concept-1.html", 2: "/concept-2.html" }[query.get("concept")];
 
   document.querySelectorAll("[data-concept-home]").forEach((link) => {
-    link.href = `/?concept=${concept}`;
+    link.href = archivedHome || "/";
   });
 
   const year = document.querySelector("#contact-year");

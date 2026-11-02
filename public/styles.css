@@ -11,12 +11,7 @@
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { min-width: 320px; margin: 0; padding-bottom: calc(42px + env(safe-area-inset-bottom)); overflow-x: clip; background: var(--paper); color: var(--ink); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
-.concept-switcher { position: fixed; inset: auto 0 0; z-index: 50; min-height: 42px; padding: 5px 7.5% calc(5px + env(safe-area-inset-bottom)); display: flex; align-items: center; justify-content: center; gap: 10px; background: #fff; border-top: 1px solid #e8edef; }
-.concept-switcher button { width: 27px; height: 31px; padding: 0; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: #687681; font: 11px var(--mono); cursor: pointer; transition: color .18s, border-color .18s; }
-.concept-switcher button:hover { color: var(--ink); border-bottom-color: #c9d0d4; }
-.concept-switcher button[aria-pressed="true"] { border-bottom-color: var(--blue); color: var(--ink); }
-.concept-switcher button:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+body { min-width: 320px; margin: 0; overflow-x: clip; background: var(--paper); color: var(--ink); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
 a { color: inherit; }
 .site-header { height: 90px; padding: 0 7.5%; display: flex; align-items: center; justify-content: space-between; background: var(--white); border-bottom: 1px solid #e8edef; }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
@@ -139,8 +134,6 @@ h1 span, .intro h2 span, .platform-copy h2 span { color: var(--blue); }
   .mission-banner { padding-left: 7%; padding-right: 7%; }
 }
 @media (max-width: 640px) {
-  .concept-switcher { min-height: 38px; padding: 4px 14px calc(4px + env(safe-area-inset-bottom)); gap: 7px; }
-  .concept-switcher button { width: 25px; height: 28px; }
   .site-header { width: 100%; height: 72px; padding: 0 18px; overflow: hidden; }
   .brand-logo { width: 40px; height: 40px; }
   .brand-name { font-size: 16px; }

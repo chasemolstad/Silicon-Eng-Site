@@ -1,20 +1,12 @@
 (() => {
   const concept = new URLSearchParams(window.location.search).get("concept");
-  if (concept === "4" && document.body.classList.contains("resources-two")) {
+  if (concept === "2" && document.body.classList.contains("resources-two")) {
     document.querySelectorAll("a[href]").forEach((link) => {
       const destination = new URL(link.href);
-      if (destination.origin !== window.location.origin
-        || !["/", "/contact.html"].includes(destination.pathname)
-        || destination.searchParams.get("concept") !== "2") return;
-      destination.searchParams.set("concept", concept);
-      link.href = destination.pathname + destination.search + destination.hash;
+      if (destination.origin !== window.location.origin) return;
+      if (destination.pathname === "/") link.href = "/concept-2.html" + destination.hash;
+      else if (destination.pathname === "/contact.html") link.href = "/contact.html?concept=2" + destination.hash;
     });
-    const back = document.querySelector(".two-back");
-    if (back) {
-      const arrow = back.querySelector("span");
-      back.textContent = `Back to concept ${concept} `;
-      if (arrow) back.append(arrow);
-    }
   }
 
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
