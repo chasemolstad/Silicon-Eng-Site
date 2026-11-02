@@ -4,7 +4,7 @@
     document.querySelectorAll("a[href]").forEach((link) => {
       const destination = new URL(link.href);
       if (destination.origin !== window.location.origin) return;
-      if (destination.pathname === "/") link.href = "/concept-2.html" + destination.hash;
+      if (destination.pathname === "/") link.href = "/archive/concept-2.html" + destination.hash;
       else if (destination.pathname === "/contact.html") link.href = "/contact.html?concept=2" + destination.hash;
     });
   }

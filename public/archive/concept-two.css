@@ -76,7 +76,7 @@
 .orbit-site.is-docked .orbit-mark { visibility: hidden; }
 .orbit-mark-inner { position: relative; isolation: isolate; translate: var(--wx, 0px) var(--wy, 0px); transform-origin: 49.76% 48.79%; animation: orbit-mark-in 1.4s var(--o-ease) .05s both; will-change: translate; }
 .orbit-mark img { display: block; width: 100%; height: auto; filter: drop-shadow(0 30px 40px #050a1073); }
-.orbit-mark-glint { position: absolute; inset: 0; overflow: hidden; -webkit-mask: url('/img/HQSiliconEngCircle.png') 0 0 / 100% 100% no-repeat; mask: url('/img/HQSiliconEngCircle.png') 0 0 / 100% 100% no-repeat; mix-blend-mode: overlay; }
+.orbit-mark-glint { position: absolute; inset: 0; overflow: hidden; -webkit-mask: url('/archive/img/HQSiliconEngCircle.png') 0 0 / 100% 100% no-repeat; mask: url('/archive/img/HQSiliconEngCircle.png') 0 0 / 100% 100% no-repeat; mix-blend-mode: overlay; }
 /* The light rests at 30% 22% and moves by translate alone, so following the pointer never repaints the mark. */
 .orbit-mark-glint::before { position: absolute; top: 22%; left: 30%; width: 90%; aspect-ratio: 1; margin: -45% 0 0 -45%; background: radial-gradient(closest-side, #ffffffb3, #ffffff3d 48%, #ffffff00); content: ''; translate: var(--glint-x, 0px) var(--glint-y, 0px); will-change: translate; }
 .orbit-lens { position: absolute; top: calc(var(--o-lens-y) - var(--o-lens) / 2); left: calc(var(--o-lens-x) - var(--o-lens) / 2); z-index: 31; width: var(--o-lens); height: var(--o-lens); animation: orbit-emerge 1.5s var(--o-ease) .3s both; }
