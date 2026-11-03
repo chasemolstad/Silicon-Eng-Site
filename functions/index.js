@@ -81,7 +81,8 @@ exports.forms = onRequest({ secrets: [smtpPassword], maxInstances: 3, memory: "2
     host: "mail.privateemail.com",
     port: 465,
     secure: true,
-    auth: { user: sender, pass: smtpPassword.value() },
+    // Trimmed because pasting the secret into a Windows terminal can store a trailing line break.
+    auth: { user: sender, pass: smtpPassword.value().trim() },
   });
 
   try {
