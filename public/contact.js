@@ -14,15 +14,23 @@
   const status = document.querySelector("#contact-status");
   if (!form) return;
 
-  form.addEventListener("submit", (event) => {
+  // The form posts to the "forms" Cloud Function (functions/index.js), which emails it to info@siliconeng.com.
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (!form.reportValidity()) return;
 
-    const fields = [...new FormData(form).entries()];
-    const company = form.elements.namedItem("Company").value.trim();
-    const body = fields.map(([label, value]) => `${label}: ${value}`).join("\n");
-    const subject = `SiliconEng website inquiry${company ? ` - ${company}` : ""}`;
-    if (status) status.textContent = "Opening your email app with the message ready to send.";
-    window.location.href = `mailto:info@siliconeng.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const submit = form.querySelector("[type=submit]");
+    submit.disabled = true;
+    status.textContent = "Sending your message…";
+    try {
+      const response = await fetch("/api/contact", { method: "POST", body: new FormData(form) });
+      if (!response.ok) throw new Error((await response.json().catch(() => ({}))).error);
+      form.reset();
+      status.textContent = "Thank you. Your message has been sent, and our team will be in touch soon.";
+    } catch (error) {
+      status.textContent = `${error.message || "Your message could not be sent."} You can also email us at info@siliconeng.com.`;
+    } finally {
+      submit.disabled = false;
+    }
   });
 })();

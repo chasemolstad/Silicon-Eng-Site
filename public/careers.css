@@ -54,6 +54,8 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--careers-blue); 
 .careers-submit { width: fit-content; min-height: 46px; padding: 0 17px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--careers-blue); border-radius: 2px; background: var(--careers-blue); color: #fff; font: inherit; font-size: 15px; cursor: pointer; transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease, color .18s ease; }
 .careers-submit:hover { transform: translateY(-2px); background: #fff; color: var(--careers-blue); box-shadow: 0 4px 12px #263c9126; }
 .careers-status { min-height: 1em; margin: 0; color: var(--careers-blue); font-size: 14px; line-height: 1.7; }
+/* Spam trap: hidden from people, filled in by bots; the form function drops submissions that use it. */
+#careers-form .form-trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 .careers-apply-aside { position: sticky; top: 24px; padding: 29px; border: 1px solid #d5dce3; border-radius: 5px; background: #f7f8fa; }
 .careers-apply-aside .careers-eyebrow { color: var(--careers-blue); }
 .careers-apply-aside > h3 { margin: 12px 0 18px; color: var(--careers-blue); font-size: clamp(22px, 2.4vw, 28px); line-height: 1.2; letter-spacing: -.035em; font-weight: 600; }

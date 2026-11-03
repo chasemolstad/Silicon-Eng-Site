@@ -35,6 +35,15 @@
         "type": 301
       }
     ],
+    "rewrites": [
+      {
+        "source": "/api/**",
+        "function": {
+          "functionId": "forms",
+          "region": "us-central1"
+        }
+      }
+    ],
     "headers": [
       {
         "source": "/",
@@ -74,6 +83,16 @@
       }
     ]
   },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        "*.local"
+      ]
+    }
+  ],
   "firestore": {
     "database": "(default)",
     "location": "nam5",

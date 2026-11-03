@@ -45,18 +45,24 @@
   });
   showResume();
 
-  // There is no upload backend yet, so the form prepares an email and the applicant attaches the chosen resume themselves.
-  form.addEventListener("submit", (event) => {
+  // The form and resume post to the "forms" Cloud Function (functions/index.js), which emails them to info@siliconeng.com.
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (!form.reportValidity()) return;
 
-    const fields = [...new FormData(form).entries()].filter(([, value]) => typeof value === "string" && value.trim());
-    const name = ["First name", "Last name"].map((field) => form.elements.namedItem(field).value.trim()).join(" ");
-    const interest = form.elements.namedItem("Area of interest").value;
-    const resumeName = resume.files[0].name;
-    const body = [...fields.map(([label, value]) => `${label}: ${value.trim()}`), "", `Resume: ${resumeName} (attached)`].join("\n");
-    const subject = `Resume: ${name} - ${interest}`;
-    if (status) status.textContent = `Opening your email app with your details filled in. Attach ${resumeName} before you send it.`;
-    window.location.href = `mailto:careers@siliconeng.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const submit = form.querySelector("[type=submit]");
+    submit.disabled = true;
+    status.textContent = "Sending your application…";
+    try {
+      const response = await fetch("/api/careers", { method: "POST", body: new FormData(form) });
+      if (!response.ok) throw new Error((await response.json().catch(() => ({}))).error);
+      form.reset();
+      showResume();
+      status.textContent = "Thank you. Your application has been sent, and our team will be in touch if there is a fit.";
+    } catch (error) {
+      status.textContent = `${error.message || "Your application could not be sent."} You can also email your resume to info@siliconeng.com.`;
+    } finally {
+      submit.disabled = false;
+    }
   });
 })();
