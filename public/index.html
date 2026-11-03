@@ -47,19 +47,27 @@
   <link rel="stylesheet" href="/fonts.css">
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/concept-four.css">
+  <script>
+    // Old links used concept-numbered section addresses (e.g. /#services-2); point them at the current sections.
+    (() => {
+      const renamed = { "services-2": "services", "platforms-2": "technology", "company-2": "company", "about-2": "about", "overview-4": "main" };
+      const current = renamed[location.hash.slice(1)];
+      if (current) history.replaceState(null, "", "#" + current);
+    })();
+  </script>
   <script src="/concept-four.js" defer></script>
 </head>
 <body data-concept="4">
   <div class="site-implementation practical-site seam-site" id="implementation-4" data-implementation="4">
-    <a class="seam-skip" href="#overview-4">Skip to content</a>
+    <a class="seam-skip" href="#main">Skip to content</a>
     <header class="seam-header">
       <div class="seam-header-left">
-        <a class="seam-brand" href="#overview-4" aria-label="SiliconEng home"><span class="seam-socket" aria-hidden="true"><img src="/img/siliconeng-mark.webp" width="800" height="783" alt=""></span><span class="seam-wordmark">SiliconEng</span></a>
+        <a class="seam-brand" href="#main" aria-label="SiliconEng home"><span class="seam-socket" aria-hidden="true"><img src="/img/siliconeng-mark.webp" width="800" height="783" alt=""></span><span class="seam-wordmark">SiliconEng</span></a>
         <nav class="seam-nav" aria-label="Main navigation">
-          <a href="#services-2">Services</a>
-          <a href="#platforms-2">Technology</a>
-          <a href="#about-2">About</a>
-          <a href="/resources-2.html">Resources</a>
+          <a href="#services">Services</a>
+          <a href="#technology">Technology</a>
+          <a href="#about">About</a>
+          <a href="/resources.html">Resources</a>
           <a href="/careers.html">Careers</a>
         </nav>
       </div>
@@ -70,10 +78,10 @@
     </header>
     <div class="seam-menu" id="seam-menu" hidden>
       <nav aria-label="Mobile navigation">
-        <a href="#services-2" style="--i: 0"><span>01</span>Services</a>
-        <a href="#platforms-2" style="--i: 1"><span>02</span>Technology</a>
-        <a href="#about-2" style="--i: 2"><span>03</span>About</a>
-        <a href="/resources-2.html" style="--i: 3"><span>04</span>Resources</a>
+        <a href="#services" style="--i: 0"><span>01</span>Services</a>
+        <a href="#technology" style="--i: 1"><span>02</span>Technology</a>
+        <a href="#about" style="--i: 2"><span>03</span>About</a>
+        <a href="/resources.html" style="--i: 3"><span>04</span>Resources</a>
         <a href="/careers.html" style="--i: 4"><span>05</span>Careers</a>
       </nav>
       <div class="seam-menu-foot">
@@ -81,7 +89,7 @@
         <p><span>Santa Clara, California</span><a href="mailto:info@siliconeng.com">info@siliconeng.com</a><a href="tel:+16692455007">+1 669 245 5007</a></p>
       </div>
     </div>
-    <main id="overview-4" tabindex="-1">
+    <main id="main" tabindex="-1">
       <section class="seam-hero" aria-labelledby="seam-title">
         <div class="seam-film">
           <video class="seam-film-video" muted loop playsinline preload="none" poster="/img/hero-reel-hd-v2-poster.webp" aria-label="Tour of semiconductor test lab equipment" tabindex="-1"><source data-src="/img/hero-reel-hd-v2.mp4" type="video/mp4"></video>
@@ -92,7 +100,7 @@
             <h1 class="seam-title" id="seam-title"><span class="seam-line"><span>Your Silicon</span></span> <span class="seam-line"><strong>Partner</strong></span></h1>
             <p class="seam-lede">Test development, custom hardware, and qualification &amp; reliability engineering that carry your devices from first wafer to full-volume production.</p>
             <div class="seam-actions">
-              <a class="seam-text-link" href="#services-2">Explore services</a>
+              <a class="seam-text-link" href="#services">Explore services</a>
               <a class="seam-cta" href="/contact.html"><span>Talk to an engineer</span></a>
             </div>
           </div>
@@ -116,7 +124,7 @@
           </div>
         </figure>
       </section>
-      <section class="practical-services svc-tiles" id="services-2">
+      <section class="practical-services svc-tiles" id="services">
         <div class="practical-section-heading"><div><p class="practical-overline">SERVICES</p><h2>Engineering From Test Plan To Production Release.</h2></div><p>From ATE test development and custom hardware to silicon evaluation, product support, and turnkey operations.</p></div>
         <div class="svc-grid">
           <article class="svc-tile"><img class="svc-photo" src="/img/uf200.webp" width="1024" height="1536" style="object-position: 50% 42%" alt="UF200 wafer prober in a cleanroom" loading="lazy" decoding="async"><div class="svc-text"><span class="practical-index">TEST DEVELOPMENT</span><h3>Wafer Probe &amp; Package Test</h3><p>Test programs from first plan through production release.</p></div><button class="svc-toggle" type="button" aria-expanded="false" aria-controls="svc-more-0" aria-label="Wafer Probe &amp; Package Test details"></button><div class="svc-more" id="svc-more-0"><p class="svc-more-title">Wafer Probe &amp; Package Test</p><ul><li>ATE Probe &amp; Package Test Development, including WLCSP</li><li>Analog / Power Management / SoC / Mixed Signal / RF test</li><li>Design for Test Methodology (DFT), with early design-team engagement</li><li>Test plan development and detailed documentation</li><li>Production release and post-release support</li></ul><div class="svc-ate"><p class="svc-ate-label">ATE platforms</p><p>Teradyne ETS364 / ETS88 / ETS800, Microflex, UltraFlex, Advantest 93K, Accotest, Chroma Test, ASL1000, and Focused Test.</p></div></div></article>
@@ -127,11 +135,11 @@
         </div>
       </section>
       <div class="practical-banner"><img src="/img/wafer-probe-wide.webp" width="1918" height="820" alt="Probe needles contacting a silicon wafer on a prober chuck" loading="lazy" decoding="async"></div>
-      <section class="practical-platforms" id="platforms-2">
+      <section class="practical-platforms" id="technology">
         <div><p class="practical-overline">OUR TECHNOLOGY &amp; TEST METHODS</p><h2>Ten ATE platforms, plus the bench.</h2><p>ATE platform expertise, flexible bench automation, and purpose-built reliability hardware for Analog, Power Management, SoC, and RF products.</p></div>
         <div class="practical-platform-list"><p><strong>ATE platform expertise</strong><span>Teradyne ETS364 / ETS88 / ETS800, Microflex, UltraFlex, Advantest 93K, Accotest, Chroma Test, ASL1000, and Focused Test.</span></p><p><strong>Bench automation &amp; custom instrumentation expertise</strong><span>GPIB-based Rack &amp; Stack, external instrument control, and custom-built test systems automated with GPIB and Python.</span></p><p><strong>Reliability test &amp; qualification</strong><span>HTOL, HAST, and burn-in programs on purpose-built boards, ESD and latch-up characterization, and AEC-Q100 and MIL-STD-883 qualification flows.</span></p></div>
       </section>
-      <section class="practical-company" id="company-2">
+      <section class="practical-company" id="company">
         <div class="practical-company-overview">
           <div><p class="practical-overline">OUR COMPANY</p><h2>From development to market.</h2></div>
           <div class="practical-company-copy">
@@ -170,7 +178,7 @@
           <li><span aria-hidden="true">3</span><div><strong>Refine</strong><p>Use characterization, yield, and test-time data to improve the next iteration.</p></div></li>
         </ol>
       </section>
-      <section class="practical-about" id="about-2" aria-labelledby="about-title-2">
+      <section class="practical-about" id="about" aria-labelledby="about-title-2">
         <div class="practical-about-heading">
           <p class="practical-overline">OUR TEAM</p>
           <h2 id="about-title-2">About SiliconEng</h2>
@@ -204,7 +212,7 @@
         </div>
       </section>
     </main>
-    <footer class="practical-footer" id="contact-2"><a class="practical-brand" href="#overview-4"><img src="/img/siliconeng-mark-small.webp" alt=""><span>SiliconEng<small>Integrated circuit development</small></span></a><div><a href="/careers.html">Careers</a><a href="https://www.linkedin.com/company/siliconeng/" target="_blank" rel="noopener" class="practical-footer-social" aria-label="SiliconEng on LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a><a href="mailto:info@siliconeng.com">info@siliconeng.com</a><a href="tel:+16692455007">+1 669 245 5007</a><span>Santa Clara, CA 95051</span></div><small>&copy; <span class="current-year">2026</span> SiliconEng</small></footer>
+    <footer class="practical-footer" id="contact"><a class="practical-brand" href="#main"><img src="/img/siliconeng-mark-small.webp" alt=""><span>SiliconEng<small>Integrated circuit development</small></span></a><div><a href="/careers.html">Careers</a><a href="https://www.linkedin.com/company/siliconeng/" target="_blank" rel="noopener" class="practical-footer-social" aria-label="SiliconEng on LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a><a href="mailto:info@siliconeng.com">info@siliconeng.com</a><a href="tel:+16692455007">+1 669 245 5007</a><span>Santa Clara, CA 95051</span></div><small>&copy; <span class="current-year">2026</span> SiliconEng</small></footer>
   </div>
 
   <script>

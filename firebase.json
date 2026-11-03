@@ -11,7 +11,7 @@
     "redirects": [
       {
         "source": "/about-us",
-        "destination": "/#about-2",
+        "destination": "/#about",
         "type": 301
       },
       {
@@ -30,9 +30,9 @@
         "type": 302
       },
       {
-        "source": "/resources-1.html",
-        "destination": "/resources-2.html",
-        "type": 302
+        "source": "/resources-@(1|2).html",
+        "destination": "/resources.html",
+        "type": 301
       }
     ],
     "headers": [

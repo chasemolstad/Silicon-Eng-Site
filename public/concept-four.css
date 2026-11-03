@@ -45,7 +45,6 @@ body[data-concept="4"] { background: #fff; }
 .seam-socket { position: relative; flex: none; display: block; width: 38px; aspect-ratio: 1268 / 1241; color: #0b0d0fb3; }
 .seam-socket img { display: block; width: 100%; height: auto; transition: transform .7s var(--s-ease); }
 .seam-socket::before { position: absolute; top: 1.9%; left: 3.9%; width: 91.8%; aspect-ratio: 1; border: 1.5px solid currentColor; border-radius: 50%; content: ''; opacity: 0; }
-.seam-socket::after { position: absolute; inset: -5px; background: linear-gradient(currentColor, currentColor) center / 100% 1px no-repeat, linear-gradient(currentColor, currentColor) center / 1px 100% no-repeat; content: ''; opacity: 0; transform: scale(.55); }
 .seam-brand:hover .seam-socket img { transform: rotate(-16deg); }
 .seam-wordmark { transition: color .3s; }
 .seam-brand:hover .seam-wordmark { color: var(--s-signal-hi); }
@@ -132,9 +131,9 @@ body[data-concept="4"] { background: #fff; }
    Until it lands, the socket shows an empty black circle. */
 .seam-site.has-dock .seam-wafer { z-index: 41; will-change: transform; }
 .seam-site.has-dock .seam-socket img { opacity: 0; }
-.seam-site.has-dock .seam-socket::before, .seam-site.has-dock .seam-socket::after { opacity: 1; }
+.seam-site.has-dock .seam-socket::before { opacity: 1; }
 .seam-site.has-dock.is-docked .seam-socket img, body.seam-menu-open .seam-site.has-dock .seam-socket img { opacity: 1; }
-.seam-site.has-dock.is-docked .seam-socket::before, .seam-site.has-dock.is-docked .seam-socket::after, body.seam-menu-open .seam-socket::before, body.seam-menu-open .seam-socket::after { opacity: 0; }
+.seam-site.has-dock.is-docked .seam-socket::before, body.seam-menu-open .seam-socket::before { opacity: 0; }
 .seam-site.is-docked .seam-wafer, body.seam-menu-open .seam-wafer { visibility: hidden; }
 
 /* A wide photo between Services and Technology, tinted toward the brand blue and fading into the Technology band below. */
