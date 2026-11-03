@@ -10,6 +10,16 @@
     ],
     "redirects": [
       {
+        "source": "/about-us",
+        "destination": "/#about-2",
+        "type": 301
+      },
+      {
+        "source": "/deep-learning-engineer",
+        "destination": "/careers.html",
+        "type": 301
+      },
+      {
         "source": "/concept-4.html",
         "destination": "/",
         "type": 301
