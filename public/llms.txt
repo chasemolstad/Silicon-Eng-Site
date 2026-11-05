@@ -1,0 +1,33 @@
+# SiliconEng
+
+> SiliconEng is a post-silicon engineering services company in Santa Clara, California. It provides ATE test development, custom test hardware, and qualification and reliability engineering for analog, mixed-signal, power management, RF, and SoC integrated circuits, from first wafer to full-volume production.
+
+SiliconEng works with semiconductor teams that want test, validation, product, packaging, and quality engineering without maintaining all of those resources or owning ATE and lab facilities in-house. Its team combines Silicon Valley engineers with onshore and offshore partners.
+
+## Services
+
+- [Test development](https://siliconeng.com/#services): ATE wafer probe and package test programs, including WLCSP, for analog, power management, SoC, mixed-signal, and RF devices, from test plan through production release and post-release support, with design-for-test (DFT) methodology and early design-team engagement.
+- [Test hardware design](https://siliconeng.com/#services): High-density multilayer PCB stack-ups, low-leakage and high-voltage applications, thermal and signal integrity design, HTOL and HAST boards, wafer-level probe card architectures, load board design, and SPICE simulations.
+- [Qualification and characterization](https://siliconeng.com/#services): Product qualification (AEC-Q100, MIL-STD-883), silicon validation, ESD and latch-up, die and package debug, device and product characterization, failure analysis, and robustness testing under extreme conditions.
+- [Product and application support](https://siliconeng.com/#services): Product engineering, application board design and debug, demo boards, performance curves and datasheets, test time reduction, and yield improvement.
+- [Turnkey operations](https://siliconeng.com/#services): Onshore and offshore assembly through industry partners, wafer probe, multisite test, tape and reel, inventory management, and drop shipping.
+- [Legacy device modernization](https://siliconeng.com/#about): Porting legacy devices and systems to modern ATE for improved quality and manufacturability.
+
+## Technology
+
+- [ATE platforms](https://siliconeng.com/#technology): Teradyne ETS364, ETS88, and ETS800; Microflex; UltraFlex; Advantest 93K; Accotest; Chroma Test; ASL1000; and Focused Test.
+- [Bench automation](https://siliconeng.com/#technology): GPIB-based rack and stack, external instrument control, and custom test systems automated with Python over USB and GPIB.
+- [Reliability testing](https://siliconeng.com/#technology): HTOL, HAST, and burn-in programs on purpose-built boards, ESD and latch-up characterization, and AEC-Q100 and MIL-STD-883 qualification flows.
+
+## White papers
+
+- [From Datasheet to ATE](https://siliconeng.com/whitepapers/whitepaper-01-from-datasheet-to-ate.pdf): A four-stage method for turning a power-IC datasheet into a production test program with guardbanded limits and a written record of decisions. Includes a worked example on the TI TPS7A20 LDO and an 18-question checklist.
+- [Analog and Power IC Test Development: A Field Guide to Pitfalls and Good Practice](https://siliconeng.com/whitepapers/whitepaper-02-analog-power-test-pitfalls.pdf): Measurement errors and test-development traps, including the 10:1 test uncertainty rule, sockets, layout, simulation, gauge R&R, and spike checks. Includes worked examples on the TI TPS54360 buck regulator and INA333 instrumentation amplifier.
+- [All resources](https://siliconeng.com/resources.html): The white paper library.
+
+## Company
+
+- [About SiliconEng](https://siliconeng.com/#about): Co-founded by Raj Moothedath and Domingo Figueroa, with more than 100 years of combined team experience. When customer requirements call for it, SiliconEng has processes in place to support ITAR-compliant work.
+- [Contact](https://siliconeng.com/contact.html): info@siliconeng.com, +1 669 245 5007, Santa Clara, CA 95051.
+- [Careers](https://siliconeng.com/careers.html): Open applications for test, validation, product, hardware, quality, and operations engineers.
+- [LinkedIn](https://www.linkedin.com/company/siliconeng/): SiliconEng company page.
